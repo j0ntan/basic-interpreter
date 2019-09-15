@@ -5,13 +5,13 @@
 
 class Interpreter {
 public:
-    Interpreter(std::istream& in);
-    ~Interpreter();
+  Interpreter(std::istream &in);
+  ~Interpreter();
 
-    void write(std::ostream& out);
+  void write(std::ostream &out);
 
 private:
-    void parse(std::istream& in);
+  void parse(std::istream &in);
 };
 
 #endif

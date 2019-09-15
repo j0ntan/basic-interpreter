@@ -3,7 +3,7 @@
 
 class Command {
 public:
-    virtual std::string format() const = 0;
+  virtual std::string format() const = 0;
 };
 
 #endif
