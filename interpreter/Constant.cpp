@@ -1,5 +1,7 @@
 #include "Constant.h"
 
-int Constant::value() const { return 0; }
+Constant::Constant(int n) : val{n} {}
+
+int Constant::value() const { return val; }
 
 std::string Constant::format() const { return std::string(); }

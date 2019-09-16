@@ -5,10 +5,15 @@
 
 class Constant final : public NumericExpression {
 public:
+  explicit Constant(int n = 0);
+
   int value() const final;
   std::string format() const final;
 
   ~Constant() final = default;
+
+private:
+  int val = 0;
 };
 
 #endif
