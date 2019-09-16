@@ -30,6 +30,8 @@ add_subdirectory(${CMAKE_CURRENT_BINARY_DIR}/googletest-src
 
 file(COPY "examples" DESTINATION ${CMAKE_BINARY_DIR})
 
+set(INTERPRETER_INCLUDE ${CMAKE_CURRENT_SOURCE_DIR}/interpreter)
+
 add_subdirectory(interpreter)
 
 add_subdirectory(tests)
