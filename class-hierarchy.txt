@@ -1,0 +1,70 @@
+Interpreter
+    vector<Command>
+    vector<NumExp::Var*>
+    GoSubStack
+===
+
+Command
+    line_num (int)
+
+Command::Print
+    NumExp
+
+Command::AssignVar
+    Var*
+    NumExp
+
+Command::AssignArrayVar
+    Var[NumExp]
+    NumExp
+
+Command::Goto
+    line_num (jumpto)
+
+Command::IfThen
+    BoolExp
+    line_num (jumpto)
+
+Command::GoSub
+    line_num (jumpto)
+
+[Command::Return]
+
+[Command::End]
+===
+
+BoolExp
+    NumExp
+    NumExp
+
+BoolExp::GT
+
+BoolExp::LT
+
+BoolExp::Eq
+===
+
+NumExp
+
+NumExp::Addition
+    NumExp
+    NumExp
+
+NumExp::Subtraction
+    NumExp
+    NumExp
+
+NumExp::Multiplication
+    NumExp
+    NumExp
+
+NumExp::Division
+    NumExp
+    NumExp
+
+NumExp::Var
+    name (string)
+    NumExp::Constant
+
+NumExp::Constant
+    value (int)
