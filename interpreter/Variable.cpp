@@ -2,7 +2,8 @@
 #include <utility>
 
 Variable::Variable(std::string name, Constant value)
-    : var_name{std::move(name)}, var_value{std::move(value)} {}
+    : var_name{name.empty() ? std::string("unknown") : std::move(name)},
+      var_value{std::move(value)} {}
 
 int Variable::value() const { return var_value.value(); }
 

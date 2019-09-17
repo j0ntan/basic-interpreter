@@ -33,3 +33,8 @@ TEST(Variable, getVariableName) {
   ASSERT_EQ(v1.name(), "name");
   ASSERT_EQ(v2.name(), "ID");
 }
+
+TEST(Variable, blankNameStringNamedUnknown) {
+  Variable v("");
+  ASSERT_EQ(v.name(), "unknown");
+}
