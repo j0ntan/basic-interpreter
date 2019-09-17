@@ -46,21 +46,17 @@ BoolExp::Eq
 
 NumExp
 
-NumExp::Addition
+NumExp::BinaryExp
     NumExp
     NumExp
 
-NumExp::Subtraction
-    NumExp
-    NumExp
+BinaryExp::Addition
 
-NumExp::Multiplication
-    NumExp
-    NumExp
+BinaryExp::Subtraction
 
-NumExp::Division
-    NumExp
-    NumExp
+BinaryExp::Multiplication
+
+BinaryExp::Division
 
 NumExp::Var
     name (string)
