@@ -58,3 +58,10 @@ TEST(Variable, canAssignUsingSecondVariable) {
   Variable v1, v2;
   v1.assign(v2);
 }
+
+TEST(Variable, assignmentChangesValueOnly) {
+  Variable v1, v2("name", Constant{123});
+  v1.assign(v2);
+  ASSERT_NE(v1.name(), v2.name());
+  ASSERT_EQ(v1.value(), v2.value());
+}
