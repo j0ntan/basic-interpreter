@@ -38,3 +38,10 @@ TEST(Variable, blankNameStringNamedUnknown) {
   Variable v("");
   ASSERT_EQ(v.name(), "unknown");
 }
+
+TEST(Variable, defaultVariableHasKnownState) {
+  Variable v;
+  ASSERT_EQ(v.name(), "unknown");
+  ASSERT_EQ(v.value(), 0);
+  ASSERT_EQ(v.format(), "0");
+}
