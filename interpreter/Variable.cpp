@@ -1,4 +1,8 @@
 #include "Variable.h"
+#include <utility>
+
+Variable::Variable(std::string name, Constant value)
+    : var_name{std::move(name)}, var_value{std::move(value)} {}
 
 int Variable::value() const { return -1; }
 
