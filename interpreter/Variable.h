@@ -13,6 +13,7 @@ public:
   std::string format() const final;
 
   std::string name() const;
+  void assign(const Variable& v);
 
   ~Variable() final = default;
 

@@ -53,3 +53,8 @@ TEST(Variable, copiesHaveSameNameAndValue) {
   ASSERT_EQ(v2.value(), v1.value());
   ASSERT_EQ(v2.format(), v1.format());
 }
+
+TEST(Variable, canAssignUsingSecondVariable) {
+  Variable v1, v2;
+  v1.assign(v2);
+}
