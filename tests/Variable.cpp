@@ -14,3 +14,8 @@ TEST(Variable, valueMatchesConstantArguement) {
   ASSERT_EQ(v1.value(), x1);
   ASSERT_EQ(v2.value(), x2);
 }
+
+TEST(Variable, defaultConstantValueIsZero) {
+  Variable v("name");
+  ASSERT_EQ(v.value(), 0);
+}

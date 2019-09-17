@@ -6,7 +6,7 @@
 
 class Variable final : public NumericExpression {
 public:
-  explicit Variable(std::string name, Constant value);
+  explicit Variable(std::string name, Constant value = Constant{});
 
   int value() const final;
   std::string format() const final;
