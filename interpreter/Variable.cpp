@@ -6,4 +6,4 @@ Variable::Variable(std::string name, Constant value)
 
 int Variable::value() const { return var_value.value(); }
 
-std::string Variable::format() const { return std::string(""); }
+std::string Variable::format() const { return var_value.format(); }
