@@ -45,3 +45,11 @@ TEST(Variable, defaultVariableHasKnownState) {
   ASSERT_EQ(v.value(), 0);
   ASSERT_EQ(v.format(), "0");
 }
+
+TEST(Variable, copiesHaveSameNameAndValue) {
+  Variable v1("v1", Constant{123});
+  Variable v2(v1);
+  ASSERT_EQ(v2.name(), v1.name());
+  ASSERT_EQ(v2.value(), v1.value());
+  ASSERT_EQ(v2.format(), v1.format());
+}
