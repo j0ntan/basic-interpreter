@@ -27,3 +27,9 @@ TEST(Variable, formatIntegerValueToString) {
   ASSERT_EQ(v2.format(), "-8471234");
   ASSERT_EQ(v3.format(), "0");
 }
+
+TEST(Variable, getVariableName) {
+  Variable v1("name"), v2("ID");
+  ASSERT_EQ(v1.name(), "name");
+  ASSERT_EQ(v2.name(), "ID");
+}
