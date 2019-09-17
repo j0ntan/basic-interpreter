@@ -14,3 +14,13 @@ TEST(Addition, canCreateNestedAddition) {
   Addition a1(num1, num2);
   Addition a2(a1, num3);
 }
+
+TEST(Addition, addIntegerValuesAndNested) {
+  Constant x(1), y(2), z(-3);
+  Addition positives(x, y), positive_and_negative(x, z), negatives(z, z);
+  Addition nested(positives, y);
+  ASSERT_EQ(positives.value(), 3);
+  ASSERT_EQ(negatives.value(), -6);
+  ASSERT_EQ(positive_and_negative.value(), -2);
+  ASSERT_EQ(nested.value(), 5);
+}
