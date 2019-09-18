@@ -41,3 +41,12 @@ target_link_libraries(test_Division PRIVATE
         Constant
         gtest_main
         )
+
+add_executable(test_LessThan LessThan.cpp)
+target_include_directories(test_LessThan PRIVATE ${INTERPRETER_INCLUDE})
+target_link_libraries(test_LessThan PRIVATE
+        LessThan
+        Variable
+        Constant
+        gtest_main
+        )

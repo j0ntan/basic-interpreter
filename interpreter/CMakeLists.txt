@@ -10,3 +10,5 @@ add_library(Subtraction STATIC Subtraction.cpp)
 add_library(Multiplication STATIC Multiplication.cpp)
 
 add_library(Division STATIC Division.cpp)
+
+add_library(LessThan STATIC LessThan.cpp)
