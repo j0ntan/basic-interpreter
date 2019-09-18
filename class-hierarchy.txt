@@ -37,8 +37,6 @@ BoolExp
     NumExp
     NumExp
 
-BoolExp::GT
-
 BoolExp::LT
 
 BoolExp::Eq
