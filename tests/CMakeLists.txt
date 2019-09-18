@@ -32,3 +32,12 @@ target_link_libraries(test_Multiplication PRIVATE
         Constant
         gtest_main
         )
+
+add_executable(test_Division Division.cpp)
+target_include_directories(test_Division PRIVATE ${INTERPRETER_INCLUDE})
+target_link_libraries(test_Division PRIVATE
+        Division
+        Variable
+        Constant
+        gtest_main
+        )
