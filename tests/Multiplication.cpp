@@ -24,3 +24,15 @@ TEST(Multiplication, multiplyIntegerValuesAndNested) {
   ASSERT_EQ(positive_and_negative.value(), -15);
   ASSERT_EQ(nested.value(), 20);
 }
+
+TEST(Multiplication, formatValuesAndNested) {
+  Constant x(123), y(-456);
+  Multiplication pos_and_pos(x, x), pos_and_neg(x, y), neg_and_pos(y, x),
+      neg_and_neg(y, y);
+  Multiplication nested(y, pos_and_neg);
+  ASSERT_EQ(pos_and_pos.format(), "(123 * 123)");
+  ASSERT_EQ(pos_and_neg.format(), "(123 * -456)");
+  ASSERT_EQ(neg_and_pos.format(), "(-456 * 123)");
+  ASSERT_EQ(neg_and_neg.format(), "(-456 * -456)");
+  ASSERT_EQ(nested.format(), "(-456 * (123 * -456))");
+}
