@@ -14,3 +14,13 @@ TEST(Subtraction, canCreateNestedSubtraction) {
   Subtraction s1(num1, num2);
   Subtraction s2(s1, num3);
 }
+
+TEST(Subtraction, subtractIntegerValuesAndNested) {
+  Constant x(1), y(2), z(-3), zz(-8);
+  Subtraction positives(x, y), positive_and_negative(x, z), negatives(zz, z);
+  Subtraction nested(positives, y);
+  ASSERT_EQ(positives.value(), -1);
+  ASSERT_EQ(negatives.value(), -5);
+  ASSERT_EQ(positive_and_negative.value(), 4);
+  ASSERT_EQ(nested.value(), -3);
+}
