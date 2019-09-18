@@ -113,10 +113,18 @@ add_executable(test_End End.cpp)
 target_include_directories(test_End PRIVATE ${INTERPRETER_INCLUDE})
 target_link_libraries(test_End PRIVATE End gtest_main)
 
+add_executable(test_ParserHelper ParserHelper.cpp)
+target_include_directories(test_ParserHelper PRIVATE ${INTERPRETER_INCLUDE})
+target_link_libraries(test_ParserHelper PRIVATE
+        ParserHelper
+        gtest_main
+        )
+
 file(GLOB TESTS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} *.cpp)
 add_executable(test_ALL ${TESTS})
 target_include_directories(test_ALL PRIVATE ${INTERPRETER_INCLUDE})
 target_link_libraries(test_ALL PRIVATE
+        ParserHelper
         Print
         AssignVariable
         AssignArray

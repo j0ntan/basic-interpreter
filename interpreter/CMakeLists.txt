@@ -19,3 +19,5 @@ add_library(IfThen STATIC Commands/IfThen.cpp)
 add_library(GoSub STATIC Commands/GoSub.cpp)
 add_library(Return STATIC Commands/Return.cpp)
 add_library(End STATIC Commands/End.cpp)
+
+add_library(ParserHelper STATIC ParserHelper.cpp)
