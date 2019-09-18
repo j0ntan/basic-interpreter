@@ -21,3 +21,13 @@ TEST(LessThan, evaluateSimpleAndNestedExpressions) {
   ASSERT_TRUE(l4.value());
   ASSERT_FALSE(l5.value());
 }
+
+TEST(LessThan, formatExpressions) {
+  Constant x(123), y(-456);
+  Addition pos_and_neg(x, y);
+  Addition nested(y, pos_and_neg);
+  LessThan l1(x, x), l2(pos_and_neg, x), l3(nested, x);
+  ASSERT_EQ(l1.format(), "123 < 123");
+  ASSERT_EQ(l2.format(), "(123 + -456) < 123");
+  ASSERT_EQ(l3.format(), "(-456 + (123 + -456)) < 123");
+}
