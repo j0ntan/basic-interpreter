@@ -23,3 +23,12 @@ target_link_libraries(test_Subtraction PRIVATE
         Constant
         gtest_main
         )
+
+add_executable(test_Multiplication Multiplication.cpp)
+target_include_directories(test_Multiplication PRIVATE ${INTERPRETER_INCLUDE})
+target_link_libraries(test_Multiplication PRIVATE
+        Multiplication
+        Variable
+        Constant
+        gtest_main
+        )

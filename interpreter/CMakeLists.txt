@@ -6,3 +6,5 @@ target_link_libraries(Variable PRIVATE Constant)
 add_library(Addition STATIC Addition.cpp)
 
 add_library(Subtraction STATIC Subtraction.cpp)
+
+add_library(Multiplication STATIC Multiplication.cpp)
