@@ -20,3 +20,13 @@ TEST(Equals, evaluateSimpleAndNestedExpressions) {
   ASSERT_FALSE(e3.value());
   ASSERT_TRUE(e4.value());
 }
+
+TEST(Equals, formatExpressions) {
+  Constant x(123), y(-456);
+  Addition pos_and_neg(x, y);
+  Addition nested(y, pos_and_neg);
+  Equals l1(x, x), l2(pos_and_neg, x), l3(nested, x);
+  ASSERT_EQ(l1.format(), "123 = 123");
+  ASSERT_EQ(l2.format(), "(123 + -456) = 123");
+  ASSERT_EQ(l3.format(), "(-456 + (123 + -456)) = 123");
+}
