@@ -1,6 +1,6 @@
 #include "ParserHelper.h"
 
-bool isNumericExpression(const std::string &str) { return false; }
+bool isNumericExpression(const std::string &str) { return isInteger(str); }
 
 static bool first_char_is_negative_or_digit(const std::string &str) {
   return str[0] == '-' || str.find_first_of("0123456789") == 0;
