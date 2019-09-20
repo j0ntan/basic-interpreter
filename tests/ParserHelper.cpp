@@ -12,3 +12,7 @@ TEST(IsInteger, randomCharsNotInteger) {
 TEST(IsInteger, positiveNumberIsInteger) { ASSERT_TRUE(isInteger("123456")); }
 
 TEST(IsInteger, negativeNumberIsInteger) { ASSERT_TRUE(isInteger("-123456")); }
+
+TEST(IsInteger, misplacedNegativeNotInteger) {
+  ASSERT_FALSE(isInteger("12-3456"));
+}
