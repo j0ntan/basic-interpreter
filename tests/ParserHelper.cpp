@@ -8,3 +8,5 @@ TEST(IsNumericExpression, randomCharsNotExpression) {
 TEST(IsInteger, randomCharsNotInteger) {
   ASSERT_FALSE(isInteger("a123sc.,)9*&585s"));
 }
+
+TEST(IsInteger, positiveNumberIsInteger) { ASSERT_TRUE(isInteger("123456")); }
