@@ -64,3 +64,14 @@ TEST(IsVariable, lengthMaximumIs8) {
   ASSERT_TRUE(isVariable("GOODNAME"));
   ASSERT_FALSE(isVariable("NAMETOOLONG"));
 }
+
+TEST(IsVariable, commandNameNotAllowed) {
+  ASSERT_FALSE(isVariable("PRINT"));
+  ASSERT_FALSE(isVariable("LET"));
+  ASSERT_FALSE(isVariable("GOTO"));
+  ASSERT_FALSE(isVariable("IF"));
+  ASSERT_FALSE(isVariable("THEN"));
+  ASSERT_FALSE(isVariable("GOSUB"));
+  ASSERT_FALSE(isVariable("RETURN"));
+  ASSERT_FALSE(isVariable("END"));
+}

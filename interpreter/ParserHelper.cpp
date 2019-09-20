@@ -54,6 +54,12 @@ static bool has_only_uppercase_letters(const std::string &str) {
          std::string::npos;
 }
 
+static bool does_not_match_keyword(const std::string &str) {
+  return str != "PRINT" && str != "LET" && str != "GOTO" && str != "IF" &&
+         str != "THEN" && str != "GOSUB" && str != "RETURN" && str != "END";
+}
+
 bool isVariable(const std::string &str) {
-  return str.length() <= 8 && has_only_uppercase_letters(str);
+  return str.length() <= 8 && has_only_uppercase_letters(str) &&
+         does_not_match_keyword(str);
 }
