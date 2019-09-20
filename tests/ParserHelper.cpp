@@ -75,3 +75,7 @@ TEST(IsVariable, commandNameNotAllowed) {
   ASSERT_FALSE(isVariable("RETURN"));
   ASSERT_FALSE(isVariable("END"));
 }
+
+TEST(IsNumericExpression, variableIsExpression) {
+  ASSERT_TRUE(isNumericExpression("VARIABLE"));
+}

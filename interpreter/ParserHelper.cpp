@@ -23,16 +23,17 @@ static std::string remove_surrounding_whitespace(const std::string &str) {
   return clean_str;
 }
 
-static bool has_no_digits(const std::string &str) {
-  return str.find_first_of("0123456789") == std::string::npos;
+static bool has_no_digits_or_uppercase_letters(const std::string &str) {
+  return str.find_first_of("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ") ==
+         std::string::npos;
 }
 
 bool isNumericExpression(const std::string &str) {
-  if (has_no_digits(str))
+  if (has_no_digits_or_uppercase_letters(str))
     return false;
 
   const std::string clean_str = remove_surrounding_whitespace(str);
-  return isInteger(clean_str);
+  return isInteger(clean_str) || isVariable(clean_str);
 }
 
 static bool first_char_is_negative_or_digit(const std::string &str) {
