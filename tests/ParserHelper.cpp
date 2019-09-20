@@ -58,3 +58,9 @@ TEST(IsVariable, onlyUppercaseLettersAllowed) {
   ASSERT_FALSE(isVariable("var"));
   ASSERT_FALSE(isVariable("VAR123"));
 }
+
+TEST(IsVariable, lengthMaximumIs8) {
+  ASSERT_TRUE(isVariable("SHORT"));
+  ASSERT_TRUE(isVariable("GOODNAME"));
+  ASSERT_FALSE(isVariable("NAMETOOLONG"));
+}

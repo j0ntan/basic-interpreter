@@ -55,5 +55,5 @@ static bool has_only_uppercase_letters(const std::string &str) {
 }
 
 bool isVariable(const std::string &str) {
-  return has_only_uppercase_letters(str);
+  return str.length() <= 8 && has_only_uppercase_letters(str);
 }
