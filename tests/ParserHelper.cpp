@@ -10,3 +10,5 @@ TEST(IsInteger, randomCharsNotInteger) {
 }
 
 TEST(IsInteger, positiveNumberIsInteger) { ASSERT_TRUE(isInteger("123456")); }
+
+TEST(IsInteger, negativeNumberIsInteger) { ASSERT_TRUE(isInteger("-123456")); }
