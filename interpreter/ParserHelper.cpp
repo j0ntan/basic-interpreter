@@ -48,3 +48,5 @@ bool isInteger(const std::string &str) {
   return first_char_is_negative_or_digit(str) &&
          remaining_chars_only_digits(str);
 }
+
+bool isVariable(const std::string &str) { return false; }

@@ -47,3 +47,8 @@ TEST(IsNumericExpression, noDigitStringNotExpression) {
   ASSERT_FALSE(isNumericExpression("  \t "));
   ASSERT_FALSE(isNumericExpression("-"));
 }
+
+TEST(IsVariable, integerIsNotAVariable) {
+  ASSERT_FALSE(isVariable("123"));
+  ASSERT_FALSE(isVariable("-123"));
+}

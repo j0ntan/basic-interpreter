@@ -5,5 +5,6 @@
 
 bool isNumericExpression(const std::string &str);
 bool isInteger(const std::string &str);
+bool isVariable(const std::string &str);
 
 #endif
