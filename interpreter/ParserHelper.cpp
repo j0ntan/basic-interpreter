@@ -49,4 +49,11 @@ bool isInteger(const std::string &str) {
          remaining_chars_only_digits(str);
 }
 
-bool isVariable(const std::string &str) { return false; }
+static bool has_only_uppercase_letters(const std::string &str) {
+  return str.find_first_not_of("ABCDEFGHIJKLMNOPQRSTUVWXYZ") ==
+         std::string::npos;
+}
+
+bool isVariable(const std::string &str) {
+  return has_only_uppercase_letters(str);
+}

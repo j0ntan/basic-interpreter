@@ -52,3 +52,9 @@ TEST(IsVariable, integerIsNotAVariable) {
   ASSERT_FALSE(isVariable("123"));
   ASSERT_FALSE(isVariable("-123"));
 }
+
+TEST(IsVariable, onlyUppercaseLettersAllowed) {
+  ASSERT_TRUE(isVariable("VAR"));
+  ASSERT_FALSE(isVariable("var"));
+  ASSERT_FALSE(isVariable("VAR123"));
+}
