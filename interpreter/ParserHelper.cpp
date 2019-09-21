@@ -97,5 +97,5 @@ bool isArray(const std::string &str) {
   const std::string index =
       array_index(str, left_bracket_pos, right_bracket_pos);
 
-  return !index.empty() && !name.empty();
+  return !index.empty() && !name.empty() && isVariable(name);
 }

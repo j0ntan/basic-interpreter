@@ -110,3 +110,9 @@ TEST(IsArray, bracketPairMustBeOrdered) { ASSERT_FALSE(isArray("VAR]0[")); }
 TEST(IsArray, bracketMustNotBeEmpty) { ASSERT_FALSE(isArray("VAR[]")); }
 
 TEST(IsArray, arrayNameMustComeFirst) { ASSERT_FALSE(isArray("[0]VAR")); }
+
+TEST(IsArray, nameMustBeVariableName) {
+  ASSERT_FALSE(isArray("var[0]"));
+  ASSERT_FALSE(isArray("123[0]"));
+  ASSERT_FALSE(isArray("VA R[0]"));
+}
