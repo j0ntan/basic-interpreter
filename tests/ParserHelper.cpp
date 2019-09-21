@@ -147,3 +147,15 @@ TEST(IsNumericExpression, whitespaceAroundArrayElementAllowed) {
   ASSERT_TRUE(isNumericExpression("\t\t VAR[0] \t"));
   ASSERT_TRUE(isNumericExpression("  VAR[  OTHER [0]  ] "));
 }
+
+TEST(IsNumericExpression, whitespaceAroundArrayIndexAllowed) {
+  ASSERT_TRUE(isNumericExpression("VAR[0 ]"));
+  ASSERT_TRUE(isNumericExpression("VAR[ 0]"));
+  ASSERT_TRUE(isNumericExpression("VAR[ 0 ]"));
+  ASSERT_TRUE(isNumericExpression("VAR[ OTHER[3] ]"));
+  ASSERT_TRUE(isNumericExpression("VAR[ OTHER[  3] ]"));
+  ASSERT_TRUE(isNumericExpression("VAR[ OTHER[3  ] ]"));
+  ASSERT_FALSE(isNumericExpression("VAR[ -1 ]"));
+  ASSERT_FALSE(isNumericExpression("VAR[ wrong ]"));
+  ASSERT_FALSE(isNumericExpression("VAR[ wrong[0] ]"));
+}

@@ -77,8 +77,9 @@ static bool brackets_not_ordered(size_t left_bracket_pos,
 
 static std::string array_index(const std::string &str, size_t left_bracket_pos,
                                size_t right_bracket_pos) {
-  return str.substr(left_bracket_pos + 1,
-                    right_bracket_pos - left_bracket_pos - 1);
+  const std::string index_with_whitespace = str.substr(
+      left_bracket_pos + 1, right_bracket_pos - left_bracket_pos - 1);
+  return remove_surrounding_whitespace(index_with_whitespace);
 }
 
 static std::string array_name(const std::string &str, size_t left_bracket_pos) {
