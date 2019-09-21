@@ -75,10 +75,18 @@ static bool brackets_are_ordered(size_t left_bracket_pos,
   return left_bracket_pos < right_bracket_pos;
 }
 
+static bool has_non_empty_index(const std::string &str, size_t left_bracket_pos,
+                                size_t right_bracket_pos) {
+  const std::string index_str = str.substr(
+      left_bracket_pos + 1, right_bracket_pos - left_bracket_pos - 1);
+  return !index_str.empty();
+}
+
 bool isArray(const std::string &str) {
   const size_t left_bracket_pos = str.find('[');
   const size_t right_bracket_pos = str.find(']');
 
   return has_brackets(left_bracket_pos, right_bracket_pos) &&
-         brackets_are_ordered(left_bracket_pos, right_bracket_pos);
+         brackets_are_ordered(left_bracket_pos, right_bracket_pos) &&
+         has_non_empty_index(str, left_bracket_pos, right_bracket_pos);
 }

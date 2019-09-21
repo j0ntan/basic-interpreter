@@ -106,3 +106,5 @@ TEST(IsArray, arrayMustContainBrackets) {
 }
 
 TEST(IsArray, bracketPairMustBeOrdered) { ASSERT_FALSE(isArray("VAR]0[")); }
+
+TEST(IsArray, bracketMustNotBeEmpty) { ASSERT_FALSE(isArray("VAR[]")); }
