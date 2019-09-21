@@ -5,7 +5,7 @@ static std::string remove_leading_whitespace(const std::string &str) {
 }
 
 static std::string remove_trailing_whitespace(const std::string &str) {
-  return str.substr(0, str.find_last_of("0123456789") + 1);
+  return str.substr(0, str.find_last_not_of(" \t") + 1);
 }
 
 static std::string remove_surrounding_whitespace(const std::string &str) {
