@@ -116,3 +116,8 @@ TEST(IsArray, nameMustBeVariableName) {
   ASSERT_FALSE(isArray("123[0]"));
   ASSERT_FALSE(isArray("VA R[0]"));
 }
+
+TEST(IsArray, whitespaceAfterNameAllowed) {
+  ASSERT_TRUE(isArray("VAR [0]"));
+  ASSERT_TRUE(isArray("VAR\t[0]"));
+}

@@ -82,7 +82,8 @@ static std::string array_index(const std::string &str, size_t left_bracket_pos,
 }
 
 static std::string array_name(const std::string &str, size_t left_bracket_pos) {
-  return str.substr(0, left_bracket_pos);
+  const std::string name_with_whitespace = str.substr(0, left_bracket_pos);
+  return remove_trailing_whitespace(name_with_whitespace);
 }
 
 bool isArray(const std::string &str) {
