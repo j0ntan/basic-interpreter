@@ -21,3 +21,9 @@ TEST(IsNumericExpression, positiveAndNegativeNumbersAreExpressions) {
   ASSERT_TRUE(isNumericExpression("123"));
   ASSERT_TRUE(isNumericExpression("-456"));
 }
+
+TEST(IsNumericExpression, leadingWhitespaceIntegerAllowed) {
+  ASSERT_TRUE(isNumericExpression(" 123"));         // single space
+  ASSERT_TRUE(isNumericExpression("\t123"));        // single tab
+  ASSERT_TRUE(isNumericExpression(" \t  \t\t123")); // multiple space & tab
+}
