@@ -64,3 +64,5 @@ bool isVariable(const std::string &str) {
   return str.length() <= 8 && has_only_uppercase_letters(str) &&
          does_not_match_keyword(str);
 }
+
+bool isArray(const std::string &str) { return true; }

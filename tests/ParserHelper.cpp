@@ -97,3 +97,5 @@ TEST(IsNumericExpression, inBetweenWhitespaceVariableNotAllowed) {
   ASSERT_FALSE(isNumericExpression("VA  R \t"));
   ASSERT_FALSE(isNumericExpression("  VA  R \t"));
 }
+
+TEST(IsArray, simpleArray) { ASSERT_TRUE(isArray("VAR[0]")); }
