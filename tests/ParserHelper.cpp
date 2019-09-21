@@ -131,3 +131,8 @@ TEST(IsArray, indexCanBeAnotherArrayElement) {
   ASSERT_TRUE(isArray("FIRST[SECOND[THIRD[4]]]"));
   ASSERT_FALSE(isArray("VAR[invalid[0]"));
 }
+
+TEST(IsNumericExpression, arrayElementIsAnExpression) {
+  ASSERT_TRUE(isNumericExpression("VAR[0]"));
+  ASSERT_TRUE(isNumericExpression("VAR[OTHER[3]]"));
+}
