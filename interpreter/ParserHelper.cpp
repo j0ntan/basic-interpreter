@@ -108,3 +108,5 @@ bool isArray(const std::string &str) {
          ((index_is_int && index_is_positive(index)) ||
           (!index_is_int && isNumericExpression(index)));
 }
+
+bool isBinaryExpression(const std::string &str) { return true; }

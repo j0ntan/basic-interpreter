@@ -7,5 +7,6 @@ bool isNumericExpression(const std::string &str);
 bool isInteger(const std::string &str);
 bool isVariable(const std::string &str);
 bool isArray(const std::string &str);
+bool isBinaryExpression(const std::string &str);
 
 #endif

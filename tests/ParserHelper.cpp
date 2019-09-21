@@ -159,3 +159,10 @@ TEST(IsNumericExpression, whitespaceAroundArrayIndexAllowed) {
   ASSERT_FALSE(isNumericExpression("VAR[ wrong ]"));
   ASSERT_FALSE(isNumericExpression("VAR[ wrong[0] ]"));
 }
+
+TEST(IsBinaryExpression, simpleBinaryExpression) {
+  ASSERT_TRUE(isBinaryExpression("(1+1)"));
+  ASSERT_TRUE(isBinaryExpression("(1-1)"));
+  ASSERT_TRUE(isBinaryExpression("(1*1)"));
+  ASSERT_TRUE(isBinaryExpression("(1/1)"));
+}
