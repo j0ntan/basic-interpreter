@@ -123,3 +123,5 @@ TEST(IsArray, whitespaceAfterNameAllowed) {
 }
 
 TEST(IsArray, indexCannotBeNegative) { ASSERT_FALSE(isArray("VAR[-1]")); }
+
+TEST(IsArray, indexCanBeVariable) { ASSERT_TRUE(isArray("VAR[OTHER]")); }
