@@ -121,3 +121,5 @@ TEST(IsArray, whitespaceAfterNameAllowed) {
   ASSERT_TRUE(isArray("VAR [0]"));
   ASSERT_TRUE(isArray("VAR\t[0]"));
 }
+
+TEST(IsArray, indexCannotBeNegative) { ASSERT_FALSE(isArray("VAR[-1]")); }

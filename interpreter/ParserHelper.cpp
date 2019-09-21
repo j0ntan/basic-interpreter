@@ -86,6 +86,10 @@ static std::string array_name(const std::string &str, size_t left_bracket_pos) {
   return remove_trailing_whitespace(name_with_whitespace);
 }
 
+static bool index_non_negative(const std::string &index) {
+  return isInteger(index) && index[0] != '-';
+}
+
 bool isArray(const std::string &str) {
   const size_t left_bracket_pos = str.find('[');
   const size_t right_bracket_pos = str.find(']');
@@ -98,5 +102,6 @@ bool isArray(const std::string &str) {
   const std::string index =
       array_index(str, left_bracket_pos, right_bracket_pos);
 
-  return !index.empty() && !name.empty() && isVariable(name);
+  return !name.empty() && !index.empty() && isVariable(name) &&
+         index_non_negative(index);
 }
