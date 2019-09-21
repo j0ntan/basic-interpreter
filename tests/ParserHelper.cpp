@@ -91,3 +91,9 @@ TEST(IsNumericExpression, trailingWhitespaceVariableAllowed) {
   ASSERT_TRUE(isNumericExpression("VAR\t"));        // single tab
   ASSERT_TRUE(isNumericExpression("VAR \t  \t\t")); // multiple space & tab
 }
+
+TEST(IsNumericExpression, inBetweenWhitespaceVariableNotAllowed) {
+  ASSERT_FALSE(isNumericExpression("  VA  R"));
+  ASSERT_FALSE(isNumericExpression("VA  R \t"));
+  ASSERT_FALSE(isNumericExpression("  VA  R \t"));
+}
