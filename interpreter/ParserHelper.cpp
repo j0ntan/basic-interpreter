@@ -113,11 +113,20 @@ static bool has_enclosing_parenthesis(const std::string &str) {
   return str.front() == '(' && str.back() == ')';
 }
 
+static unsigned int count_operators(const std::string &operands) {
+  unsigned int count = 0;
+  for (const auto &this_char : operands)
+    if (this_char == '+' || this_char == '-' || this_char == '*' ||
+        this_char == '/')
+      ++count;
+  return count;
+}
+
 bool isBinaryExpression(const std::string &str) {
   if (!has_enclosing_parenthesis(str))
     return false;
 
   const std::string operands = str.substr(1, str.length() - 2);
 
-  return !operands.empty();
+  return !operands.empty() && count_operators(operands) == 1;
 }

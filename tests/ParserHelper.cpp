@@ -178,3 +178,11 @@ TEST(IsBinaryExpression, mustHaveEnclosingParenthesis) {
 TEST(IsBinaryExpression, cannotHaveEmptyOperands) {
   ASSERT_FALSE(isBinaryExpression("()"));
 }
+
+TEST(IsBinaryExpression, hasExactlyOneOperator) {
+  ASSERT_FALSE(isBinaryExpression("(11)"));
+  ASSERT_FALSE(isBinaryExpression("(1++1)"));
+  ASSERT_FALSE(isBinaryExpression("(1+/1)"));
+  ASSERT_FALSE(isBinaryExpression("(1+1+1)"));
+  ASSERT_FALSE(isBinaryExpression("(1@1)"));
+}
