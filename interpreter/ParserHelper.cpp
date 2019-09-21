@@ -81,6 +81,10 @@ static std::string array_index(const std::string &str, size_t left_bracket_pos,
                     right_bracket_pos - left_bracket_pos - 1);
 }
 
+static std::string array_name(const std::string &str, size_t left_bracket_pos) {
+  return str.substr(0, left_bracket_pos);
+}
+
 bool isArray(const std::string &str) {
   const size_t left_bracket_pos = str.find('[');
   const size_t right_bracket_pos = str.find(']');
@@ -89,8 +93,9 @@ bool isArray(const std::string &str) {
       brackets_not_ordered(left_bracket_pos, right_bracket_pos))
     return false;
 
+  const std::string name = array_name(str, left_bracket_pos);
   const std::string index =
       array_index(str, left_bracket_pos, right_bracket_pos);
 
-  return !index.empty();
+  return !index.empty() && !name.empty();
 }
