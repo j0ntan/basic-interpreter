@@ -174,3 +174,7 @@ TEST(IsBinaryExpression, mustHaveEnclosingParenthesis) {
   ASSERT_FALSE(isBinaryExpression(")1+1("));
   ASSERT_FALSE(isBinaryExpression("()1+1"));
 }
+
+TEST(IsBinaryExpression, cannotHaveEmptyOperands) {
+  ASSERT_FALSE(isBinaryExpression("()"));
+}

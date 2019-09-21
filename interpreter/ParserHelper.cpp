@@ -114,5 +114,10 @@ static bool has_enclosing_parenthesis(const std::string &str) {
 }
 
 bool isBinaryExpression(const std::string &str) {
-  return has_enclosing_parenthesis(str);
+  if (!has_enclosing_parenthesis(str))
+    return false;
+
+  const std::string operands = str.substr(1, str.length() - 2);
+
+  return !operands.empty();
 }
