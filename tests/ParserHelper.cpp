@@ -79,3 +79,9 @@ TEST(IsVariable, commandNameNotAllowed) {
 TEST(IsNumericExpression, variableIsExpression) {
   ASSERT_TRUE(isNumericExpression("VARIABLE"));
 }
+
+TEST(IsNumericExpression, leadingWhitespaceVariableAllowed) {
+  ASSERT_TRUE(isNumericExpression(" VAR"));         // single space
+  ASSERT_TRUE(isNumericExpression("\tVAR"));        // single tab
+  ASSERT_TRUE(isNumericExpression(" \t  \t\tVAR")); // multiple space & tab
+}

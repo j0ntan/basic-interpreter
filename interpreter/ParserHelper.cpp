@@ -1,7 +1,7 @@
 #include "ParserHelper.h"
 
 static std::string remove_leading_whitespace(const std::string &str) {
-  return str.substr(str.find_first_of("-0123456789"));
+  return str.substr(str.find_first_not_of(" \t"));
 }
 
 static std::string remove_trailing_whitespace(const std::string &str) {
