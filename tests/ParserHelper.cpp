@@ -136,3 +136,14 @@ TEST(IsNumericExpression, arrayElementIsAnExpression) {
   ASSERT_TRUE(isNumericExpression("VAR[0]"));
   ASSERT_TRUE(isNumericExpression("VAR[OTHER[3]]"));
 }
+
+TEST(IsNumericExpression, whitespaceAroundArrayElementAllowed) {
+  ASSERT_TRUE(isNumericExpression(" VAR[0]"));
+  ASSERT_TRUE(isNumericExpression("\tVAR[0]"));
+  ASSERT_TRUE(isNumericExpression("  \t VAR[0]"));
+  ASSERT_TRUE(isNumericExpression("VAR[0] "));
+  ASSERT_TRUE(isNumericExpression("VAR[0]\t"));
+  ASSERT_TRUE(isNumericExpression("VAR[0]  \t\t "));
+  ASSERT_TRUE(isNumericExpression("\t\t VAR[0] \t"));
+  ASSERT_TRUE(isNumericExpression("  VAR[  OTHER [0]  ] "));
+}
