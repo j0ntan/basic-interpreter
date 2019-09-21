@@ -166,3 +166,11 @@ TEST(IsBinaryExpression, simpleBinaryExpression) {
   ASSERT_TRUE(isBinaryExpression("(1*1)"));
   ASSERT_TRUE(isBinaryExpression("(1/1)"));
 }
+
+TEST(IsBinaryExpression, mustHaveEnclosingParenthesis) {
+  ASSERT_FALSE(isBinaryExpression("(1+1"));
+  ASSERT_FALSE(isBinaryExpression("1+1)"));
+  ASSERT_FALSE(isBinaryExpression("1+1"));
+  ASSERT_FALSE(isBinaryExpression(")1+1("));
+  ASSERT_FALSE(isBinaryExpression("()1+1"));
+}

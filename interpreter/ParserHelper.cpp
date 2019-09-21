@@ -109,4 +109,10 @@ bool isArray(const std::string &str) {
           (!index_is_int && isNumericExpression(index)));
 }
 
-bool isBinaryExpression(const std::string &str) { return true; }
+static bool has_enclosing_parenthesis(const std::string &str) {
+  return str.front() == '(' && str.back() == ')';
+}
+
+bool isBinaryExpression(const std::string &str) {
+  return has_enclosing_parenthesis(str);
+}
