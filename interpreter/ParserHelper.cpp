@@ -23,7 +23,14 @@ static std::string remove_surrounding_whitespace(const std::string &str) {
   return clean_str;
 }
 
+static bool has_no_digits(const std::string &str) {
+  return str.find_first_of("0123456789") == std::string::npos;
+}
+
 bool isNumericExpression(const std::string &str) {
+  if (has_no_digits(str))
+    return false;
+
   const std::string clean_str = remove_surrounding_whitespace(str);
   return isInteger(clean_str);
 }

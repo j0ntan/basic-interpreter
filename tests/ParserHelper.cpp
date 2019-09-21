@@ -40,3 +40,10 @@ TEST(IsNumericExpression, inBetweenWhitespaceIntegerNotAllowed) {
   ASSERT_FALSE(isNumericExpression("  12  3 \t"));
   ASSERT_FALSE(isNumericExpression("- 123"));
 }
+
+TEST(IsNumericExpression, noDigitStringNotExpression) {
+  ASSERT_FALSE(isNumericExpression(" "));
+  ASSERT_FALSE(isNumericExpression("\t"));
+  ASSERT_FALSE(isNumericExpression("  \t "));
+  ASSERT_FALSE(isNumericExpression("-"));
+}
