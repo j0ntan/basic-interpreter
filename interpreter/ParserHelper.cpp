@@ -8,7 +8,7 @@ static std::string remove_trailing_whitespace(const std::string &str) {
   return str.substr(0, str.find_last_of("0123456789") + 1);
 }
 
-bool isNumericExpression(const std::string &str) {
+static std::string remove_surrounding_whitespace(const std::string &str) {
   std::string clean_str = str;
 
   const bool has_leading_whitespace = str.find_first_of(" \t") == 0;
@@ -20,6 +20,11 @@ bool isNumericExpression(const std::string &str) {
   if (has_trailing_whitespace)
     clean_str = remove_trailing_whitespace(clean_str);
 
+  return clean_str;
+}
+
+bool isNumericExpression(const std::string &str) {
+  const std::string clean_str = remove_surrounding_whitespace(str);
   return isInteger(clean_str);
 }
 
