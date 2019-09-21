@@ -65,28 +65,32 @@ bool isVariable(const std::string &str) {
          does_not_match_keyword(str);
 }
 
-static bool has_brackets(size_t left_bracket_pos, size_t right_bracket_pos) {
-  return left_bracket_pos != std::string::npos &&
-         right_bracket_pos != std::string::npos;
+static bool missing_bracket(size_t left_bracket_pos, size_t right_bracket_pos) {
+  return left_bracket_pos == std::string::npos ||
+         right_bracket_pos == std::string::npos;
 }
 
-static bool brackets_are_ordered(size_t left_bracket_pos,
+static bool brackets_not_ordered(size_t left_bracket_pos,
                                  size_t right_bracket_pos) {
-  return left_bracket_pos < right_bracket_pos;
+  return left_bracket_pos > right_bracket_pos;
 }
 
-static bool has_non_empty_index(const std::string &str, size_t left_bracket_pos,
-                                size_t right_bracket_pos) {
-  const std::string index_str = str.substr(
-      left_bracket_pos + 1, right_bracket_pos - left_bracket_pos - 1);
-  return !index_str.empty();
+static std::string array_index(const std::string &str, size_t left_bracket_pos,
+                               size_t right_bracket_pos) {
+  return str.substr(left_bracket_pos + 1,
+                    right_bracket_pos - left_bracket_pos - 1);
 }
 
 bool isArray(const std::string &str) {
   const size_t left_bracket_pos = str.find('[');
   const size_t right_bracket_pos = str.find(']');
 
-  return has_brackets(left_bracket_pos, right_bracket_pos) &&
-         brackets_are_ordered(left_bracket_pos, right_bracket_pos) &&
-         has_non_empty_index(str, left_bracket_pos, right_bracket_pos);
+  if (missing_bracket(left_bracket_pos, right_bracket_pos) ||
+      brackets_not_ordered(left_bracket_pos, right_bracket_pos))
+    return false;
+
+  const std::string index =
+      array_index(str, left_bracket_pos, right_bracket_pos);
+
+  return !index.empty();
 }
