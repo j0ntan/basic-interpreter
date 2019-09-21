@@ -4,12 +4,21 @@ static std::string remove_leading_whitespace(const std::string &str) {
   return str.substr(str.find_first_of("-0123456789"));
 }
 
+static std::string remove_trailing_whitespace(const std::string &str) {
+  return str.substr(0, str.find_last_of("0123456789") + 1);
+}
+
 bool isNumericExpression(const std::string &str) {
   std::string clean_str = str;
 
   const bool has_leading_whitespace = str.find_first_of(" \t") == 0;
   if (has_leading_whitespace)
     clean_str = remove_leading_whitespace(clean_str);
+
+  const bool has_trailing_whitespace =
+      str.find_last_of(" \t") == str.length() - 1;
+  if (has_trailing_whitespace)
+    clean_str = remove_trailing_whitespace(clean_str);
 
   return isInteger(clean_str);
 }

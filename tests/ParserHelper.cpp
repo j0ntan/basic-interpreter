@@ -27,3 +27,9 @@ TEST(IsNumericExpression, leadingWhitespaceIntegerAllowed) {
   ASSERT_TRUE(isNumericExpression("\t123"));        // single tab
   ASSERT_TRUE(isNumericExpression(" \t  \t\t123")); // multiple space & tab
 }
+
+TEST(IsNumericExpression, trailingWhitespaceIntegerAllowed) {
+  ASSERT_TRUE(isNumericExpression("123 "));         // single space
+  ASSERT_TRUE(isNumericExpression("123\t"));        // single tab
+  ASSERT_TRUE(isNumericExpression("123 \t  \t\t")); // multiple space & tab
+}
