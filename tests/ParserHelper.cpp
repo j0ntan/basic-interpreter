@@ -104,3 +104,5 @@ TEST(IsArray, arrayMustContainBrackets) {
   ASSERT_FALSE(isArray("VARIABLE"));
   ASSERT_FALSE(isArray("123"));
 }
+
+TEST(IsArray, bracketPairMustBeOrdered) { ASSERT_FALSE(isArray("VAR]0[")); }

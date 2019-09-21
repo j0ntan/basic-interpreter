@@ -70,9 +70,15 @@ static bool has_brackets(size_t left_bracket_pos, size_t right_bracket_pos) {
          right_bracket_pos != std::string::npos;
 }
 
+static bool brackets_are_ordered(size_t left_bracket_pos,
+                                 size_t right_bracket_pos) {
+  return left_bracket_pos < right_bracket_pos;
+}
+
 bool isArray(const std::string &str) {
   const size_t left_bracket_pos = str.find('[');
   const size_t right_bracket_pos = str.find(']');
 
-  return has_brackets(left_bracket_pos, right_bracket_pos);
+  return has_brackets(left_bracket_pos, right_bracket_pos) &&
+         brackets_are_ordered(left_bracket_pos, right_bracket_pos);
 }
