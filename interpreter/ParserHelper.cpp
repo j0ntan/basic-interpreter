@@ -91,8 +91,8 @@ static bool index_non_negative(const std::string &index) {
 }
 
 bool isArray(const std::string &str) {
-  const size_t left_bracket_pos = str.find('[');
-  const size_t right_bracket_pos = str.find(']');
+  const size_t left_bracket_pos = str.find_first_of('[');
+  const size_t right_bracket_pos = str.find_last_of(']');
 
   if (missing_bracket(left_bracket_pos, right_bracket_pos) ||
       brackets_not_ordered(left_bracket_pos, right_bracket_pos))
@@ -103,5 +103,5 @@ bool isArray(const std::string &str) {
       array_index(str, left_bracket_pos, right_bracket_pos);
 
   return !name.empty() && !index.empty() && isVariable(name) &&
-         (index_non_negative(index) || isVariable(index));
+         (index_non_negative(index) || isVariable(index) || isArray(index));
 }

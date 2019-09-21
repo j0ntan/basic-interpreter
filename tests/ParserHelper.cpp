@@ -125,3 +125,9 @@ TEST(IsArray, whitespaceAfterNameAllowed) {
 TEST(IsArray, indexCannotBeNegative) { ASSERT_FALSE(isArray("VAR[-1]")); }
 
 TEST(IsArray, indexCanBeVariable) { ASSERT_TRUE(isArray("VAR[OTHER]")); }
+
+TEST(IsArray, indexCanBeAnotherArrayElement) {
+  ASSERT_TRUE(isArray("VAR[OTHER[0]]"));
+  ASSERT_TRUE(isArray("FIRST[SECOND[THIRD[4]]]"));
+  ASSERT_FALSE(isArray("VAR[invalid[0]"));
+}
