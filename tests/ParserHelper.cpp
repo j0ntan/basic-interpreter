@@ -33,3 +33,10 @@ TEST(IsNumericExpression, trailingWhitespaceIntegerAllowed) {
   ASSERT_TRUE(isNumericExpression("123\t"));        // single tab
   ASSERT_TRUE(isNumericExpression("123 \t  \t\t")); // multiple space & tab
 }
+
+TEST(IsNumericExpression, inBetweenWhitespaceIntegerNotAllowed) {
+  ASSERT_FALSE(isNumericExpression("  12  3"));
+  ASSERT_FALSE(isNumericExpression("12  3 \t"));
+  ASSERT_FALSE(isNumericExpression("  12  3 \t"));
+  ASSERT_FALSE(isNumericExpression("- 123"));
+}
