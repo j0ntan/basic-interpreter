@@ -124,7 +124,7 @@ static unsigned int count_operators(const std::string &operands) {
           (i - 1) >= 0 && operands.find_last_of("0123456789", i - 1) == (i - 1);
       const bool has_proceeding_num =
           (i + 1) < operands.size() &&
-          operands.find_first_of("0123456789", i + 1) == (i + 1);
+          operands.find_first_of("-0123456789", i + 1) == (i + 1);
 
       if (has_preceding_num && has_proceeding_num)
         ++count;

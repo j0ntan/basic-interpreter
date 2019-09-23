@@ -193,3 +193,10 @@ TEST(IsBinaryExpression, firstOperandIsNegativeInteger) {
   ASSERT_TRUE(isBinaryExpression("(-1*1)"));
   ASSERT_TRUE(isBinaryExpression("(-1/1)"));
 }
+
+TEST(IsBinaryExpression, secondOperandIsNegativeInteger) {
+  ASSERT_TRUE(isBinaryExpression("(1+-1)"));
+  ASSERT_TRUE(isBinaryExpression("(1--1)"));
+  ASSERT_TRUE(isBinaryExpression("(1*-1)"));
+  ASSERT_TRUE(isBinaryExpression("(1/-1)"));
+}
