@@ -115,10 +115,21 @@ static bool has_enclosing_parenthesis(const std::string &str) {
 
 static unsigned int count_operators(const std::string &operands) {
   unsigned int count = 0;
-  for (const auto &this_char : operands)
+  for (int i = 0; i < operands.size(); ++i) {
+    const char this_char = operands[i];
+
     if (this_char == '+' || this_char == '-' || this_char == '*' ||
-        this_char == '/')
-      ++count;
+        this_char == '/') {
+      const bool has_preceding_num =
+          (i - 1) >= 0 && operands.find_last_of("0123456789", i - 1) == (i - 1);
+      const bool has_proceeding_num =
+          (i + 1) < operands.size() &&
+          operands.find_first_of("0123456789", i + 1) == (i + 1);
+
+      if (has_preceding_num && has_proceeding_num)
+        ++count;
+    }
+  }
   return count;
 }
 

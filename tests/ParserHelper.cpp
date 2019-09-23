@@ -186,3 +186,10 @@ TEST(IsBinaryExpression, hasExactlyOneOperator) {
   ASSERT_FALSE(isBinaryExpression("(1+1+1)"));
   ASSERT_FALSE(isBinaryExpression("(1@1)"));
 }
+
+TEST(IsBinaryExpression, firstOperandIsNegativeInteger) {
+  ASSERT_TRUE(isBinaryExpression("(-1+1)"));
+  ASSERT_TRUE(isBinaryExpression("(-1-1)"));
+  ASSERT_TRUE(isBinaryExpression("(-1*1)"));
+  ASSERT_TRUE(isBinaryExpression("(-1/1)"));
+}
