@@ -65,4 +65,9 @@ bool isVariable(const std::string &str) {
          does_not_match_keyword(str);
 }
 
-bool isArray(const std::string &str) { return true; }
+static bool has_brackets(const std::string &str) {
+  return str.find('[') != std::string::npos &&
+         str.find(']') != std::string::npos;
+}
+
+bool isArray(const std::string &str) { return has_brackets(str); }

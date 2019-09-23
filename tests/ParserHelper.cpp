@@ -99,3 +99,8 @@ TEST(IsNumericExpression, inBetweenWhitespaceVariableNotAllowed) {
 }
 
 TEST(IsArray, simpleArray) { ASSERT_TRUE(isArray("VAR[0]")); }
+
+TEST(IsArray, arrayMustContainBrackets) {
+  ASSERT_FALSE(isArray("VARIABLE"));
+  ASSERT_FALSE(isArray("123"));
+}
