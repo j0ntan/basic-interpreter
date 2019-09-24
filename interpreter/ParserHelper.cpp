@@ -115,23 +115,23 @@ static bool has_enclosing_parenthesis(const std::string &str) {
 }
 
 static bool has_valid_operands(const std::string &operands) {
+  unsigned int nested_count = 0;
   for (int i = 0; i < operands.size(); ++i) {
     const char this_char = operands[i];
 
-    if (this_char == '+' || this_char == '-' || this_char == '*' ||
-        this_char == '/') {
+    if ((this_char == '+' || this_char == '-' || this_char == '*' ||
+         this_char == '/') &&
+        nested_count == 0) {
       const std::string left_operand = operands.substr(0, i);
       const std::string right_operand = operands.substr(i + 1);
       if (!left_operand.empty() && !right_operand.empty()) {
-        const bool left_valid = isInteger(left_operand) ||
-                                isVariable(left_operand) ||
-                                isArray(left_operand);
-        const bool right_valid = isInteger(right_operand) ||
-                                 isVariable(right_operand) ||
-                                 isArray(right_operand);
-        return left_valid && right_valid;
+        return isNumericExpression(left_operand) &&
+               isNumericExpression(right_operand);
       }
-    }
+    } else if (this_char == '(')
+      ++nested_count;
+    else if (this_char == ')')
+      --nested_count;
   }
 }
 
