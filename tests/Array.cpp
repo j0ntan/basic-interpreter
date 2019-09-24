@@ -18,3 +18,8 @@ TEST(Array, nameMatchesGivenName) {
   ASSERT_EQ(a1.name(), "FIRST");
   ASSERT_EQ(a2.name(), "SECOND");
 }
+
+TEST(Array, valueReturnsZero) {
+  const Array a("NAME", Constant());
+  ASSERT_EQ(a.value(), 0);
+}

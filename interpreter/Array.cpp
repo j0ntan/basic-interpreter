@@ -3,7 +3,7 @@
 Array::Array(std::string name, const NumericExpression &index)
     : array_name{std::move(name)} {}
 
-int Array::value() const { return -1; }
+int Array::value() const { return 0; }
 
 std::string Array::format() const { return std::string(); }
 
