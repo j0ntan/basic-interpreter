@@ -1,5 +1,6 @@
 #include "Array.h"
 #include "Constant.h"
+#include "Variable.h"
 #include <gtest/gtest.h>
 
 TEST(Array, createArray) {
@@ -22,4 +23,13 @@ TEST(Array, nameMatchesGivenName) {
 TEST(Array, valueReturnsZero) {
   const Array a("NAME", Constant());
   ASSERT_EQ(a.value(), 0);
+}
+
+TEST(Array, format) {
+  const Constant zero;
+  const Variable v("VAR", zero);
+  const Array a1("X", zero);
+  const Array a2("Y", v);
+  ASSERT_EQ(a1.format(), "X[0]");
+  ASSERT_EQ(a2.format(), "Y[VAR]");
 }

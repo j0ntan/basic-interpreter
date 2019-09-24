@@ -16,6 +16,7 @@ public:
 
 private:
   const std::string array_name;
+  const NumericExpression &index;
 };
 
 #endif // HW2_ARRAY_H

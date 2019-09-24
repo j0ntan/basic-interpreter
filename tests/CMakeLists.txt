@@ -11,6 +11,7 @@ target_include_directories(test_Array PRIVATE ${INTERPRETER_INCLUDE})
 target_link_libraries(test_Array PRIVATE
         Array
         Constant
+        Variable
         gtest_main
         )
 
