@@ -113,24 +113,19 @@ static bool has_enclosing_parenthesis(const std::string &str) {
   return str.front() == '(' && str.back() == ')';
 }
 
-static unsigned int count_operators(const std::string &operands) {
-  unsigned int count = 0;
+static bool has_valid_operands(const std::string &operands) {
   for (int i = 0; i < operands.size(); ++i) {
     const char this_char = operands[i];
 
     if (this_char == '+' || this_char == '-' || this_char == '*' ||
         this_char == '/') {
-      const bool has_preceding_num =
-          (i - 1) >= 0 && operands.find_last_of("0123456789", i - 1) == (i - 1);
-      const bool has_proceeding_num =
-          (i + 1) < operands.size() &&
-          operands.find_first_of("-0123456789", i + 1) == (i + 1);
-
-      if (has_preceding_num && has_proceeding_num)
-        ++count;
+      const std::string left_operand = operands.substr(0, i);
+      const std::string right_operand = operands.substr(i + 1);
+      if (!left_operand.empty() && !right_operand.empty()) {
+        return isInteger(left_operand) && isInteger(right_operand);
+      }
     }
   }
-  return count;
 }
 
 bool isBinaryExpression(const std::string &str) {
@@ -139,5 +134,5 @@ bool isBinaryExpression(const std::string &str) {
 
   const std::string operands = str.substr(1, str.length() - 2);
 
-  return !operands.empty() && count_operators(operands) == 1;
+  return !operands.empty() && has_valid_operands(operands);
 }
