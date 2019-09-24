@@ -211,3 +211,14 @@ TEST(IsBinaryExpression, eitherOperandIsVariable) {
   ASSERT_TRUE(isBinaryExpression("(1*VAR)"));
   ASSERT_TRUE(isBinaryExpression("(1/VAR)"));
 }
+
+TEST(IsBinaryExpression, eitherOperandIsArray) {
+  ASSERT_TRUE(isBinaryExpression("(VAR[0]+1)"));
+  ASSERT_TRUE(isBinaryExpression("(VAR[0]-1)"));
+  ASSERT_TRUE(isBinaryExpression("(VAR[0]*1)"));
+  ASSERT_TRUE(isBinaryExpression("(VAR[0]/1)"));
+  ASSERT_TRUE(isBinaryExpression("(1+VAR[0])"));
+  ASSERT_TRUE(isBinaryExpression("(1-VAR[0])"));
+  ASSERT_TRUE(isBinaryExpression("(1*VAR[0])"));
+  ASSERT_TRUE(isBinaryExpression("(1/VAR[0])"));
+}
