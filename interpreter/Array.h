@@ -13,6 +13,9 @@ public:
   std::string name() const;
 
   ~Array() final = default;
+
+private:
+  const std::string array_name;
 };
 
 #endif // HW2_ARRAY_H
