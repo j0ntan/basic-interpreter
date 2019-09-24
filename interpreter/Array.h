@@ -10,6 +10,8 @@ public:
   int value() const final;
   std::string format() const final;
 
+  std::string name() const;
+
   ~Array() final = default;
 };
 
