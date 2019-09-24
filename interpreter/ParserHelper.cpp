@@ -33,7 +33,8 @@ bool isNumericExpression(const std::string &str) {
     return false;
 
   const std::string clean_str = remove_surrounding_whitespace(str);
-  return isInteger(clean_str) || isVariable(clean_str) || isArray(clean_str);
+  return isInteger(clean_str) || isVariable(clean_str) || isArray(clean_str) ||
+         isBinaryExpression(clean_str);
 }
 
 static bool first_char_is_negative_or_digit(const std::string &str) {

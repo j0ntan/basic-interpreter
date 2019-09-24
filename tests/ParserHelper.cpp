@@ -222,3 +222,7 @@ TEST(IsBinaryExpression, eitherOperandIsArray) {
   ASSERT_TRUE(isBinaryExpression("(1*VAR[0])"));
   ASSERT_TRUE(isBinaryExpression("(1/VAR[0])"));
 }
+
+TEST(IsNumericExpression, binaryExpressionIsNumericExpression) {
+  ASSERT_TRUE(isNumericExpression("(1+1)"));
+}
