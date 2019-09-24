@@ -20,14 +20,6 @@ TEST(Variable, defaultConstantValueIsZero) {
   ASSERT_EQ(v.value(), 0);
 }
 
-TEST(Variable, formatIntegerValueToString) {
-  int x1 = 123, x2 = -8471234;
-  Variable v1("", Constant{x1}), v2("", Constant{x2}), v3("");
-  ASSERT_EQ(v1.format(), "123");
-  ASSERT_EQ(v2.format(), "-8471234");
-  ASSERT_EQ(v3.format(), "0");
-}
-
 TEST(Variable, getVariableName) {
   Variable v1("name"), v2("ID");
   ASSERT_EQ(v1.name(), "name");
@@ -36,12 +28,12 @@ TEST(Variable, getVariableName) {
 
 TEST(Variable, blankNameStringNamedUnknown) {
   Variable v("");
-  ASSERT_EQ(v.name(), "unknown");
+  ASSERT_EQ(v.name(), "UNKNOWN");
 }
 
 TEST(Variable, defaultVariableHasKnownState) {
   Variable v;
-  ASSERT_EQ(v.name(), "unknown");
+  ASSERT_EQ(v.name(), "UNKNOWN");
   ASSERT_EQ(v.value(), 0);
   ASSERT_EQ(v.format(), "0");
 }
