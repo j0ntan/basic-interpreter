@@ -200,3 +200,14 @@ TEST(IsBinaryExpression, secondOperandIsNegativeInteger) {
   ASSERT_TRUE(isBinaryExpression("(1*-1)"));
   ASSERT_TRUE(isBinaryExpression("(1/-1)"));
 }
+
+TEST(IsBinaryExpression, eitherOperandIsVariable) {
+  ASSERT_TRUE(isBinaryExpression("(VAR+1)"));
+  ASSERT_TRUE(isBinaryExpression("(VAR-1)"));
+  ASSERT_TRUE(isBinaryExpression("(VAR*1)"));
+  ASSERT_TRUE(isBinaryExpression("(VAR/1)"));
+  ASSERT_TRUE(isBinaryExpression("(1+VAR)"));
+  ASSERT_TRUE(isBinaryExpression("(1-VAR)"));
+  ASSERT_TRUE(isBinaryExpression("(1*VAR)"));
+  ASSERT_TRUE(isBinaryExpression("(1/VAR)"));
+}
