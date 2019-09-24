@@ -8,7 +8,11 @@ target_link_libraries(test_Variable PRIVATE Variable gtest_main)
 
 add_executable(test_Array Array.cpp)
 target_include_directories(test_Array PRIVATE ${INTERPRETER_INCLUDE})
-target_link_libraries(test_Array PRIVATE Array gtest_main)
+target_link_libraries(test_Array PRIVATE
+        Array
+        Constant
+        gtest_main
+        )
 
 add_executable(test_Addition Addition.cpp)
 target_include_directories(test_Addition PRIVATE ${INTERPRETER_INCLUDE})

@@ -5,6 +5,8 @@
 
 class Array : public NumericExpression {
 public:
+  Array(std::string name, const NumericExpression &index);
+
   int value() const final;
   std::string format() const final;
 
