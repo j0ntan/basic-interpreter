@@ -2,6 +2,6 @@
 
 AssignVariable::AssignVariable(unsigned int line_number, Variable v,
                                const NumericExpression &value)
-    : Command{0} {}
+    : Command{line_number} {}
 
 std::string AssignVariable::format() const { return std::string(); }
