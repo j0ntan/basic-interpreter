@@ -10,3 +10,9 @@ TEST(Print, canCreatePrint) {
   Addition a(v, c);
   Print p_const(1, c), p_var(1, v), p_addition(1, a);
 }
+
+TEST(Print, matchGivenLineNumber) {
+  Constant zero, one(1);
+  Print p(123, zero);
+  ASSERT_EQ(p.line(), 123);
+}
