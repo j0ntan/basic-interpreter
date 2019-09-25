@@ -83,4 +83,8 @@ target_link_libraries(test_Print PRIVATE
 
 add_executable(test_AssignVariable AssignVariable.cpp)
 target_include_directories(test_AssignVariable PRIVATE ${INTERPRETER_INCLUDE})
-target_link_libraries(test_AssignVariable PRIVATE AssignVariable gtest_main)
+target_link_libraries(test_AssignVariable PRIVATE
+        AssignVariable
+        Variable
+        gtest_main
+        )
