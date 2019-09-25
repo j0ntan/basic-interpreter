@@ -73,4 +73,10 @@ target_link_libraries(test_Equals PRIVATE
 
 add_executable(test_Print Print.cpp)
 target_include_directories(test_Print PRIVATE ${INTERPRETER_INCLUDE})
-target_link_libraries(test_Print PRIVATE Print gtest_main)
+target_link_libraries(test_Print PRIVATE
+        Print
+        Addition
+        Variable
+        Constant
+        gtest_main
+        )
