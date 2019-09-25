@@ -11,6 +11,9 @@ public:
   std::string format() const final;
 
   ~Print() final = default;
+
+private:
+  const NumericExpression &num;
 };
 
 #endif
