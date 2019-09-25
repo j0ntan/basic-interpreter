@@ -18,3 +18,5 @@ add_library(LessThan STATIC LessThan.cpp)
 add_library(Equals STATIC Equals.cpp)
 
 add_library(Print STATIC Print.cpp)
+
+add_library(AssignVariable STATIC AssignVariable.cpp)
