@@ -12,6 +12,10 @@ public:
   std::string format() const final;
 
   ~AssignVariable() final = default;
+
+private:
+  const Variable &variable;
+  const NumericExpression &value;
 };
 
 #endif

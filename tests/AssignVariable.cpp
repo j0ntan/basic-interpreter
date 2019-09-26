@@ -16,3 +16,10 @@ TEST(AssignVariable, matchGivenLineNumber) {
   AssignVariable a(line_num, variable, value);
   ASSERT_EQ(a.line(), 781);
 }
+
+TEST(AssignVariable, format) {
+  const Constant zero;
+  const Variable variable("NAME");
+  AssignVariable a(1, variable, zero);
+  ASSERT_EQ(a.format(), "1 LET NAME 0");
+}
