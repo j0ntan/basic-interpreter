@@ -20,3 +20,5 @@ add_library(Equals STATIC Equals.cpp)
 add_library(Print STATIC Print.cpp)
 
 add_library(AssignVariable STATIC AssignVariable.cpp)
+
+add_library(AssignArray STATIC AssignArray.cpp)
