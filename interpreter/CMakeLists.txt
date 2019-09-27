@@ -30,3 +30,5 @@ add_library(IfThen STATIC IfThen.cpp)
 add_library(GoSub STATIC GoSub)
 
 add_library(Return STATIC Return.cpp)
+
+add_library(End STATIC End.cpp)
