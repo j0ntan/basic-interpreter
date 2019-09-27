@@ -22,3 +22,5 @@ add_library(Print STATIC Print.cpp)
 add_library(AssignVariable STATIC AssignVariable.cpp)
 
 add_library(AssignArray STATIC AssignArray.cpp)
+
+add_library(Goto STATIC Goto.cpp)
