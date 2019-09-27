@@ -103,4 +103,9 @@ target_link_libraries(test_Goto PRIVATE Goto gtest_main)
 
 add_executable(test_IfThen IfThen.cpp)
 target_include_directories(test_IfThen PRIVATE ${INTERPRETER_INCLUDE})
-target_link_libraries(test_IfThen PRIVATE IfThen gtest_main)
+target_link_libraries(test_IfThen PRIVATE
+        IfThen
+        LessThan
+        Constant
+        gtest_main
+        )
