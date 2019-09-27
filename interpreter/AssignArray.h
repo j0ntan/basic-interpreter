@@ -3,9 +3,13 @@
 
 #include "Command.h"
 
+class Array;
+class NumericExpression;
+
 class AssignArray : public Command {
 public:
-  AssignArray();
+  AssignArray(unsigned int line_number, const Array &array,
+              const NumericExpression &value);
 
   std::string format() const final;
 

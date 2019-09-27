@@ -91,4 +91,8 @@ target_link_libraries(test_AssignVariable PRIVATE
 
 add_executable(test_AssignArray AssignArray.cpp)
 target_include_directories(test_AssignArray PRIVATE ${INTERPRETER_INCLUDE})
-target_link_libraries(test_AssignArray PRIVATE AssignArray gtest_main)
+target_link_libraries(test_AssignArray PRIVATE AssignArray
+        Array
+        Constant
+        gtest_main
+        )
