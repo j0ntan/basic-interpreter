@@ -5,7 +5,7 @@
 
 class Return : public Command {
 public:
-  Return();
+  Return(unsigned int line_number);
 
   std::string format() const final;
 
