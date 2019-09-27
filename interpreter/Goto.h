@@ -5,7 +5,7 @@
 
 class Goto : public Command {
 public:
-  Goto();
+  Goto(unsigned int line_number, unsigned int jline);
 
   std::string format() const final;
 

@@ -1,5 +1,5 @@
 #include "Goto.h"
 
-Goto::Goto() : Command{0} {}
+Goto::Goto(unsigned int line_number, unsigned int jline) : Command{0} {}
 
 std::string Goto::format() const { return std::string(); }
