@@ -5,7 +5,7 @@
 
 class End : public Command {
 public:
-  End();
+  End(unsigned int line_number);
 
   std::string format() const final;
 
