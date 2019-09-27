@@ -26,3 +26,5 @@ add_library(AssignArray STATIC AssignArray.cpp)
 add_library(Goto STATIC Goto.cpp)
 
 add_library(IfThen STATIC IfThen.cpp)
+
+add_library(GoSub STATIC GoSub)
