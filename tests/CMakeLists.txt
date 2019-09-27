@@ -113,3 +113,7 @@ target_link_libraries(test_IfThen PRIVATE
 add_executable(test_GoSub GoSub.cpp)
 target_include_directories(test_GoSub PRIVATE ${INTERPRETER_INCLUDE})
 target_link_libraries(test_GoSub PRIVATE GoSub gtest_main)
+
+add_executable(test_Return Return.cpp)
+target_include_directories(test_Return PRIVATE ${INTERPRETER_INCLUDE})
+target_link_libraries(test_Return PRIVATE Return gtest_main)

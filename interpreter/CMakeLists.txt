@@ -28,3 +28,5 @@ add_library(Goto STATIC Goto.cpp)
 add_library(IfThen STATIC IfThen.cpp)
 
 add_library(GoSub STATIC GoSub)
+
+add_library(Return STATIC Return.cpp)
