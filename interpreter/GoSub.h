@@ -5,7 +5,7 @@
 
 class GoSub : public Command {
 public:
-  GoSub();
+  GoSub(unsigned int line_number, unsigned int jline);
 
   std::string format() const final;
 
