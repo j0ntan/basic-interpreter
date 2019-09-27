@@ -70,3 +70,13 @@ target_link_libraries(test_Return PRIVATE Commands gtest_main)
 add_executable(test_End End.cpp)
 target_include_directories(test_End PRIVATE ${INTERPRETER_INCLUDE})
 target_link_libraries(test_End PRIVATE Commands gtest_main)
+
+file(GLOB TESTS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} *.cpp)
+add_executable(test_ALL ${TESTS})
+target_include_directories(test_ALL PRIVATE ${INTERPRETER_INCLUDE})
+target_link_libraries(test_ALL PRIVATE
+        Commands
+        BooleanExpressions
+        NumericExpressions
+        gtest_main
+        )
