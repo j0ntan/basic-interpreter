@@ -11,3 +11,9 @@ TEST(Return, matchGivenLineNumber) {
   Return r(line_number);
   ASSERT_EQ(r.line(), line_number);
 }
+
+TEST(Return, format) {
+  const unsigned int line_number = 123;
+  Return r(line_number);
+  ASSERT_EQ(r.format(), "123 RETURN");
+}
