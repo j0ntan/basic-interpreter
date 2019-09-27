@@ -5,3 +5,9 @@ TEST(GoSub, createSimpleGoSub) {
   const unsigned int line_number = 123, jline = 456;
   GoSub g(line_number, jline);
 }
+
+TEST(GoSub, matchGivenLineNumber) {
+  const unsigned int line_number = 123, jline = 456;
+  GoSub g(line_number, jline);
+  ASSERT_EQ(g.line(), line_number);
+}
