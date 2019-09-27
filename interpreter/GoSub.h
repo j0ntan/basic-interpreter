@@ -10,6 +10,9 @@ public:
   std::string format() const final;
 
   ~GoSub() final = default;
+
+private:
+  const unsigned int jline;
 };
 
 #endif
