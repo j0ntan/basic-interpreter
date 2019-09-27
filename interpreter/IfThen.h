@@ -13,6 +13,10 @@ public:
   std::string format() const final;
 
   ~IfThen() final = default;
+
+private:
+  const BooleanExpression &comparison;
+  unsigned int jline;
 };
 
 #endif
