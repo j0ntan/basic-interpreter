@@ -35,7 +35,7 @@ TEST(Variable, defaultVariableHasKnownState) {
   Variable v;
   ASSERT_EQ(v.name(), "UNKNOWN");
   ASSERT_EQ(v.value(), 0);
-  ASSERT_EQ(v.format(), "0");
+  ASSERT_EQ(v.format(), "UNKNOWN");
 }
 
 TEST(Variable, copiesHaveSameNameAndValue) {
