@@ -100,3 +100,7 @@ target_link_libraries(test_AssignArray PRIVATE AssignArray
 add_executable(test_Goto Goto.cpp)
 target_include_directories(test_Goto PRIVATE ${INTERPRETER_INCLUDE})
 target_link_libraries(test_Goto PRIVATE Goto gtest_main)
+
+add_executable(test_IfThen IfThen.cpp)
+target_include_directories(test_IfThen PRIVATE ${INTERPRETER_INCLUDE})
+target_link_libraries(test_IfThen PRIVATE IfThen gtest_main)
