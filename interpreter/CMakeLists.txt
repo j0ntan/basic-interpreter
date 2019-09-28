@@ -1,26 +1,21 @@
-add_library(NumericExpressions STATIC
-        NumericExpressions/Constant.cpp
-        NumericExpressions/Variable.cpp
-        NumericExpressions/Addition.cpp
-        NumericExpressions/Subtraction.cpp
-        NumericExpressions/Multiplication.cpp
-        NumericExpressions/Division.cpp
-        )
+include_directories(NumericExpressions BooleanExpressions)
 
-add_library(BooleanExpressions STATIC
-        BooleanExpressions/LessThan.cpp
-        BooleanExpressions/Equals.cpp
-        )
-target_include_directories(BooleanExpressions PRIVATE NumericExpressions)
+add_library(Constant STATIC NumericExpressions/Constant.cpp)
+add_library(Variable STATIC NumericExpressions/Variable.cpp)
+target_link_libraries(Variable PRIVATE Constant)
+add_library(Addition STATIC NumericExpressions/Addition.cpp)
+add_library(Subtraction STATIC NumericExpressions/Subtraction.cpp)
+add_library(Multiplication STATIC NumericExpressions/Multiplication.cpp)
+add_library(Division STATIC NumericExpressions/Division.cpp)
 
-add_library(Commands STATIC
-        Commands/Print.cpp
-        Commands/AssignVariable.cpp
-        Commands/AssignArray.cpp
-        Commands/Goto.cpp
-        Commands/IfThen.cpp
-        Commands/GoSub.cpp
-        Commands/Return.cpp
-        Commands/End.cpp
-        )
-target_include_directories(Commands PRIVATE NumericExpressions BooleanExpressions)
+add_library(LessThan STATIC BooleanExpressions/LessThan.cpp)
+add_library(Equals STATIC BooleanExpressions/Equals.cpp)
+
+add_library(Print STATIC Commands/Print.cpp)
+add_library(AssignVariable STATIC Commands/AssignVariable.cpp)
+add_library(AssignArray STATIC Commands/AssignArray.cpp)
+add_library(Goto STATIC Commands/Goto.cpp)
+add_library(IfThen STATIC Commands/IfThen.cpp)
+add_library(GoSub STATIC Commands/GoSub.cpp)
+add_library(Return STATIC Commands/Return.cpp)
+add_library(End STATIC Commands/End.cpp)
