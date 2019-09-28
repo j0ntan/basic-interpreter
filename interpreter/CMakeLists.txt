@@ -1,7 +1,6 @@
 add_library(NumericExpressions STATIC
         NumericExpressions/Constant.cpp
         NumericExpressions/Variable.cpp
-        NumericExpressions/Array.cpp
         NumericExpressions/Addition.cpp
         NumericExpressions/Subtraction.cpp
         NumericExpressions/Multiplication.cpp
