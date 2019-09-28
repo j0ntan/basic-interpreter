@@ -9,12 +9,12 @@ public:
                    const NumericExpression &nexp2, const char operation_type)
       : num1{nexp1}, num2{nexp2}, operation{operation_type} {}
 
-  virtual int value() const = 0;
+  int value() const override = 0;
   std::string format() const final {
     return '(' + num1.format() + ' ' + operation + ' ' + num2.format() + ')';
   }
 
-  virtual ~BinaryExpression() = default;
+  ~BinaryExpression() override = default;
 
 protected:
   const NumericExpression &num1;
