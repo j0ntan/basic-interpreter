@@ -4,21 +4,23 @@
 #include <gtest/gtest.h>
 
 TEST(Multiplication, canCreateMultiplicationOfConstantsAndVariables) {
-  Constant num1, num2;
-  Variable num3, num4;
-  Multiplication m1(num1, num2), m2(num3, num4), m3(num1, num4), m4(num3, num2);
+  const Constant num1, num2;
+  const Variable num3, num4;
+  const Multiplication m1(num1, num2), m2(num3, num4), m3(num1, num4),
+      m4(num3, num2);
 }
 
 TEST(Multiplication, canCreateNestedMultiplication) {
-  Constant num1, num2, num3;
-  Multiplication m1(num1, num2);
-  Multiplication m2(m1, num3);
+  const Constant num1, num2, num3;
+  const Multiplication m1(num1, num2);
+  const Multiplication m2(m1, num3);
 }
 
 TEST(Multiplication, multiplyIntegerValuesAndNested) {
-  Constant x(5), y(2), z(-3);
-  Multiplication positives(x, y), positive_and_negative(x, z), negatives(z, z);
-  Multiplication nested(positives, y);
+  const Constant x(5), y(2), z(-3);
+  const Multiplication positives(x, y), positive_and_negative(x, z),
+      negatives(z, z);
+  const Multiplication nested(positives, y);
   ASSERT_EQ(positives.value(), 10);
   ASSERT_EQ(negatives.value(), 9);
   ASSERT_EQ(positive_and_negative.value(), -15);
@@ -26,10 +28,10 @@ TEST(Multiplication, multiplyIntegerValuesAndNested) {
 }
 
 TEST(Multiplication, formatValuesAndNested) {
-  Constant x(123), y(-456);
-  Multiplication pos_and_pos(x, x), pos_and_neg(x, y), neg_and_pos(y, x),
+  const Constant x(123), y(-456);
+  const Multiplication pos_and_pos(x, x), pos_and_neg(x, y), neg_and_pos(y, x),
       neg_and_neg(y, y);
-  Multiplication nested(y, pos_and_neg);
+  const Multiplication nested(y, pos_and_neg);
   ASSERT_EQ(pos_and_pos.format(), "(123 * 123)");
   ASSERT_EQ(pos_and_neg.format(), "(123 * -456)");
   ASSERT_EQ(neg_and_pos.format(), "(-456 * 123)");

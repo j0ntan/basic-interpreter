@@ -4,21 +4,21 @@
 #include <gtest/gtest.h>
 
 TEST(Addition, canCreateAdditionOfConstantsAndVariables) {
-  Constant num1, num2;
-  Variable num3, num4;
-  Addition a1(num1, num2), a2(num3, num4), a3(num1, num4), a4(num3, num2);
+  const Constant num1, num2;
+  const Variable num3, num4;
+  const Addition a1(num1, num2), a2(num3, num4), a3(num1, num4), a4(num3, num2);
 }
 
 TEST(Addition, canCreateNestedAddition) {
-  Constant num1, num2, num3;
-  Addition a1(num1, num2);
-  Addition a2(a1, num3);
+  const Constant num1, num2, num3;
+  const Addition a1(num1, num2);
+  const Addition a2(a1, num3);
 }
 
 TEST(Addition, addIntegerValuesAndNested) {
-  Constant x(1), y(2), z(-3);
-  Addition positives(x, y), positive_and_negative(x, z), negatives(z, z);
-  Addition nested(positives, y);
+  const Constant x(1), y(2), z(-3);
+  const Addition positives(x, y), positive_and_negative(x, z), negatives(z, z);
+  const Addition nested(positives, y);
   ASSERT_EQ(positives.value(), 3);
   ASSERT_EQ(negatives.value(), -6);
   ASSERT_EQ(positive_and_negative.value(), -2);
@@ -26,10 +26,10 @@ TEST(Addition, addIntegerValuesAndNested) {
 }
 
 TEST(Addition, formatValuesAndNested) {
-  Constant x(123), y(-456);
-  Addition pos_and_pos(x, x), pos_and_neg(x, y), neg_and_pos(y, x),
+  const Constant x(123), y(-456);
+  const Addition pos_and_pos(x, x), pos_and_neg(x, y), neg_and_pos(y, x),
       neg_and_neg(y, y);
-  Addition nested(y, pos_and_neg);
+  const Addition nested(y, pos_and_neg);
   ASSERT_EQ(pos_and_pos.format(), "(123 + 123)");
   ASSERT_EQ(pos_and_neg.format(), "(123 + -456)");
   ASSERT_EQ(neg_and_pos.format(), "(-456 + 123)");

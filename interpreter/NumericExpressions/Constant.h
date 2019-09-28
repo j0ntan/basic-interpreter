@@ -13,7 +13,7 @@ public:
   ~Constant() final = default;
 
 private:
-  int val = 0;
+  const int val = 0;
 };
 
 #endif

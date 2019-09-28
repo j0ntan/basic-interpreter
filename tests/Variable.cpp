@@ -4,43 +4,43 @@
 TEST(Variable, createVariable) { Variable v("name", 0); }
 
 TEST(Variable, defaultValueIsZero) {
-  Variable v("name", 0);
+  const Variable v("name", 0);
   ASSERT_EQ(v.value(), 0);
 }
 
 TEST(Variable, valueMatchesConstantArguement) {
-  int x1 = 4, x2 = -7;
-  Variable v1("v1", x1), v2("v2", x2);
+  const int x1 = 4, x2 = -7;
+  const Variable v1("v1", x1), v2("v2", x2);
   ASSERT_EQ(v1.value(), x1);
   ASSERT_EQ(v2.value(), x2);
 }
 
 TEST(Variable, defaultConstantValueIsZero) {
-  Variable v("name");
+  const Variable v("name");
   ASSERT_EQ(v.value(), 0);
 }
 
 TEST(Variable, getVariableName) {
-  Variable v1("name"), v2("ID");
+  const Variable v1("name"), v2("ID");
   ASSERT_EQ(v1.name(), "name");
   ASSERT_EQ(v2.name(), "ID");
 }
 
 TEST(Variable, blankNameStringNamedUnknown) {
-  Variable v("");
+  const Variable v("");
   ASSERT_EQ(v.name(), "UNKNOWN");
 }
 
 TEST(Variable, defaultVariableHasKnownState) {
-  Variable v;
+  const Variable v;
   ASSERT_EQ(v.name(), "UNKNOWN");
   ASSERT_EQ(v.value(), 0);
   ASSERT_EQ(v.format(), "UNKNOWN");
 }
 
 TEST(Variable, copiesHaveSameNameAndValue) {
-  Variable v1("v1", 123);
-  Variable v2(v1);
+  const Variable v1("v1", 123);
+  const Variable v2(v1);
   ASSERT_EQ(v2.name(), v1.name());
   ASSERT_EQ(v2.value(), v1.value());
   ASSERT_EQ(v2.format(), v1.format());
