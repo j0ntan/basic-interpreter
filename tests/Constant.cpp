@@ -22,13 +22,3 @@ TEST(Constant, formatIntegerValueToString) {
   ASSERT_EQ(c2.format(), "-8471234");
   ASSERT_EQ(c3.format(), "0");
 }
-
-TEST(Constant, copyAndAssignemtChangesValue) {
-  Constant c1(123);
-  Constant c2(c1);
-  ASSERT_EQ(c2.value(), c1.value());
-
-  Constant c3(456);
-  c3 = c1;
-  ASSERT_EQ(c3.value(), c1.value());
-}
