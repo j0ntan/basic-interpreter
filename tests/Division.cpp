@@ -6,13 +6,14 @@
 TEST(Division, canCreateDivisionOfConstantsAndVariables) {
   const Constant num1, num2;
   const Variable num3, num4;
-  const Division d1(num1, num2), d2(num3, num4), d3(num1, num4), d4(num3, num2);
+  const Division division1(num1, num2), division2(num3, num4),
+      division3(num1, num4), division4(num3, num2);
 }
 
 TEST(Division, canCreateNestedDivision) {
   const Constant num1, num2, num3;
-  const Division d1(num1, num2);
-  const Division d2(d1, num3);
+  const Division division1(num1, num2);
+  const Division division2(division1, num3);
 }
 
 TEST(Division, addIntegerValuesAndNested) {

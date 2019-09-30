@@ -5,10 +5,11 @@
 #include <gtest/gtest.h>
 
 TEST(Print, canCreatePrint) {
-  const Constant c;
-  const Variable v;
-  const Addition a(v, c);
-  const Print p_const(1, c), p_var(1, v), p_addition(1, a);
+  const Constant constant;
+  const Variable variable;
+  const Addition addition(variable, constant);
+  const Print print_const(1, constant), print_var(1, variable),
+      print_addition(1, addition);
 }
 
 TEST(Print, matchGivenLineNumber) {
@@ -18,11 +19,12 @@ TEST(Print, matchGivenLineNumber) {
 }
 
 TEST(Print, format) {
-  const Constant c;
-  const Variable v;
-  const Addition a(v, c);
-  const Print p_const(1, c), p_var(1, v), p_addition(1, a);
-  ASSERT_EQ(p_const.format(), "1 PRINT 0");
-  ASSERT_EQ(p_var.format(), "1 PRINT UNKNOWN");
-  ASSERT_EQ(p_addition.format(), "1 PRINT (UNKNOWN + 0)");
+  const Constant constant;
+  const Variable variable;
+  const Addition addition(variable, constant);
+  const Print print_const(1, constant), print_var(1, variable),
+      print_addition(1, addition);
+  ASSERT_EQ(print_const.format(), "1 PRINT 0");
+  ASSERT_EQ(print_var.format(), "1 PRINT UNKNOWN");
+  ASSERT_EQ(print_addition.format(), "1 PRINT (UNKNOWN + 0)");
 }

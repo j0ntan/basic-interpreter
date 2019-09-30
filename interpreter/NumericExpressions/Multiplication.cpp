@@ -1,7 +1,7 @@
 #include "Multiplication.h"
 
-Multiplication::Multiplication(const NumericExpression &nexp1,
-                               const NumericExpression &nexp2)
-    : BinaryExpression(nexp1, nexp2, '*') {}
+Multiplication::Multiplication(const NumericExpression &left,
+                               const NumericExpression &right)
+    : BinaryExpression(left, right, '*') {}
 
-int Multiplication::value() const { return num1.value() * num2.value(); }
+int Multiplication::value() const { return left.value() * right.value(); }

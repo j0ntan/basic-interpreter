@@ -1,13 +1,13 @@
 #include "Variable.h"
 
 Variable::Variable(std::string name, int value)
-    : var_name{name.empty() ? std::string("UNKNOWN") : std::move(name)},
-      var_value{value} {}
+    : variable_name{name.empty() ? std::string("UNKNOWN") : std::move(name)},
+      variable_value{value} {}
 
-int Variable::value() const { return var_value; }
+int Variable::value() const { return variable_value; }
 
-std::string Variable::format() const { return var_name; }
+std::string Variable::format() const { return variable_name; }
 
-std::string Variable::name() const { return var_name; }
+std::string Variable::name() const { return variable_name; }
 
-void Variable::assign(const int &v) { var_value = v; }
+void Variable::assign(const int &new_value) { variable_value = new_value; }

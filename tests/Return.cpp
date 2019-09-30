@@ -3,17 +3,17 @@
 
 TEST(Return, createSimpleReturn) {
   const unsigned int line_number = 123;
-  Return r(line_number);
+  Return return_cmd(line_number);
 }
 
 TEST(Return, matchGivenLineNumber) {
   const unsigned int line_number = 123;
-  Return r(line_number);
-  ASSERT_EQ(r.line(), line_number);
+  Return return_cmd(line_number);
+  ASSERT_EQ(return_cmd.line(), line_number);
 }
 
 TEST(Return, format) {
   const unsigned int line_number = 123;
-  Return r(line_number);
-  ASSERT_EQ(r.format(), "123 RETURN");
+  Return return_cmd(line_number);
+  ASSERT_EQ(return_cmd.format(), "123 RETURN");
 }

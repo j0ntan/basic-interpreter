@@ -1,7 +1,7 @@
 #include "LessThan.h"
 
-LessThan::LessThan(const NumericExpression &nexp1,
-                   const NumericExpression &nexp2)
-    : BooleanExpression(nexp1, nexp2, '<') {}
+LessThan::LessThan(const NumericExpression &left,
+                   const NumericExpression &right)
+    : BooleanExpression(left, right, '<') {}
 
-bool LessThan::value() const { return num1.value() < num2.value(); }
+bool LessThan::value() const { return left.value() < right.value(); }

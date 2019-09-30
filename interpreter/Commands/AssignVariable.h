@@ -6,7 +6,7 @@
 
 class AssignVariable : public Command {
 public:
-  AssignVariable(unsigned int line_number, const Variable &v,
+  AssignVariable(unsigned int line_number, const Variable &variable,
                  const NumericExpression &value);
 
   std::string format() const final;

@@ -5,8 +5,8 @@
 
 class Equals final : public BooleanExpression {
 public:
-  explicit Equals(const NumericExpression &nexp1,
-                  const NumericExpression &nexp2);
+  explicit Equals(const NumericExpression &left,
+                  const NumericExpression &right);
 
   bool value() const final;
 

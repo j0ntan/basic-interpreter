@@ -1,7 +1,7 @@
 #include "Addition.h"
 
-Addition::Addition(const NumericExpression &nexp1,
-                   const NumericExpression &nexp2)
-    : BinaryExpression(nexp1, nexp2, '+') {}
+Addition::Addition(const NumericExpression &left,
+                   const NumericExpression &right)
+    : BinaryExpression(left, right, '+') {}
 
-int Addition::value() const { return num1.value() + num2.value(); }
+int Addition::value() const { return left.value() + right.value(); }

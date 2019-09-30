@@ -6,14 +6,14 @@
 TEST(Multiplication, canCreateMultiplicationOfConstantsAndVariables) {
   const Constant num1, num2;
   const Variable num3, num4;
-  const Multiplication m1(num1, num2), m2(num3, num4), m3(num1, num4),
-      m4(num3, num2);
+  const Multiplication multiplication1(num1, num2), multiplication2(num3, num4),
+      multiplication3(num1, num4), multiplication4(num3, num2);
 }
 
 TEST(Multiplication, canCreateNestedMultiplication) {
   const Constant num1, num2, num3;
-  const Multiplication m1(num1, num2);
-  const Multiplication m2(m1, num3);
+  const Multiplication multiplication1(num1, num2);
+  const Multiplication multiplication2(multiplication1, num3);
 }
 
 TEST(Multiplication, multiplyIntegerValuesAndNested) {

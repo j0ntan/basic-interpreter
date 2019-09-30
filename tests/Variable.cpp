@@ -1,63 +1,63 @@
 #include "Variable.h"
 #include <gtest/gtest.h>
 
-TEST(Variable, createVariable) { Variable v("name", 0); }
+TEST(Variable, createVariable) { Variable variable("name", 0); }
 
 TEST(Variable, defaultValueIsZero) {
-  const Variable v("name", 0);
-  ASSERT_EQ(v.value(), 0);
+  const Variable variable("name", 0);
+  ASSERT_EQ(variable.value(), 0);
 }
 
 TEST(Variable, valueMatchesConstantArguement) {
   const int x1 = 4, x2 = -7;
-  const Variable v1("v1", x1), v2("v2", x2);
-  ASSERT_EQ(v1.value(), x1);
-  ASSERT_EQ(v2.value(), x2);
+  const Variable variable1("variable1", x1), variable2("variable2", x2);
+  ASSERT_EQ(variable1.value(), x1);
+  ASSERT_EQ(variable2.value(), x2);
 }
 
 TEST(Variable, defaultConstantValueIsZero) {
-  const Variable v("name");
-  ASSERT_EQ(v.value(), 0);
+  const Variable variable("name");
+  ASSERT_EQ(variable.value(), 0);
 }
 
 TEST(Variable, getVariableName) {
-  const Variable v1("name"), v2("ID");
-  ASSERT_EQ(v1.name(), "name");
-  ASSERT_EQ(v2.name(), "ID");
+  const Variable variable1("name"), variable2("ID");
+  ASSERT_EQ(variable1.name(), "name");
+  ASSERT_EQ(variable2.name(), "ID");
 }
 
 TEST(Variable, blankNameStringNamedUnknown) {
-  const Variable v("");
-  ASSERT_EQ(v.name(), "UNKNOWN");
+  const Variable variable("");
+  ASSERT_EQ(variable.name(), "UNKNOWN");
 }
 
 TEST(Variable, defaultVariableHasKnownState) {
-  const Variable v;
-  ASSERT_EQ(v.name(), "UNKNOWN");
-  ASSERT_EQ(v.value(), 0);
-  ASSERT_EQ(v.format(), "UNKNOWN");
+  const Variable variable;
+  ASSERT_EQ(variable.name(), "UNKNOWN");
+  ASSERT_EQ(variable.value(), 0);
+  ASSERT_EQ(variable.format(), "UNKNOWN");
 }
 
 TEST(Variable, copiesHaveSameNameAndValue) {
-  const Variable v1("v1", 123);
-  const Variable v2(v1);
-  ASSERT_EQ(v2.name(), v1.name());
-  ASSERT_EQ(v2.value(), v1.value());
-  ASSERT_EQ(v2.format(), v1.format());
+  const Variable variable1("variable1", 123);
+  const Variable variable2(variable1);
+  ASSERT_EQ(variable2.name(), variable1.name());
+  ASSERT_EQ(variable2.value(), variable1.value());
+  ASSERT_EQ(variable2.format(), variable1.format());
 }
 
 TEST(Variable, canAssignUsingInteger) {
-  Variable v;
-  v.assign(-3);
+  Variable variable;
+  variable.assign(-3);
 }
 
 TEST(Variable, assignmentChangesValueOnly) {
   const std::string name = "NAME";
   const int val1 = 123, val2 = 456;
-  Variable v(name, val1);
-  ASSERT_EQ(v.name(), name);
-  ASSERT_EQ(v.value(), val1);
-  v.assign(val2);
-  ASSERT_EQ(v.name(), name);
-  ASSERT_EQ(v.value(), val2);
+  Variable variable(name, val1);
+  ASSERT_EQ(variable.name(), name);
+  ASSERT_EQ(variable.value(), val1);
+  variable.assign(val2);
+  ASSERT_EQ(variable.name(), name);
+  ASSERT_EQ(variable.value(), val2);
 }

@@ -6,14 +6,14 @@
 
 class Print final : public Command {
 public:
-  Print(unsigned int line_number, const NumericExpression &nexp);
+  Print(unsigned int line_number, const NumericExpression &expression);
 
   std::string format() const final;
 
   ~Print() final = default;
 
 private:
-  const NumericExpression &num;
+  const NumericExpression &expression;
 };
 
 #endif

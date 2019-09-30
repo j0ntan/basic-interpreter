@@ -11,13 +11,13 @@ public:
   std::string format() const final;
 
   std::string name() const;
-  void assign(const int &v);
+  void assign(const int &new_value);
 
   ~Variable() final = default;
 
 private:
-  const std::string var_name;
-  int var_value;
+  const std::string variable_name;
+  int variable_value;
 };
 
 #endif

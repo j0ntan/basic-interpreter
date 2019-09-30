@@ -11,8 +11,8 @@ TEST(Addition, canCreateAdditionOfConstantsAndVariables) {
 
 TEST(Addition, canCreateNestedAddition) {
   const Constant num1, num2, num3;
-  const Addition a1(num1, num2);
-  const Addition a2(a1, num3);
+  const Addition addition1(num1, num2);
+  const Addition addition2(addition1, num3);
 }
 
 TEST(Addition, addIntegerValuesAndNested) {

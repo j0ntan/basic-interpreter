@@ -6,20 +6,20 @@
 
 class BooleanExpression {
 public:
-  BooleanExpression(const NumericExpression &nexp1,
-                    const NumericExpression &nexp2, const char operation_type)
-      : num1{nexp1}, num2{nexp2}, operation{operation_type} {}
+  BooleanExpression(const NumericExpression &left,
+                    const NumericExpression &right, const char operation_type)
+      : left{left}, right{right}, operation{operation_type} {}
 
   virtual bool value() const = 0;
   std::string format() const {
-    return num1.format() + ' ' + operation + ' ' + num2.format();
+    return left.format() + ' ' + operation + ' ' + right.format();
   }
 
   virtual ~BooleanExpression() = default;
 
 protected:
-  const NumericExpression &num1;
-  const NumericExpression &num2;
+  const NumericExpression &left;
+  const NumericExpression &right;
   const char operation;
 };
 

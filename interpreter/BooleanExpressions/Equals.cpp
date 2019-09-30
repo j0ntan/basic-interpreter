@@ -1,6 +1,6 @@
 #include "Equals.h"
 
-Equals::Equals(const NumericExpression &nexp1, const NumericExpression &nexp2)
-    : BooleanExpression(nexp1, nexp2, '=') {}
+Equals::Equals(const NumericExpression &left, const NumericExpression &right)
+    : BooleanExpression(left, right, '=') {}
 
-bool Equals::value() const { return num1.value() == num2.value(); }
+bool Equals::value() const { return left.value() == right.value(); }

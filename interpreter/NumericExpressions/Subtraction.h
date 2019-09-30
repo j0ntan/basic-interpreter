@@ -5,8 +5,8 @@
 
 class Subtraction final : public BinaryExpression {
 public:
-  explicit Subtraction(const NumericExpression &nexp1,
-                       const NumericExpression &nexp2);
+  explicit Subtraction(const NumericExpression &left,
+                       const NumericExpression &right);
 
   int value() const final;
 

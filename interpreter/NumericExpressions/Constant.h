@@ -5,7 +5,7 @@
 
 class Constant final : public NumericExpression {
 public:
-  explicit Constant(int n = 0);
+  explicit Constant(int value = 0);
 
   int value() const final;
   std::string format() const final;
@@ -13,7 +13,7 @@ public:
   ~Constant() final = default;
 
 private:
-  const int val = 0;
+  const int integral_value = 0;
 };
 
 #endif
