@@ -2,7 +2,8 @@
 #define PRINT_HPP
 
 #include "Command.h"
-#include "NumericExpression.h"
+
+class NumericExpression;
 
 class Print final : public Command {
 public:

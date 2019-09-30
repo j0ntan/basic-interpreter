@@ -1,4 +1,5 @@
 #include "AssignVariable.h"
+#include "Variable.h"
 
 AssignVariable::AssignVariable(unsigned int line_number,
                                const Variable &variable,

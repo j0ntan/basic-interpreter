@@ -2,8 +2,9 @@
 #define ASSIGNARRAY_HPP
 
 #include "Command.h"
-#include "NumericExpression.h"
-#include "Variable.h"
+
+class NumericExpression;
+class Variable;
 
 class AssignArray : public Command {
 public:

@@ -1,4 +1,5 @@
 #include "AssignArray.h"
+#include "Variable.h"
 
 AssignArray::AssignArray(unsigned int line_number, const Variable &name,
                          const NumericExpression &index,

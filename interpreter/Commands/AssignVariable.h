@@ -2,7 +2,9 @@
 #define ASSIGNVARIABLE_HPP
 
 #include "Command.h"
-#include "Variable.h"
+
+class NumericExpression;
+class Variable;
 
 class AssignVariable : public Command {
 public:
