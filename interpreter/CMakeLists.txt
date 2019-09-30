@@ -20,4 +20,4 @@ add_library(GoSub STATIC Commands/GoSub.cpp)
 add_library(Return STATIC Commands/Return.cpp)
 add_library(End STATIC Commands/End.cpp)
 
-add_library(ParserHelper STATIC ParserHelper.cpp)
+add_library(ParserHelper STATIC Parser/ParserHelper.cpp)
