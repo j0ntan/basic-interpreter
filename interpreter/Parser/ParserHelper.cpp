@@ -128,3 +128,8 @@ bool isBinaryExpression(const std::string &str) {
 
   return !expression.empty() && has_valid_operands(expression);
 }
+
+std::pair<std::string, std::string>
+get_operands(const std::string &expression) {
+  return std::make_pair(std::string(), std::string());
+}

@@ -233,3 +233,7 @@ TEST(IsBinaryExpression, nestedBinaryExpression) {
   ASSERT_TRUE(isBinaryExpression("((1+1)+(1+1))"));
   ASSERT_TRUE(isBinaryExpression("(VAR[(X+Y)]+(1+1))"));
 }
+
+TEST(getOperands, functionIsCallableWithSimpleExpression) {
+  get_operands("1+1");
+}
