@@ -1,26 +1,11 @@
 #include "ParserHelper.h"
 
-static std::string remove_leading_whitespace(const std::string &str) {
-  return str.substr(str.find_first_not_of(" \t"));
-}
-
-static std::string remove_trailing_whitespace(const std::string &str) {
-  return str.substr(0, str.find_last_not_of(" \t") + 1);
-}
-
 static std::string remove_surrounding_whitespace(const std::string &str) {
-  std::string clean_str = str;
-
-  const bool has_leading_whitespace = str.find_first_of(" \t") == 0;
-  if (has_leading_whitespace)
-    clean_str = remove_leading_whitespace(clean_str);
-
-  const bool has_trailing_whitespace =
-      str.find_last_of(" \t") == str.length() - 1;
-  if (has_trailing_whitespace)
-    clean_str = remove_trailing_whitespace(clean_str);
-
-  return clean_str;
+  const size_t first_char = str.find_first_not_of(" \t");
+  const size_t last_char = str.find_last_not_of(" \t");
+  if (str.empty() || (first_char == 0 && last_char == str.size() - 1))
+    return str;
+  return str.substr(first_char, last_char - first_char + 1);
 }
 
 static bool has_no_digits_or_uppercase_letters(const std::string &str) {
@@ -84,7 +69,7 @@ static std::string array_index(const std::string &str, size_t left_bracket_pos,
 
 static std::string array_name(const std::string &str, size_t left_bracket_pos) {
   const std::string name_with_whitespace = str.substr(0, left_bracket_pos);
-  return remove_trailing_whitespace(name_with_whitespace);
+  return remove_surrounding_whitespace(name_with_whitespace);
 }
 
 static bool index_is_positive(const std::string &index) {
