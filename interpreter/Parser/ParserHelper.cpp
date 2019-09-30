@@ -1,6 +1,6 @@
 #include "ParserHelper.h"
 
-static std::string remove_surrounding_whitespace(const std::string &str) {
+std::string remove_surrounding_whitespace(const std::string &str) {
   const size_t first_char = str.find_first_not_of(" \t");
   const size_t last_char = str.find_last_not_of(" \t");
   if (str.empty() || (first_char == 0 && last_char == str.size() - 1))
