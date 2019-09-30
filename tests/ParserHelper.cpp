@@ -251,3 +251,14 @@ TEST(getOperands, matchSetOfAdditionWithSimpleOperands) {
   ASSERT_EQ(get_operands("5+6"),
             std::make_pair(std::string("5"), std::string("6")));
 }
+
+TEST(getOperands, matchArithmeticWithSimpleOperands) {
+  ASSERT_EQ(get_operands("1+1"),
+            std::make_pair(std::string("1"), std::string("1")));
+  ASSERT_EQ(get_operands("1-1"),
+            std::make_pair(std::string("1"), std::string("1")));
+  ASSERT_EQ(get_operands("1*1"),
+            std::make_pair(std::string("1"), std::string("1")));
+  ASSERT_EQ(get_operands("1/1"),
+            std::make_pair(std::string("1"), std::string("1")));
+}

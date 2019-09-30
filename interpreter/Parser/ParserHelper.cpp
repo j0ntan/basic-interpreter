@@ -134,7 +134,8 @@ get_operands(const std::string &expression) {
   size_t operator_position = 0;
   for (size_t i = 0; i < expression.size() && operator_position == 0; ++i) {
     const char &this_char = expression[i];
-    if (this_char == '+')
+    if (this_char == '+' || this_char == '-' || this_char == '*' ||
+        this_char == '/')
       operator_position = i;
   }
   return std::make_pair(expression.substr(0, operator_position),
