@@ -43,7 +43,6 @@ static bool first_char_is_negative_or_digit(const std::string &str) {
 
 static bool remaining_chars_only_digits(const std::string &str) {
   return str.find_first_not_of("0123456789", 1) == std::string::npos;
-  ;
 }
 
 bool isInteger(const std::string &str) {
