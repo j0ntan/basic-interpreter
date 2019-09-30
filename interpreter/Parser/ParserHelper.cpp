@@ -117,6 +117,7 @@ static bool has_valid_operands(const std::string &expression) {
     else if (this_char == ')')
       --nested_count;
   }
+  return false;
 }
 
 bool isBinaryExpression(const std::string &str) {
