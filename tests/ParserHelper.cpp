@@ -237,3 +237,8 @@ TEST(IsBinaryExpression, nestedBinaryExpression) {
 TEST(getOperands, functionIsCallableWithSimpleExpression) {
   get_operands("1+1");
 }
+
+TEST(getOperands, matchSimpleOperands) {
+  ASSERT_EQ(get_operands("1+1"),
+            std::make_pair(std::string("1"), std::string("1")));
+}

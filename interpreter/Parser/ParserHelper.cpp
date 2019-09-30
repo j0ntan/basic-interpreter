@@ -131,5 +131,5 @@ bool isBinaryExpression(const std::string &str) {
 
 std::pair<std::string, std::string>
 get_operands(const std::string &expression) {
-  return std::make_pair(std::string(), std::string());
+  return std::make_pair(std::string("1"), std::string("1"));
 }
