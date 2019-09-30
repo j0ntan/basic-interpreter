@@ -262,3 +262,14 @@ TEST(getOperands, matchArithmeticWithSimpleOperands) {
   ASSERT_EQ(get_operands("1/1"),
             std::make_pair(std::string("1"), std::string("1")));
 }
+
+TEST(getOperands, matchNegativeIntegerFirstOperand) {
+  ASSERT_EQ(get_operands("-1+1"),
+            std::make_pair(std::string("-1"), std::string("1")));
+  ASSERT_EQ(get_operands("-1-1"),
+            std::make_pair(std::string("-1"), std::string("1")));
+  ASSERT_EQ(get_operands("-1*1"),
+            std::make_pair(std::string("-1"), std::string("1")));
+  ASSERT_EQ(get_operands("-1/1"),
+            std::make_pair(std::string("-1"), std::string("1")));
+}
