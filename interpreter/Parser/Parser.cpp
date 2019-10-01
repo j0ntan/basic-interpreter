@@ -8,6 +8,6 @@ std::string findNextExpression(const std::string &cmd) {
   else if (std::isupper(cmd[0]))
     ends = cmd.find_first_not_of("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
   else if (cmd[0] == '(')
-    ends = cmd.find(')') + 1;
+    ends = cmd.find_last_of(')') + 1;
   return cmd.substr(begins, ends);
 }

@@ -19,3 +19,7 @@ TEST(findNextExpression, findBinaryExpression) {
   ASSERT_EQ(findNextExpression("(1+1)"), "(1+1)");
   ASSERT_EQ(findNextExpression("(VAR+134)"), "(VAR+134)");
 }
+
+TEST(findNextExpression, findNestedBinaryExpression) {
+  ASSERT_EQ(findNextExpression("((1+1)+1)"), "((1+1)+1)");
+}
