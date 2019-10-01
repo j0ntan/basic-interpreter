@@ -46,3 +46,5 @@ TEST(hasLineNumber, mustBeginWithLineNumber) {
 TEST(hasLineNumber, ignoreLeadingWhitespace) {
   ASSERT_TRUE(has_line_number(" \t 1"));
 }
+
+TEST(identifyPrintCommand, callIsPrint) { is_print_cmd("1 PRINT 1"); }

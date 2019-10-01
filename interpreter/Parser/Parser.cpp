@@ -26,3 +26,5 @@ bool has_line_number(const std::string &cmd) {
   return cmd.find_first_of("0123456789", non_whitespace_pos) ==
          non_whitespace_pos;
 }
+
+bool is_print_cmd(const std::string &cmd) { return false; }
