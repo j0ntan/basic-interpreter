@@ -27,3 +27,9 @@ TEST(findNextExpression, findNestedBinaryExpression) {
 TEST(findNextExpression, findFirstOccurringBinaryExpression) {
   ASSERT_EQ(findNextExpression("(1+1) (1+1)"), "(1+1)");
 }
+
+TEST(findNextExpression, findExpressionWithLeadingWhitespace) {
+  ASSERT_EQ(findNextExpression("    -123"), "-123");
+  ASSERT_EQ(findNextExpression("  VAR"), "VAR");
+  ASSERT_EQ(findNextExpression("   (1+1)"), "(1+1)");
+}
