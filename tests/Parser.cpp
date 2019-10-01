@@ -10,3 +10,7 @@ TEST(findNextExpression, findSimplePositiiveInteger) {
 TEST(findNextExpression, findSimpleNegativeInteger) {
   ASSERT_EQ(findNextExpression("-123"), "-123");
 }
+
+TEST(findNextExpression, findVariable) {
+  ASSERT_EQ(findNextExpression("VAR"), "VAR");
+}
