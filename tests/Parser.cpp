@@ -23,3 +23,7 @@ TEST(findNextExpression, findBinaryExpression) {
 TEST(findNextExpression, findNestedBinaryExpression) {
   ASSERT_EQ(findNextExpression("((1+1)+1)"), "((1+1)+1)");
 }
+
+TEST(findNextExpression, findFirstOccurringBinaryExpression) {
+  ASSERT_EQ(findNextExpression("(1+1) (1+1)"), "(1+1)");
+}
