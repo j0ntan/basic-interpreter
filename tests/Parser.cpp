@@ -14,3 +14,8 @@ TEST(findNextExpression, findSimpleNegativeInteger) {
 TEST(findNextExpression, findVariable) {
   ASSERT_EQ(findNextExpression("VAR"), "VAR");
 }
+
+TEST(findNextExpression, findBinaryExpression) {
+  ASSERT_EQ(findNextExpression("(1+1)"), "(1+1)");
+  ASSERT_EQ(findNextExpression("(VAR+134)"), "(VAR+134)");
+}

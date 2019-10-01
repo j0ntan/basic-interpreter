@@ -7,5 +7,7 @@ std::string findNextExpression(const std::string &cmd) {
     ends = cmd.find_first_not_of("-0123456789");
   else if (std::isupper(cmd[0]))
     ends = cmd.find_first_not_of("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+  else if (cmd[0] == '(')
+    ends = cmd.find(')') + 1;
   return cmd.substr(begins, ends);
 }
