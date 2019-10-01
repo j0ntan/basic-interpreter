@@ -132,11 +132,17 @@ bool isBinaryExpression(const std::string &str) {
 std::pair<std::string, std::string>
 get_operands(const std::string &expression) {
   size_t operator_position = 0;
-  for (size_t i = 0; i < expression.size() && operator_position == 0; ++i) {
+  for (size_t i = 0, nested_count = 0;
+       i < expression.size() && operator_position == 0; ++i) {
     const char &this_char = expression[i];
-    if (this_char == '+' || (this_char == '-' && i != 0) || this_char == '*' ||
-        this_char == '/')
+    if (nested_count == 0 &&
+        (this_char == '+' || (this_char == '-' && i != 0) || this_char == '*' ||
+         this_char == '/'))
       operator_position = i;
+    else if (this_char == '(')
+      ++nested_count;
+    else if (this_char == ')')
+      --nested_count;
   }
   return std::make_pair(expression.substr(0, operator_position),
                         expression.substr(operator_position + 1));

@@ -273,3 +273,8 @@ TEST(getOperands, matchNegativeIntegerFirstOperand) {
   ASSERT_EQ(get_operands("-1/1"),
             std::make_pair(std::string("-1"), std::string("1")));
 }
+
+TEST(getOperands, matchNestedFirstOperand) {
+  ASSERT_EQ(get_operands("(-1+2)-3"),
+            std::make_pair(std::string("(-1+2)"), std::string("3")));
+}
