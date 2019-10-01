@@ -99,25 +99,12 @@ static bool has_enclosing_parenthesis(const std::string &str) {
 }
 
 static bool has_valid_operands(const std::string &expression) {
-  unsigned int nested_count = 0;
-  for (int i = 0; i < expression.size(); ++i) {
-    const char this_char = expression[i];
-
-    if ((this_char == '+' || this_char == '-' || this_char == '*' ||
-         this_char == '/') &&
-        nested_count == 0) {
-      const std::string left_operand = expression.substr(0, i);
-      const std::string right_operand = expression.substr(i + 1);
-      if (!left_operand.empty() && !right_operand.empty()) {
-        return isNumericExpression(left_operand) &&
-               isNumericExpression(right_operand);
-      }
-    } else if (this_char == '(')
-      ++nested_count;
-    else if (this_char == ')')
-      --nested_count;
-  }
-  return false;
+  const auto operands = get_operands(expression);
+  const auto &left_operand = operands.first;
+  const auto &right_operand = operands.second;
+  return !left_operand.empty() && !right_operand.empty() &&
+         isNumericExpression(left_operand) &&
+         isNumericExpression(right_operand);
 }
 
 bool isBinaryExpression(const std::string &str) {
