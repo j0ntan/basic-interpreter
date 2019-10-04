@@ -1,5 +1,5 @@
-#ifndef PARSER_HPP
-#define PARSER_HPP
+#ifndef PARSERHELPER_HPP
+#define PARSERHELPER_HPP
 
 #include <string>
 #include <utility>
