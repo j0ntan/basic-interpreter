@@ -60,3 +60,7 @@ TEST(identifyPrintCommand, printKeywordMustBeIsolated) {
 TEST(identifyPrintCommand, mustHaveNumericalExpressionValue) {
   ASSERT_FALSE(is_print_cmd("1 PRINT invalid"));
 }
+
+TEST(identifyAssignVariableCommand, callIsAssignVariable) {
+  is_assign_variable_cmd("1 LET X 1");
+}
