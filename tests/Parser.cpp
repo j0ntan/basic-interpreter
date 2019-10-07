@@ -92,3 +92,7 @@ TEST(identifyAssignArrayCommand, callIsAssignArray) {
 TEST(identifyAssignArrayCommand, mustHaveLetKeyword) {
   ASSERT_TRUE(is_assign_array_cmd("1 LET X[0] 1"));
 }
+
+TEST(identifyAssignArrayCommand, letKeywordMustBeIsolated) {
+  ASSERT_FALSE(is_assign_array_cmd("1 LETTER X[0] 1"));
+}
