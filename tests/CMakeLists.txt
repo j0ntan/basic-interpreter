@@ -124,6 +124,7 @@ add_executable(test_Parser Parser.cpp)
 target_include_directories(test_Parser PRIVATE ${INTERPRETER_INCLUDE})
 target_link_libraries(test_Parser PRIVATE
         Parser
+        ParserHelper
         gtest_main
         )
 

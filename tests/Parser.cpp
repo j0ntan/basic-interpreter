@@ -56,3 +56,7 @@ TEST(identifyPrintCommand, mustHavePrintKeyword) {
 TEST(identifyPrintCommand, printKeywordMustBeIsolated) {
   ASSERT_FALSE(is_print_cmd("1 PRINTER 1"));
 }
+
+TEST(identifyPrintCommand, mustHaveNumericalExpressionValue) {
+  ASSERT_FALSE(is_print_cmd("1 PRINT invalid"));
+}

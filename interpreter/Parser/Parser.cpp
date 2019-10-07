@@ -1,4 +1,5 @@
 #include "Parser.h"
+#include "ParserHelper.h"
 #include <cctype>
 
 std::string findNextExpression(const std::string &cmd) {
@@ -36,7 +37,8 @@ bool is_print_cmd(const std::string &cmd) {
     const auto has_whitespace_around_print =
         cmd.find_last_of(" \t", before_print_pos) == before_print_pos &&
         cmd.find_first_of(" \t", after_print_pos) == after_print_pos;
-    return has_whitespace_around_print;
+    const auto value = cmd.substr(after_print_pos);
+    return has_whitespace_around_print && isNumericExpression(value);
   }
   return false;
 }
