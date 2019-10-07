@@ -22,5 +22,5 @@ std::string findNextExpression(const std::string &cmd) {
 }
 
 bool has_line_number(const std::string &cmd) {
-  return cmd.find_first_of("0123456789") != std::string::npos;
+  return cmd.find_first_of("0123456789") == 0;
 }

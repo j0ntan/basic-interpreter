@@ -37,3 +37,8 @@ TEST(findNextExpression, findExpressionWithLeadingWhitespace) {
 TEST(hasLineNumber, callHasLineNumber) { has_line_number("1"); }
 
 TEST(hasLineNumber, mustIncludeANumber) { ASSERT_TRUE(has_line_number("1")); }
+
+TEST(hasLineNumber, mustBeginWithLineNumber) {
+  ASSERT_TRUE(has_line_number("1 X"));
+  ASSERT_FALSE(has_line_number("X 1"));
+}
