@@ -52,3 +52,7 @@ TEST(identifyPrintCommand, callIsPrint) { is_print_cmd("1 PRINT 1"); }
 TEST(identifyPrintCommand, mustHavePrintKeyword) {
   ASSERT_TRUE(is_print_cmd("1 PRINT 1"));
 }
+
+TEST(identifyPrintCommand, printKeywordMustBeIsolated) {
+  ASSERT_FALSE(is_print_cmd("1 PRINTER 1"));
+}

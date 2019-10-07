@@ -28,5 +28,8 @@ bool has_line_number(const std::string &cmd) {
 }
 
 bool is_print_cmd(const std::string &cmd) {
-  return cmd.find("PRINT") != std::string::npos;
+  const auto print_pos = cmd.find("PRINT");
+  return print_pos != std::string::npos &&
+         cmd.find_last_of(" \t", print_pos) == print_pos - 1 &&
+         cmd.find_first_of(" \t", print_pos + 5) == print_pos + 5;
 }
