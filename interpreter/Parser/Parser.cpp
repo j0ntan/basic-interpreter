@@ -44,5 +44,15 @@ bool is_print_cmd(const std::string &cmd) {
 }
 
 bool is_assign_variable_cmd(const std::string &cmd) {
-  return cmd.find("LET") != std::string::npos;
+  const auto let_pos = cmd.find("LET");
+  const auto has_let_keyword = let_pos != std::string::npos;
+  if (has_let_keyword) {
+    const auto before_let_pos = let_pos - 1;
+    const auto after_let_pos = let_pos + 3;
+    const auto has_whitespace_around_let =
+        cmd.find_last_of(" \t", before_let_pos) == before_let_pos &&
+        cmd.find_first_of(" \t", after_let_pos) == after_let_pos;
+    return has_whitespace_around_let;
+  }
+  return false;
 }
