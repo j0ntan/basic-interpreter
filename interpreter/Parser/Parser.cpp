@@ -74,7 +74,9 @@ bool is_assign_array_cmd(const std::string &cmd) {
     const auto has_whitespace_around_let =
         cmd.find_last_of(" \t", before_let_pos) == before_let_pos &&
         cmd.find_first_of(" \t", after_let_pos) == after_let_pos;
-    return has_whitespace_around_let;
+    const auto variable = findNextExpression(cmd.substr(after_let_pos));
+    return has_whitespace_around_let && !variable.empty() &&
+           isVariable(variable);
   }
   return false;
 }

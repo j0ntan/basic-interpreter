@@ -96,3 +96,7 @@ TEST(identifyAssignArrayCommand, mustHaveLetKeyword) {
 TEST(identifyAssignArrayCommand, letKeywordMustBeIsolated) {
   ASSERT_FALSE(is_assign_array_cmd("1 LETTER X[0] 1"));
 }
+
+TEST(identifyAssignArrayCommand, variableFollowsLetKeyword) {
+  ASSERT_FALSE(is_assign_array_cmd("1 LET invalid[0] 1"));
+}
