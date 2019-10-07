@@ -84,3 +84,7 @@ TEST(identifyAssignVariableCommand, variableStringIsVariableExpression) {
 TEST(identifyAssignVariableCommand, valueStringIsNumericExpression) {
   ASSERT_FALSE(is_assign_variable_cmd("1 LET X x"));
 }
+
+TEST(identifyAssignArrayCommand, callIsAssignArray) {
+  is_assign_array_cmd("1 LET X[0] 1");
+}
