@@ -27,4 +27,6 @@ bool has_line_number(const std::string &cmd) {
          non_whitespace_pos;
 }
 
-bool is_print_cmd(const std::string &cmd) { return false; }
+bool is_print_cmd(const std::string &cmd) {
+  return cmd.find("PRINT") != std::string::npos;
+}

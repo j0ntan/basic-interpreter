@@ -48,3 +48,7 @@ TEST(hasLineNumber, ignoreLeadingWhitespace) {
 }
 
 TEST(identifyPrintCommand, callIsPrint) { is_print_cmd("1 PRINT 1"); }
+
+TEST(identifyPrintCommand, mustHavePrintKeyword) {
+  ASSERT_TRUE(is_print_cmd("1 PRINT 1"));
+}
