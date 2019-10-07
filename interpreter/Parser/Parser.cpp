@@ -22,5 +22,7 @@ std::string findNextExpression(const std::string &cmd) {
 }
 
 bool has_line_number(const std::string &cmd) {
-  return cmd.find_first_of("0123456789") == 0;
+  const size_t non_whitespace_pos = cmd.find_first_not_of(" \t");
+  return cmd.find_first_of("0123456789", non_whitespace_pos) ==
+         non_whitespace_pos;
 }

@@ -42,3 +42,7 @@ TEST(hasLineNumber, mustBeginWithLineNumber) {
   ASSERT_TRUE(has_line_number("1 X"));
   ASSERT_FALSE(has_line_number("X 1"));
 }
+
+TEST(hasLineNumber, ignoreLeadingWhitespace) {
+  ASSERT_TRUE(has_line_number(" \t 1"));
+}
