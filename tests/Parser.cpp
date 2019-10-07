@@ -35,3 +35,5 @@ TEST(findNextExpression, findExpressionWithLeadingWhitespace) {
 }
 
 TEST(hasLineNumber, callHasLineNumber) { has_line_number("1"); }
+
+TEST(hasLineNumber, mustIncludeANumber) { ASSERT_TRUE(has_line_number("1")); }
