@@ -106,3 +106,7 @@ TEST(identifyAssignArrayCommand, bracketPairFollowsVariable) {
   ASSERT_FALSE(is_assign_array_cmd("1 LET X[0 1"));
   ASSERT_FALSE(is_assign_array_cmd("1 LET X0] 1"));
 }
+
+TEST(identifyAssignArrayCommand, indexMustNotBeEmpty) {
+  ASSERT_FALSE(is_assign_array_cmd("1 LET X[] 1"));
+}

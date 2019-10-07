@@ -79,8 +79,10 @@ bool is_assign_array_cmd(const std::string &cmd) {
         cmd.find_last_of(" \t", before_let_pos) == before_let_pos &&
         cmd.find_first_of(" \t", after_let_pos) == after_let_pos;
     const auto variable = findNextExpression(cmd.substr(after_let_pos));
+    const auto index = cmd.substr(left_bracket_pos + 1,
+                                  right_bracket_pos - left_bracket_pos - 1);
     return has_whitespace_around_let && !variable.empty() &&
-           isVariable(variable);
+           isVariable(variable) && !index.empty();
   }
   return false;
 }
