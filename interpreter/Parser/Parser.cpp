@@ -59,7 +59,8 @@ bool is_assign_variable_cmd(const std::string &cmd) {
     const auto variable = cmd.substr(variable_begins_pos,
                                      variable_ends_pos - variable_begins_pos),
                value = cmd.substr(variable_ends_pos);
-    return has_whitespace_around_let && !variable.empty() && !value.empty();
+    return has_whitespace_around_let && !variable.empty() &&
+           isVariable(variable) && !value.empty();
   }
   return false;
 }
