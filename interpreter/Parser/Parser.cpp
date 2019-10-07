@@ -82,7 +82,7 @@ bool is_assign_array_cmd(const std::string &cmd) {
     const auto index = cmd.substr(left_bracket_pos + 1,
                                   right_bracket_pos - left_bracket_pos - 1);
     return has_whitespace_around_let && !variable.empty() &&
-           isVariable(variable) && !index.empty();
+           isVariable(variable) && !index.empty() && isNumericExpression(index);
   }
   return false;
 }

@@ -110,3 +110,7 @@ TEST(identifyAssignArrayCommand, bracketPairFollowsVariable) {
 TEST(identifyAssignArrayCommand, indexMustNotBeEmpty) {
   ASSERT_FALSE(is_assign_array_cmd("1 LET X[] 1"));
 }
+
+TEST(identifyAssignArrayCommand, indexIsNumericExpression) {
+  ASSERT_FALSE(is_assign_array_cmd("1 LET X[invalid] 1"));
+}
