@@ -80,3 +80,7 @@ TEST(identifyAssignVariableCommand, mustHaveVariableAndValueStrings) {
 TEST(identifyAssignVariableCommand, variableStringIsVariableExpression) {
   ASSERT_FALSE(is_assign_variable_cmd("1 LET x 1"));
 }
+
+TEST(identifyAssignVariableCommand, valueStringIsNumericExpression) {
+  ASSERT_FALSE(is_assign_variable_cmd("1 LET X x"));
+}

@@ -60,7 +60,7 @@ bool is_assign_variable_cmd(const std::string &cmd) {
                                      variable_ends_pos - variable_begins_pos),
                value = cmd.substr(variable_ends_pos);
     return has_whitespace_around_let && !variable.empty() &&
-           isVariable(variable) && !value.empty();
+           isVariable(variable) && !value.empty() && isNumericExpression(value);
   }
   return false;
 }
