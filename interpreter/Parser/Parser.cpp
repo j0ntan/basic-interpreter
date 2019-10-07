@@ -65,4 +65,6 @@ bool is_assign_variable_cmd(const std::string &cmd) {
   return false;
 }
 
-bool is_assign_array_cmd(const std::string &cmd) { return false; }
+bool is_assign_array_cmd(const std::string &cmd) {
+  return cmd.find("LET") != std::string::npos;
+}
