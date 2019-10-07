@@ -100,3 +100,9 @@ TEST(identifyAssignArrayCommand, letKeywordMustBeIsolated) {
 TEST(identifyAssignArrayCommand, variableFollowsLetKeyword) {
   ASSERT_FALSE(is_assign_array_cmd("1 LET invalid[0] 1"));
 }
+
+TEST(identifyAssignArrayCommand, bracketPairFollowsVariable) {
+  ASSERT_FALSE(is_assign_array_cmd("1 LET X 0 1"));
+  ASSERT_FALSE(is_assign_array_cmd("1 LET X[0 1"));
+  ASSERT_FALSE(is_assign_array_cmd("1 LET X0] 1"));
+}

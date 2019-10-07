@@ -68,7 +68,11 @@ bool is_assign_variable_cmd(const std::string &cmd) {
 bool is_assign_array_cmd(const std::string &cmd) {
   const auto let_pos = cmd.find("LET");
   const auto has_let_keyword = let_pos != std::string::npos;
-  if (has_let_keyword) {
+  const auto left_bracket_pos = cmd.find('['),
+             right_bracket_pos = cmd.find(']');
+  const auto has_bracket_pair = left_bracket_pos != std::string::npos &&
+                                right_bracket_pos != std::string::npos;
+  if (has_let_keyword && has_bracket_pair) {
     const auto before_let_pos = let_pos - 1;
     const auto after_let_pos = let_pos + 3;
     const auto has_whitespace_around_let =
