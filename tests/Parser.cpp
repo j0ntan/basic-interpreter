@@ -33,3 +33,5 @@ TEST(findNextExpression, findExpressionWithLeadingWhitespace) {
   ASSERT_EQ(findNextExpression("  VAR"), "VAR");
   ASSERT_EQ(findNextExpression("   (1+1)"), "(1+1)");
 }
+
+TEST(hasLineNumber, callHasLineNumber) { has_line_number("1"); }

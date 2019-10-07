@@ -20,3 +20,5 @@ std::string findNextExpression(const std::string &cmd) {
   }
   return cmd.substr(begins, ends - begins);
 }
+
+bool has_line_number(const std::string &cmd) { return false; }
