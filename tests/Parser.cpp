@@ -64,3 +64,7 @@ TEST(identifyPrintCommand, mustHaveNumericalExpressionValue) {
 TEST(identifyAssignVariableCommand, callIsAssignVariable) {
   is_assign_variable_cmd("1 LET X 1");
 }
+
+TEST(identifyAssignVariableCommand, mustHaveLetKeyword) {
+  ASSERT_TRUE(is_assign_variable_cmd("1 LET X 1"));
+}
