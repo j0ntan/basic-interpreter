@@ -52,7 +52,14 @@ bool is_assign_variable_cmd(const std::string &cmd) {
     const auto has_whitespace_around_let =
         cmd.find_last_of(" \t", before_let_pos) == before_let_pos &&
         cmd.find_first_of(" \t", after_let_pos) == after_let_pos;
-    return has_whitespace_around_let;
+    const auto variable_begins_pos =
+        cmd.find_first_not_of(" \t", after_let_pos);
+    const auto variable_ends_pos =
+        cmd.find_first_of(" \t", variable_begins_pos);
+    const auto variable = cmd.substr(variable_begins_pos,
+                                     variable_ends_pos - variable_begins_pos),
+               value = cmd.substr(variable_ends_pos);
+    return has_whitespace_around_let && !variable.empty() && !value.empty();
   }
   return false;
 }

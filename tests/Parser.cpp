@@ -72,3 +72,7 @@ TEST(identifyAssignVariableCommand, mustHaveLetKeyword) {
 TEST(identifyAssignVariableCommand, letKeywordMustBeIsolated) {
   ASSERT_FALSE(is_assign_variable_cmd("1 LETTER X 1"));
 }
+
+TEST(identifyAssignVariableCommand, mustHaveVariableAndValueStrings) {
+  ASSERT_TRUE(is_assign_variable_cmd("1 LET X 1"));
+}
