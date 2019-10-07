@@ -29,7 +29,14 @@ bool has_line_number(const std::string &cmd) {
 
 bool is_print_cmd(const std::string &cmd) {
   const auto print_pos = cmd.find("PRINT");
-  return print_pos != std::string::npos &&
-         cmd.find_last_of(" \t", print_pos) == print_pos - 1 &&
-         cmd.find_first_of(" \t", print_pos + 5) == print_pos + 5;
+  const auto has_print_keyword = print_pos != std::string::npos;
+  if (has_print_keyword) {
+    const auto before_print_pos = print_pos - 1;
+    const auto after_print_pos = print_pos + 5;
+    const auto has_whitespace_around_print =
+        cmd.find_last_of(" \t", before_print_pos) == before_print_pos &&
+        cmd.find_first_of(" \t", after_print_pos) == after_print_pos;
+    return has_whitespace_around_print;
+  }
+  return false;
 }
