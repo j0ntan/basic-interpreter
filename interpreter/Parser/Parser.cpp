@@ -65,11 +65,24 @@ bool is_assign_variable_cmd(const std::string &cmd) {
   return false;
 }
 
+size_t find_matching_bracket(size_t left_bracket_pos, const std::string &cmd) {
+  for (size_t i = left_bracket_pos, nested_count = 0; i < cmd.size(); ++i) {
+    const auto &this_char = cmd[i];
+    if (this_char == '[' || this_char == '(')
+      ++nested_count;
+    else if (this_char == ']' || this_char == ')')
+      --nested_count;
+    if (nested_count == 0)
+      return i;
+  }
+  return std::string::npos;
+}
+
 bool is_assign_array_cmd(const std::string &cmd) {
   const auto let_pos = cmd.find("LET");
   const auto has_let_keyword = let_pos != std::string::npos;
-  const auto left_bracket_pos = cmd.find('['),
-             right_bracket_pos = cmd.find(']');
+  const auto left_bracket_pos = cmd.find('[');
+  const auto right_bracket_pos = find_matching_bracket(left_bracket_pos, cmd);
   const auto has_bracket_pair = left_bracket_pos != std::string::npos &&
                                 right_bracket_pos != std::string::npos;
   if (has_let_keyword && has_bracket_pair) {

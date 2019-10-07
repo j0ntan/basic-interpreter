@@ -114,3 +114,7 @@ TEST(identifyAssignArrayCommand, indexMustNotBeEmpty) {
 TEST(identifyAssignArrayCommand, indexIsNumericExpression) {
   ASSERT_FALSE(is_assign_array_cmd("1 LET X[invalid] 1"));
 }
+
+TEST(identifyAssignArrayCommand, arrayElementCanBeIndex) {
+  ASSERT_TRUE(is_assign_array_cmd("1 LET X[Y[0]] 1"));
+}
