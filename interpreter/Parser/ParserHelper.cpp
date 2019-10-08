@@ -116,6 +116,8 @@ bool isBinaryExpression(const std::string &str) {
   return !expression.empty() && has_valid_operands(expression);
 }
 
+bool isBooleanExpression(const std::string &str) { return false; }
+
 std::pair<std::string, std::string>
 get_operands(const std::string &expression) {
   size_t operator_position = 0;

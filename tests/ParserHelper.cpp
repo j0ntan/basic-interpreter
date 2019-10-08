@@ -278,3 +278,7 @@ TEST(getOperands, matchNestedFirstOperand) {
   ASSERT_EQ(get_operands("(-1+2)-3"),
             std::make_pair(std::string("(-1+2)"), std::string("3")));
 }
+
+TEST(IsBooleanExpression, callIsBooleanExpression) {
+  isBooleanExpression("0 < 1");
+}
