@@ -118,3 +118,5 @@ bool is_goto_cmd(const std::string &cmd) {
   }
   return false;
 }
+
+bool is_if_then_cmd(const std::string &cmd) { return false; }

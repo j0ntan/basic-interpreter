@@ -146,3 +146,5 @@ TEST(identifyGotoCommand, jlineIsInteger) {
 TEST(identifyGotoCommand, jlineIsPositiveInteger) {
   ASSERT_FALSE(is_goto_cmd("1 GOTO -1"));
 }
+
+TEST(identifyIfThenCommand, callIfThen) { is_if_then_cmd("1 IF X < Y THEN 2"); }
