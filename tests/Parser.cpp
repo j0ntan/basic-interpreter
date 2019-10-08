@@ -148,3 +148,7 @@ TEST(identifyGotoCommand, jlineIsPositiveInteger) {
 }
 
 TEST(identifyIfThenCommand, callIfThen) { is_if_then_cmd("1 IF X < Y THEN 2"); }
+
+TEST(identifyIfThenCommand, mustHaveKeywords) {
+  ASSERT_TRUE(is_if_then_cmd("1 IF X < Y THEN 2"));
+}

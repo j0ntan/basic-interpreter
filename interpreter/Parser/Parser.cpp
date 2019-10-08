@@ -119,4 +119,9 @@ bool is_goto_cmd(const std::string &cmd) {
   return false;
 }
 
-bool is_if_then_cmd(const std::string &cmd) { return false; }
+bool is_if_then_cmd(const std::string &cmd) {
+  const auto if_pos = cmd.find("IF"), then_pos = cmd.find("THEN");
+  const auto found_if = if_pos != std::string::npos,
+             found_then = then_pos != std::string::npos;
+  return found_if && found_then;
+}
