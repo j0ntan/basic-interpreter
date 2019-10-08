@@ -123,5 +123,15 @@ bool is_if_then_cmd(const std::string &cmd) {
   const auto if_pos = cmd.find("IF"), then_pos = cmd.find("THEN");
   const auto found_if = if_pos != std::string::npos,
              found_then = then_pos != std::string::npos;
-  return found_if && found_then;
+  const auto has_left_whitespace =
+      found_if && found_then &&
+      cmd.find_last_of(" \t", if_pos - 1) == if_pos - 1 &&
+      cmd.find_last_of(" \t", then_pos - 1) == then_pos - 1;
+  const auto has_right_whitespace =
+      found_if && found_then &&
+      cmd.find_first_of(" \t", if_pos + 2) == if_pos + 2 &&
+      cmd.find_first_of(" \t", then_pos + 4) == then_pos + 4;
+  const auto has_keywords =
+      found_if && found_then && has_left_whitespace && has_right_whitespace;
+  return has_keywords;
 }
