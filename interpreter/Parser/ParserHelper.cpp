@@ -133,7 +133,8 @@ get_operands(const std::string &expression) {
     const char &this_char = expression[i];
     if (nested_count == 0 &&
         (this_char == '+' || (this_char == '-' && i != 0) || this_char == '*' ||
-         this_char == '/'))
+         this_char == '/' || this_char == '<' || this_char == '>' ||
+         this_char == '='))
       operator_position = i;
     else if (this_char == '(')
       ++nested_count;

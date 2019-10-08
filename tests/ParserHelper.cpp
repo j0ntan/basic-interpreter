@@ -294,3 +294,14 @@ TEST(IsBooleanExpression, findGreaterThanOperator) {
 TEST(IsBooleanExpression, findEqualityOperator) {
   ASSERT_TRUE(isBooleanExpression("0 = 0"));
 }
+
+TEST(getOperands, matchBooleanOperands) {
+  ASSERT_EQ(get_operands("0<1"),
+            std::make_pair(std::string("0"), std::string("1")));
+  ASSERT_EQ(get_operands("0>1"),
+            std::make_pair(std::string("0"), std::string("1")));
+  ASSERT_EQ(get_operands("0=1"),
+            std::make_pair(std::string("0"), std::string("1")));
+  ASSERT_EQ(get_operands("(X+Y)>VAR"),
+            std::make_pair(std::string("(X+Y)"), std::string("VAR")));
+}
