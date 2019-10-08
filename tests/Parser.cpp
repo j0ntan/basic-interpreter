@@ -122,3 +122,7 @@ TEST(identifyAssignArrayCommand, arrayElementCanBeIndex) {
 TEST(identifyAssignArrayCommand, hasValueString) {
   ASSERT_FALSE(is_assign_array_cmd("1 LET X[0]"));
 }
+
+TEST(identifyAssignArrayCommand, valueIsNumericExpression) {
+  ASSERT_FALSE(is_assign_array_cmd("1 LET X[0] invalid"));
+}

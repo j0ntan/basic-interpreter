@@ -97,7 +97,8 @@ bool is_assign_array_cmd(const std::string &cmd) {
     const auto value = cmd.substr(right_bracket_pos + 1);
     return has_whitespace_around_let && !variable.empty() &&
            isVariable(variable) && !index.empty() &&
-           isNumericExpression(index) && !value.empty();
+           isNumericExpression(index) && !value.empty() &&
+           isNumericExpression(value);
   }
   return false;
 }
