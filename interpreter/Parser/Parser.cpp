@@ -112,5 +112,9 @@ bool is_goto_cmd(const std::string &cmd) {
       found_goto && cmd.find_last_of(" \t", goto_pos + 4) == goto_pos + 4;
   const auto has_goto_keyword =
       found_goto && has_left_whitespace && has_right_whitespace;
-  return has_goto_keyword;
+  if (has_goto_keyword) {
+    const auto jline = findNextExpression(cmd.substr(goto_pos + 4));
+    return !jline.empty();
+  }
+  return false;
 }

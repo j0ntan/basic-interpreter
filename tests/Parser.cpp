@@ -136,3 +136,5 @@ TEST(identifyGotoCommand, mustHaveGotoKeyword) {
 TEST(identifyGotoCommand, gotoKeywordIsIsolated) {
   ASSERT_FALSE(is_goto_cmd("1 GOTOEAT 2"));
 }
+
+TEST(identifyGotoCommand, hasJline) { ASSERT_FALSE(is_goto_cmd("1 GOTO ")); }
