@@ -282,3 +282,7 @@ TEST(getOperands, matchNestedFirstOperand) {
 TEST(IsBooleanExpression, callIsBooleanExpression) {
   isBooleanExpression("0 < 1");
 }
+
+TEST(IsBooleanExpression, findLessThanOperator) {
+  ASSERT_TRUE(isBooleanExpression("0 < 1"));
+}
