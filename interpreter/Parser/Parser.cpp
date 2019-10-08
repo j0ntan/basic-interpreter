@@ -133,5 +133,5 @@ bool is_if_then_cmd(const std::string &cmd) {
       cmd.find_first_of(" \t", then_pos + 4) == then_pos + 4;
   const auto has_keywords =
       found_if && found_then && has_left_whitespace && has_right_whitespace;
-  return has_keywords;
+  return has_keywords && if_pos < then_pos;
 }

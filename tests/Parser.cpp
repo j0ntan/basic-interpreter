@@ -156,3 +156,7 @@ TEST(identifyIfThenCommand, mustHaveKeywords) {
 TEST(identifyIfThenCommand, keywordsAreIsolated) {
   ASSERT_FALSE(is_if_then_cmd("1 DIFF X < Y THENCE 2"));
 }
+
+TEST(identifyIfThenCommand, keywordsAreOrdered) {
+  ASSERT_FALSE(is_if_then_cmd("1 THEN X < Y IF 2"));
+}
