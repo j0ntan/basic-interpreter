@@ -114,7 +114,7 @@ bool is_goto_cmd(const std::string &cmd) {
       found_goto && has_left_whitespace && has_right_whitespace;
   if (has_goto_keyword) {
     const auto jline = findNextExpression(cmd.substr(goto_pos + 4));
-    return !jline.empty() && isInteger(jline);
+    return !jline.empty() && isInteger(jline) && jline[0] != '-';
   }
   return false;
 }
