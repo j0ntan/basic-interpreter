@@ -104,5 +104,13 @@ bool is_assign_array_cmd(const std::string &cmd) {
 }
 
 bool is_goto_cmd(const std::string &cmd) {
-  return cmd.find("GOTO") != std::string::npos;
+  const auto goto_pos = cmd.find("GOTO");
+  const auto found_goto = goto_pos != std::string::npos;
+  const auto has_left_whitespace =
+      found_goto && cmd.find_last_of(" \t", goto_pos - 1) == goto_pos - 1;
+  const auto has_right_whitespace =
+      found_goto && cmd.find_last_of(" \t", goto_pos + 4) == goto_pos + 4;
+  const auto has_goto_keyword =
+      found_goto && has_left_whitespace && has_right_whitespace;
+  return has_goto_keyword;
 }
