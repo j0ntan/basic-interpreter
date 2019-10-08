@@ -138,3 +138,7 @@ TEST(identifyGotoCommand, gotoKeywordIsIsolated) {
 }
 
 TEST(identifyGotoCommand, hasJline) { ASSERT_FALSE(is_goto_cmd("1 GOTO ")); }
+
+TEST(identifyGotoCommand, jlineIsInteger) {
+  ASSERT_FALSE(is_goto_cmd("1 GOTO invalid"));
+}
