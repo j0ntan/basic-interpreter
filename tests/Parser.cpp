@@ -128,3 +128,7 @@ TEST(identifyAssignArrayCommand, valueIsNumericExpression) {
 }
 
 TEST(identifyGotoCommand, callGoto) { is_goto_cmd("1 GOTO 2"); }
+
+TEST(identifyGotoCommand, mustHaveGotoKeyword) {
+  ASSERT_TRUE(is_goto_cmd("1 GOTO 2"));
+}
