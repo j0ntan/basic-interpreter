@@ -126,3 +126,5 @@ TEST(identifyAssignArrayCommand, hasValueString) {
 TEST(identifyAssignArrayCommand, valueIsNumericExpression) {
   ASSERT_FALSE(is_assign_array_cmd("1 LET X[0] invalid"));
 }
+
+TEST(identifyGotoCommand, callGoto) { is_goto_cmd("1 GOTO 2"); }
