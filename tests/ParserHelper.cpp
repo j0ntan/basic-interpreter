@@ -290,3 +290,7 @@ TEST(IsBooleanExpression, findLessThanOperator) {
 TEST(IsBooleanExpression, findGreaterThanOperator) {
   ASSERT_TRUE(isBooleanExpression("1 > 0"));
 }
+
+TEST(IsBooleanExpression, findEqualityOperator) {
+  ASSERT_TRUE(isBooleanExpression("0 = 0"));
+}

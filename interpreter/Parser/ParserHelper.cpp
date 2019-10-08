@@ -117,10 +117,12 @@ bool isBinaryExpression(const std::string &str) {
 }
 
 bool isBooleanExpression(const std::string &str) {
-  const auto less_than_pos = str.find('<'), greater_than_pos = str.find('>');
+  const auto less_than_pos = str.find('<'), greater_than_pos = str.find('>'),
+             equals_pos = str.find('=');
   const auto compare_less_than = less_than_pos != std::string::npos;
   const auto compare_greater_than = greater_than_pos != std::string::npos;
-  return compare_less_than || compare_greater_than;
+  const auto compare_equals = equals_pos != std::string::npos;
+  return compare_less_than || compare_greater_than || compare_equals;
 }
 
 std::pair<std::string, std::string>
