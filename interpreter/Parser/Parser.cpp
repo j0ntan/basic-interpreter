@@ -160,7 +160,7 @@ bool is_gosub_cmd(const std::string &cmd) {
       found_gosub && has_left_whitespace && has_right_whitespace;
   if (has_gosub_keyword) {
     const auto jline = findNextExpression(cmd.substr(gosub_pos + 5));
-    return !jline.empty() && isInteger(jline);
+    return !jline.empty() && isInteger(jline) && jline[0] != '-';
   }
   return false;
 }
