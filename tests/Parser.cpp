@@ -176,3 +176,7 @@ TEST(identifyIfThenCommand, hasJline) {
 TEST(identifyIfThenCommand, jlineIsInteger) {
   ASSERT_FALSE(is_if_then_cmd("1 IF X>Y THEN Z"));
 }
+
+TEST(identifyIfThenCommand, jlineIsNotNegative) {
+  ASSERT_FALSE(is_if_then_cmd("1 IF X>Y THEN -2"));
+}
