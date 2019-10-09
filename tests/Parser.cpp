@@ -168,3 +168,7 @@ TEST(identifyIfThenCommand, hasBooleanExpression) {
 TEST(identifyIfThenCommand, booleanExpressionIsValid) {
   ASSERT_FALSE(is_if_then_cmd("1 IF invalid = 0 THEN 2"));
 }
+
+TEST(identifyIfThenCommand, hasJline) {
+  ASSERT_FALSE(is_if_then_cmd("1 IF X>Y THEN"));
+}
