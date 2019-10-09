@@ -192,3 +192,7 @@ TEST(identifyGosubCommand, gosubKeywordIsIsolated) {
 }
 
 TEST(identifyGosubCommand, hasJline) { ASSERT_FALSE(is_gosub_cmd("1 GOSUB ")); }
+
+TEST(identifyGosubCommand, jlineIsInteger) {
+  ASSERT_FALSE(is_gosub_cmd("1 GOSUB VAR"));
+}
