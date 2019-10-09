@@ -160,3 +160,7 @@ TEST(identifyIfThenCommand, keywordsAreIsolated) {
 TEST(identifyIfThenCommand, keywordsAreOrdered) {
   ASSERT_FALSE(is_if_then_cmd("1 THEN X < Y IF 2"));
 }
+
+TEST(identifyIfThenCommand, hasBooleanExpression) {
+  ASSERT_FALSE(is_if_then_cmd("1 IF  THEN 2"));
+}
