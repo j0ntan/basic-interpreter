@@ -11,5 +11,6 @@ bool is_assign_array_cmd(const std::string &cmd);
 bool is_goto_cmd(const std::string &cmd);
 bool is_if_then_cmd(const std::string &cmd);
 bool is_gosub_cmd(const std::string &cmd);
+bool is_return_cmd(const std::string &cmd);
 
 #endif

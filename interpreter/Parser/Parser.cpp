@@ -164,3 +164,5 @@ bool is_gosub_cmd(const std::string &cmd) {
   }
   return false;
 }
+
+bool is_return_cmd(const std::string &cmd) { return false; }

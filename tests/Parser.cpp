@@ -200,3 +200,5 @@ TEST(identifyGosubCommand, jlineIsInteger) {
 TEST(identifyGosubCommand, jlineIsNonNegative) {
   ASSERT_FALSE(is_gosub_cmd("1 GOSUB -2"));
 }
+
+TEST(identifyReturnCommand, callReturn) { is_return_cmd("1 RETURN"); }
