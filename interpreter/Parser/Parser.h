@@ -10,5 +10,6 @@ bool is_assign_variable_cmd(const std::string &cmd);
 bool is_assign_array_cmd(const std::string &cmd);
 bool is_goto_cmd(const std::string &cmd);
 bool is_if_then_cmd(const std::string &cmd);
+bool is_gosub_cmd(const std::string &cmd);
 
 #endif

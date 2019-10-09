@@ -180,3 +180,5 @@ TEST(identifyIfThenCommand, jlineIsInteger) {
 TEST(identifyIfThenCommand, jlineIsNotNegative) {
   ASSERT_FALSE(is_if_then_cmd("1 IF X>Y THEN -2"));
 }
+
+TEST(identifyGosubCommand, callGosub) { is_gosub_cmd("1 GOSUB 2"); }
