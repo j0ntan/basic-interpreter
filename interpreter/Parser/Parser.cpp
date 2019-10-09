@@ -168,5 +168,10 @@ bool is_gosub_cmd(const std::string &cmd) {
 bool is_return_cmd(const std::string &cmd) {
   const auto return_pos = cmd.find("RETURN");
   const auto found_return = return_pos != std::string::npos;
-  return found_return;
+  const auto has_left_whitespace =
+      found_return && cmd.find_last_of(" \t", return_pos - 1) == return_pos - 1;
+  const auto is_end_of_cmd = return_pos + 6 == cmd.length();
+  const auto has_return_keyword =
+      found_return && has_left_whitespace && is_end_of_cmd;
+  return has_return_keyword;
 }
