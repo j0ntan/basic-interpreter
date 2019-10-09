@@ -175,3 +175,5 @@ bool is_return_cmd(const std::string &cmd) {
       found_return && has_left_whitespace && is_end_of_cmd;
   return has_return_keyword;
 }
+
+bool is_end_cmd(const std::string &cmd) { return false; }

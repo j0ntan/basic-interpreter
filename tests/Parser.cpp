@@ -212,3 +212,5 @@ TEST(identifyReturnCommand, returnIsIsolatedAtEnd) {
   ASSERT_FALSE(is_return_cmd("1 RETURNNOW"));
   ASSERT_FALSE(is_return_cmd("1 RETURN NOW"));
 }
+
+TEST(identifyEndCommand, callEnd) { is_end_cmd("1 END"); }
