@@ -214,3 +214,7 @@ TEST(identifyReturnCommand, returnIsIsolatedAtEnd) {
 }
 
 TEST(identifyEndCommand, callEnd) { is_end_cmd("1 END"); }
+
+TEST(identifyEndCommand, hasEndKeyword) {
+  ASSERT_TRUE(is_return_cmd("1 RETURN"));
+}

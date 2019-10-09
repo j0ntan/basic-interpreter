@@ -176,4 +176,8 @@ bool is_return_cmd(const std::string &cmd) {
   return has_return_keyword;
 }
 
-bool is_end_cmd(const std::string &cmd) { return false; }
+bool is_end_cmd(const std::string &cmd) {
+  const auto end_pos = cmd.find("END");
+  const auto found_end = end_pos != std::string::npos;
+  return found_end;
+}
