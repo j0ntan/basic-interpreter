@@ -149,4 +149,8 @@ bool is_if_then_cmd(const std::string &cmd) {
   return false;
 }
 
-bool is_gosub_cmd(const std::string &cmd) { return false; }
+bool is_gosub_cmd(const std::string &cmd) {
+  const auto gosub_pos = cmd.find("GOSUB");
+  const auto found_gosub = gosub_pos != std::string::npos;
+  return found_gosub;
+}

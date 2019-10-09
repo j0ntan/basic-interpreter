@@ -182,3 +182,7 @@ TEST(identifyIfThenCommand, jlineIsNotNegative) {
 }
 
 TEST(identifyGosubCommand, callGosub) { is_gosub_cmd("1 GOSUB 2"); }
+
+TEST(identifyGosubCommand, hasGosubKeyword) {
+  ASSERT_TRUE(is_gosub_cmd("1 GOSUB 2"));
+}
