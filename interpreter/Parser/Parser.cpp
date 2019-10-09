@@ -143,7 +143,7 @@ bool is_if_then_cmd(const std::string &cmd) {
                          boolean_ends_pos - boolean_begins_pos + 1)
             : std::string();
     const auto jline = findNextExpression(cmd.substr(then_pos + 4));
-    return isBooleanExpression(boolean) && !jline.empty();
+    return isBooleanExpression(boolean) && !jline.empty() && isInteger(jline);
   }
   return false;
 }
