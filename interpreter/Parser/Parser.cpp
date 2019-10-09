@@ -179,5 +179,10 @@ bool is_return_cmd(const std::string &cmd) {
 bool is_end_cmd(const std::string &cmd) {
   const auto end_pos = cmd.find("END");
   const auto found_end = end_pos != std::string::npos;
-  return found_end;
+  const auto has_left_whitespace =
+      found_end && cmd.find_last_of(" \t", end_pos - 1) == end_pos - 1;
+  const auto is_end_of_cmd = end_pos + 3 == cmd.length();
+  const auto has_end_keyword =
+      found_end && has_left_whitespace && is_end_of_cmd;
+  return has_end_keyword;
 }

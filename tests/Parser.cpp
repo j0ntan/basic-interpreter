@@ -218,3 +218,9 @@ TEST(identifyEndCommand, callEnd) { is_end_cmd("1 END"); }
 TEST(identifyEndCommand, hasEndKeyword) {
   ASSERT_TRUE(is_return_cmd("1 RETURN"));
 }
+
+TEST(identifyEndCommand, endIsIsolatedAtEnd) {
+  ASSERT_FALSE(is_return_cmd("1 NOEND"));
+  ASSERT_FALSE(is_return_cmd("1 ENDNOW"));
+  ASSERT_FALSE(is_return_cmd("1 END NOW"));
+}
