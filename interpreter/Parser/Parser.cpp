@@ -137,7 +137,12 @@ bool is_if_then_cmd(const std::string &cmd) {
     const auto boolean_begins_pos = cmd.find_first_not_of(" \t", if_pos + 2),
                boolean_ends_pos = cmd.find_last_not_of(" \t", then_pos - 1);
     const auto has_boolean_expression = boolean_begins_pos < boolean_ends_pos;
-    return has_boolean_expression;
+    const auto boolean =
+        has_boolean_expression
+            ? cmd.substr(boolean_begins_pos,
+                         boolean_ends_pos - boolean_begins_pos + 1)
+            : std::string();
+    return isBooleanExpression(boolean);
   }
   return false;
 }

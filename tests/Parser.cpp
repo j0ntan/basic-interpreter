@@ -164,3 +164,7 @@ TEST(identifyIfThenCommand, keywordsAreOrdered) {
 TEST(identifyIfThenCommand, hasBooleanExpression) {
   ASSERT_FALSE(is_if_then_cmd("1 IF  THEN 2"));
 }
+
+TEST(identifyIfThenCommand, booleanExpressionIsValid) {
+  ASSERT_FALSE(is_if_then_cmd("1 IF invalid = 0 THEN 2"));
+}
