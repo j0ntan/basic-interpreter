@@ -158,5 +158,9 @@ bool is_gosub_cmd(const std::string &cmd) {
       found_gosub && cmd.find_last_of(" \t", gosub_pos + 5) == gosub_pos + 5;
   const auto has_gosub_keyword =
       found_gosub && has_left_whitespace && has_right_whitespace;
-  return has_gosub_keyword;
+  if (has_gosub_keyword) {
+    const auto jline = findNextExpression(cmd.substr(gosub_pos + 5));
+    return !jline.empty();
+  }
+  return false;
 }

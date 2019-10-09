@@ -190,3 +190,5 @@ TEST(identifyGosubCommand, hasGosubKeyword) {
 TEST(identifyGosubCommand, gosubKeywordIsIsolated) {
   ASSERT_FALSE(is_gosub_cmd("1 ALGOSUBJECT 2"));
 }
+
+TEST(identifyGosubCommand, hasJline) { ASSERT_FALSE(is_gosub_cmd("1 GOSUB ")); }
