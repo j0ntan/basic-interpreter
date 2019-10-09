@@ -305,3 +305,8 @@ TEST(getOperands, matchBooleanOperands) {
   ASSERT_EQ(get_operands("(X+Y)>VAR"),
             std::make_pair(std::string("(X+Y)"), std::string("VAR")));
 }
+
+TEST(IsBooleanExpression, operandsMustBeNumericExpressions) {
+  ASSERT_FALSE(isBooleanExpression("invalid=1"));
+  ASSERT_FALSE(isBooleanExpression("1=invalid"));
+}
