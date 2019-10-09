@@ -152,5 +152,11 @@ bool is_if_then_cmd(const std::string &cmd) {
 bool is_gosub_cmd(const std::string &cmd) {
   const auto gosub_pos = cmd.find("GOSUB");
   const auto found_gosub = gosub_pos != std::string::npos;
-  return found_gosub;
+  const auto has_left_whitespace =
+      found_gosub && cmd.find_last_of(" \t", gosub_pos - 1) == gosub_pos - 1;
+  const auto has_right_whitespace =
+      found_gosub && cmd.find_last_of(" \t", gosub_pos + 5) == gosub_pos + 5;
+  const auto has_gosub_keyword =
+      found_gosub && has_left_whitespace && has_right_whitespace;
+  return has_gosub_keyword;
 }
