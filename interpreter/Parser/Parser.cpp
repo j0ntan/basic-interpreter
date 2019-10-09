@@ -165,4 +165,8 @@ bool is_gosub_cmd(const std::string &cmd) {
   return false;
 }
 
-bool is_return_cmd(const std::string &cmd) { return false; }
+bool is_return_cmd(const std::string &cmd) {
+  const auto return_pos = cmd.find("RETURN");
+  const auto found_return = return_pos != std::string::npos;
+  return found_return;
+}

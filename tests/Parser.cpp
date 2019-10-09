@@ -202,3 +202,7 @@ TEST(identifyGosubCommand, jlineIsNonNegative) {
 }
 
 TEST(identifyReturnCommand, callReturn) { is_return_cmd("1 RETURN"); }
+
+TEST(identifyReturnCommand, hasReturnKeyword) {
+  ASSERT_TRUE(is_return_cmd("1 RETURN"));
+}
