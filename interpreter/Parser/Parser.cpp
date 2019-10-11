@@ -42,9 +42,8 @@ static bool has_keyword(const std::string &cmd, const std::string &keyword) {
 }
 
 bool is_print_cmd(const std::string &cmd) {
-  const auto print_pos = cmd.find("PRINT");
   if (has_keyword(cmd, "PRINT")) {
-    const auto after_print_pos = print_pos + 5;
+    const auto after_print_pos = cmd.find("PRINT") + 5;
     const auto value = cmd.substr(after_print_pos);
     return isNumericExpression(value);
   }
@@ -52,9 +51,8 @@ bool is_print_cmd(const std::string &cmd) {
 }
 
 bool is_assign_variable_cmd(const std::string &cmd) {
-  const auto let_pos = cmd.find("LET");
   if (has_keyword(cmd, "LET")) {
-    const auto after_let_pos = let_pos + 3;
+    const auto after_let_pos = cmd.find("LET") + 3;
     const auto variable_begins_pos =
         cmd.find_first_not_of(" \t", after_let_pos);
     const auto variable_ends_pos =
@@ -82,13 +80,12 @@ size_t find_matching_bracket(size_t left_bracket_pos, const std::string &cmd) {
 }
 
 bool is_assign_array_cmd(const std::string &cmd) {
-  const auto let_pos = cmd.find("LET");
   const auto left_bracket_pos = cmd.find('[');
   const auto right_bracket_pos = find_matching_bracket(left_bracket_pos, cmd);
   const auto has_bracket_pair = left_bracket_pos != std::string::npos &&
                                 right_bracket_pos != std::string::npos;
   if (has_keyword(cmd, "LET") && has_bracket_pair) {
-    const auto after_let_pos = let_pos + 3;
+    const auto after_let_pos = cmd.find("LET") + 3;
     const auto variable = findNextExpression(cmd.substr(after_let_pos));
     const auto index = cmd.substr(left_bracket_pos + 1,
                                   right_bracket_pos - left_bracket_pos - 1);
@@ -101,9 +98,9 @@ bool is_assign_array_cmd(const std::string &cmd) {
 }
 
 bool is_goto_cmd(const std::string &cmd) {
-  const auto goto_pos = cmd.find("GOTO");
   if (has_keyword(cmd, "GOTO")) {
-    const auto jline = findNextExpression(cmd.substr(goto_pos + 4));
+    const auto after_goto_pos = cmd.find("GOTO") + 4;
+    const auto jline = findNextExpression(cmd.substr(after_goto_pos));
     return !jline.empty() && isInteger(jline) && jline[0] != '-';
   }
   return false;
@@ -128,9 +125,9 @@ bool is_if_then_cmd(const std::string &cmd) {
 }
 
 bool is_gosub_cmd(const std::string &cmd) {
-  const auto gosub_pos = cmd.find("GOSUB");
   if (has_keyword(cmd, "GOSUB")) {
-    const auto jline = findNextExpression(cmd.substr(gosub_pos + 5));
+    const auto after_gosub_pos = cmd.find("GOSUB") + 5;
+    const auto jline = findNextExpression(cmd.substr(after_gosub_pos));
     return !jline.empty() && isInteger(jline) && jline[0] != '-';
   }
   return false;
