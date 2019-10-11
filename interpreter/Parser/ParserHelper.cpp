@@ -122,9 +122,10 @@ bool isBooleanExpression(const std::string &str) {
   const auto compare_less_than = less_than_pos != std::string::npos;
   const auto compare_greater_than = greater_than_pos != std::string::npos;
   const auto compare_equals = equals_pos != std::string::npos;
-  if(compare_less_than || compare_greater_than || compare_equals) {
+  if (compare_less_than || compare_greater_than || compare_equals) {
     const auto operands = get_operands(str);
-    return isNumericExpression(operands.first) && isNumericExpression(operands.second);
+    return isNumericExpression(operands.first) &&
+           isNumericExpression(operands.second);
   }
   return false;
 }
