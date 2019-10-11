@@ -107,14 +107,9 @@ bool is_goto_cmd(const std::string &cmd) {
 bool is_if_then_cmd(const std::string &cmd) {
   const auto if_pos = cmd.find("IF"), then_pos = cmd.find("THEN");
   if (has_keyword(cmd, "IF") && has_keyword(cmd, "THEN") && if_pos < then_pos) {
-    const auto boolean_begins_pos = cmd.find_first_not_of(" \t", if_pos + 2),
-               boolean_ends_pos = cmd.find_last_not_of(" \t", then_pos - 1);
-    const auto has_boolean_expression = boolean_begins_pos < boolean_ends_pos;
-    const auto boolean =
-        has_boolean_expression
-            ? cmd.substr(boolean_begins_pos,
-                         boolean_ends_pos - boolean_begins_pos + 1)
-            : std::string();
+    const auto in_between_if_then_str =
+        cmd.substr(if_pos + 2, then_pos - (if_pos + 2));
+    const auto boolean = remove_surrounding_whitespace(in_between_if_then_str);
     const auto jline = findNextExpression(cmd.substr(then_pos + 4));
     return isBooleanExpression(boolean) && !jline.empty() && isInteger(jline) &&
            jline[0] != '-';
