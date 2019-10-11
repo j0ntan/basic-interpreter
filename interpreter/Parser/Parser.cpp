@@ -126,24 +126,22 @@ bool is_gosub_cmd(const std::string &cmd) {
   return false;
 }
 
-bool is_return_cmd(const std::string &cmd) {
-  const auto return_pos = cmd.find("RETURN");
-  const auto found_return = return_pos != std::string::npos;
+static bool has_terminating_keyword(const std::string &cmd,
+                                    const std::string &keyword) {
+  const auto keyword_pos = cmd.find(keyword);
+  const auto found_keyword = keyword_pos != std::string::npos;
   const auto has_left_whitespace =
-      found_return && cmd.find_last_of(" \t", return_pos - 1) == return_pos - 1;
-  const auto is_end_of_cmd = return_pos + 6 == cmd.length();
-  const auto has_return_keyword =
-      found_return && has_left_whitespace && is_end_of_cmd;
-  return has_return_keyword;
+      found_keyword &&
+      cmd.find_last_of(" \t", keyword_pos - 1) == keyword_pos - 1;
+  const auto is_terminator =
+      found_keyword && keyword_pos + keyword.length() == cmd.length();
+  return found_keyword && has_left_whitespace && is_terminator;
+}
+
+bool is_return_cmd(const std::string &cmd) {
+  return has_terminating_keyword(cmd, "RETURN");
 }
 
 bool is_end_cmd(const std::string &cmd) {
-  const auto end_pos = cmd.find("END");
-  const auto found_end = end_pos != std::string::npos;
-  const auto has_left_whitespace =
-      found_end && cmd.find_last_of(" \t", end_pos - 1) == end_pos - 1;
-  const auto is_end_of_cmd = end_pos + 3 == cmd.length();
-  const auto has_end_keyword =
-      found_end && has_left_whitespace && is_end_of_cmd;
-  return has_end_keyword;
+  return has_terminating_keyword(cmd, "END");
 }
