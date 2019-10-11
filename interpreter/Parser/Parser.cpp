@@ -53,13 +53,11 @@ bool is_print_cmd(const std::string &cmd) {
 bool is_assign_variable_cmd(const std::string &cmd) {
   if (has_keyword(cmd, "LET")) {
     const auto after_let_pos = cmd.find("LET") + 3;
-    const auto variable_begins_pos =
-        cmd.find_first_not_of(" \t", after_let_pos);
-    const auto variable_ends_pos =
-        cmd.find_first_of(" \t", variable_begins_pos);
-    const auto variable = cmd.substr(variable_begins_pos,
-                                     variable_ends_pos - variable_begins_pos),
-               value = cmd.substr(variable_ends_pos);
+    const auto variable = findNextExpression(cmd.substr(after_let_pos));
+    const auto after_variable_pos = cmd.find(variable) + variable.length();
+    const auto value = variable.empty()
+                           ? variable
+                           : findNextExpression(cmd.substr(after_variable_pos));
     return !variable.empty() && isVariable(variable) && !value.empty() &&
            isNumericExpression(value);
   }
