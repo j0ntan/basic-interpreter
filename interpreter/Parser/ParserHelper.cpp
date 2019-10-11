@@ -5,6 +5,8 @@ std::string remove_surrounding_whitespace(const std::string &str) {
   const size_t last_char = str.find_last_not_of(" \t");
   if (str.empty() || (first_char == 0 && last_char == str.size() - 1))
     return str;
+  else if (first_char == std::string::npos)
+    return std::string();
   return str.substr(first_char, last_char - first_char + 1);
 }
 
