@@ -3,6 +3,8 @@
 
 #include <string>
 
+class NumericExpression;
+
 std::string findNextExpression(const std::string &cmd);
 bool has_line_number(const std::string &cmd);
 bool is_print_cmd(const std::string &cmd);
@@ -14,6 +16,6 @@ bool is_gosub_cmd(const std::string &cmd);
 bool is_return_cmd(const std::string &cmd);
 bool is_end_cmd(const std::string &cmd);
 
-void numericExpressionGenerator(const std::string &expression);
+NumericExpression *numericExpressionGenerator(const std::string &expression);
 
 #endif

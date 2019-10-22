@@ -1,4 +1,5 @@
 #include "Parser.h"
+#include "NumericExpression.h"
 #include <gtest/gtest.h>
 
 TEST(findNextExpression, callGetNextExpression) { findNextExpression("123"); }
@@ -227,4 +228,8 @@ TEST(identifyEndCommand, endIsIsolatedAtEnd) {
 
 TEST(NumericExpressionGenerator, callNumericExpressionGenerator) {
   numericExpressionGenerator("0");
+}
+
+TEST(NumericExpressionGenerator, returnsPointerToNumericExpression) {
+  NumericExpression *expression = numericExpressionGenerator("0");
 }

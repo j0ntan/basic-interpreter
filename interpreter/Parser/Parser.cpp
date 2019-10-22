@@ -1,4 +1,5 @@
 #include "Parser.h"
+#include "NumericExpression.h"
 #include "ParserHelper.h"
 #include <cctype>
 
@@ -146,4 +147,6 @@ bool is_end_cmd(const std::string &cmd) {
   return has_terminating_keyword(cmd, "END");
 }
 
-void numericExpressionGenerator(const std::string &expression) {}
+NumericExpression *numericExpressionGenerator(const std::string &expression) {
+  return nullptr;
+}
