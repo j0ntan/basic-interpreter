@@ -14,4 +14,6 @@ bool is_gosub_cmd(const std::string &cmd);
 bool is_return_cmd(const std::string &cmd);
 bool is_end_cmd(const std::string &cmd);
 
+void numericExpressionGenerator(const std::string &expression);
+
 #endif

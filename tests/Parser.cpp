@@ -224,3 +224,7 @@ TEST(identifyEndCommand, endIsIsolatedAtEnd) {
   ASSERT_FALSE(is_return_cmd("1 ENDNOW"));
   ASSERT_FALSE(is_return_cmd("1 END NOW"));
 }
+
+TEST(NumericExpressionGenerator, callNumericExpressionGenerator) {
+  numericExpressionGenerator("0");
+}

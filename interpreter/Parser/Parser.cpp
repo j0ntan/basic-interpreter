@@ -145,3 +145,5 @@ bool is_return_cmd(const std::string &cmd) {
 bool is_end_cmd(const std::string &cmd) {
   return has_terminating_keyword(cmd, "END");
 }
+
+void numericExpressionGenerator(const std::string &expression) {}
