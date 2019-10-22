@@ -23,3 +23,4 @@ add_library(End STATIC Commands/End.cpp)
 add_library(ParserHelper STATIC Parser/ParserHelper.cpp)
 
 add_library(Parser STATIC Parser/Parser.cpp)
+target_link_libraries(Parser PRIVATE Constant)

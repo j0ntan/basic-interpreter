@@ -1,6 +1,7 @@
 #include "Parser.h"
 #include "NumericExpression.h"
 #include <gtest/gtest.h>
+#include <memory>
 
 TEST(findNextExpression, callGetNextExpression) { findNextExpression("123"); }
 
@@ -232,4 +233,11 @@ TEST(NumericExpressionGenerator, callNumericExpressionGenerator) {
 
 TEST(NumericExpressionGenerator, returnsPointerToNumericExpression) {
   NumericExpression *expression = numericExpressionGenerator("0");
+}
+
+TEST(NumericExpressionGenerator, generateConstantExpression) {
+  std::unique_ptr<NumericExpression> expression(
+      numericExpressionGenerator("123"));
+  ASSERT_EQ(expression->value(), 123);
+  ASSERT_EQ(expression->format(), "123");
 }

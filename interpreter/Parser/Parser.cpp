@@ -1,5 +1,5 @@
 #include "Parser.h"
-#include "NumericExpression.h"
+#include "Constant.h"
 #include "ParserHelper.h"
 #include <cctype>
 
@@ -148,5 +148,5 @@ bool is_end_cmd(const std::string &cmd) {
 }
 
 NumericExpression *numericExpressionGenerator(const std::string &expression) {
-  return nullptr;
+  return new Constant(std::stoi(expression));
 }
