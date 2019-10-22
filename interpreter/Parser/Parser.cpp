@@ -1,6 +1,7 @@
 #include "Parser.h"
 #include "Constant.h"
 #include "ParserHelper.h"
+#include "Variable.h"
 #include <cctype>
 
 std::string findNextExpression(const std::string &cmd) {
@@ -148,5 +149,10 @@ bool is_end_cmd(const std::string &cmd) {
 }
 
 NumericExpression *numericExpressionGenerator(const std::string &expression) {
-  return new Constant(std::stoi(expression));
+  if (isInteger(expression))
+    return new Constant(std::stoi(expression));
+  else if (isVariable(expression))
+    return new Variable(expression);
+
+  return nullptr;
 }

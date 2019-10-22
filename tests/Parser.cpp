@@ -241,3 +241,10 @@ TEST(NumericExpressionGenerator, generateConstantExpression) {
   ASSERT_EQ(expression->value(), 123);
   ASSERT_EQ(expression->format(), "123");
 }
+
+TEST(NumericExpressionGenerator, generateVariableExpression) {
+  std::unique_ptr<NumericExpression> expression(
+      numericExpressionGenerator("X"));
+  ASSERT_EQ(expression->value(), 0);
+  ASSERT_EQ(expression->format(), "X");
+}
