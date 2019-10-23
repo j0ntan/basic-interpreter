@@ -5,18 +5,22 @@
 #include <gtest/gtest.h>
 
 TEST(LessThan, canCreateLessThanOfConstantsAndVariables) {
-  const Constant num1, num2;
-  const Variable num3, num4;
-  const LessThan lessThan1(num1, num2), lessThan2(num3, num4),
-      lessThan3(num1, num4), lessThan4(num3, num2);
+  const LessThan lessThan1(new Constant, new Constant),
+      lessThan2(new Variable, new Variable),
+      lessThan3(new Constant, new Variable),
+      lessThan4(new Variable, new Constant);
 }
 
 TEST(LessThan, evaluateSimpleAndNestedExpressions) {
-  const Constant x(123), y(-456), z(456);
-  const Addition addition(x, x);
-  const Addition nested(addition, z);
-  const LessThan lessThan1(x, y), lessThan2(x, x), lessThan3(y, x),
-      lessThan4(x, z), lessThan5(nested, z);
+  const int x = 123, y = -456, z = 456;
+  const Addition *addition = new Addition(new Constant(x), new Constant(x));
+  const Addition *nested = new Addition(
+      new Addition(new Constant(x), new Constant(x)), new Constant(z));
+  const LessThan lessThan1(new Constant(x), new Constant(y)),
+      lessThan2(new Constant(x), new Constant(x)),
+      lessThan3(new Constant(y), new Constant(x)),
+      lessThan4(new Constant(x), new Constant(z)),
+      lessThan5(nested, new Constant(z));
   ASSERT_FALSE(lessThan1.value());
   ASSERT_FALSE(lessThan2.value());
   ASSERT_TRUE(lessThan3.value());
@@ -25,11 +29,13 @@ TEST(LessThan, evaluateSimpleAndNestedExpressions) {
 }
 
 TEST(LessThan, formatExpressions) {
-  const Constant x(123), y(-456);
-  const Addition pos_and_neg(x, y);
-  const Addition nested(y, pos_and_neg);
-  const LessThan lessThan1(x, x), lessThan2(pos_and_neg, x),
-      lessThan3(nested, x);
+  const int x = 123, y = -456;
+  const Addition *pos_and_neg = new Addition(new Constant(x), new Constant(y));
+  const Addition *nested = new Addition(
+      new Constant(y), new Addition(new Constant(x), new Constant(y)));
+  const LessThan lessThan1(new Constant(x), new Constant(x)),
+      lessThan2(pos_and_neg, new Constant(x)),
+      lessThan3(nested, new Constant(x));
   ASSERT_EQ(lessThan1.format(), "123 < 123");
   ASSERT_EQ(lessThan2.format(), "(123 + -456) < 123");
   ASSERT_EQ(lessThan3.format(), "(-456 + (123 + -456)) < 123");

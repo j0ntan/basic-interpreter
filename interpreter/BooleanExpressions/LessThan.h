@@ -5,8 +5,8 @@
 
 class LessThan final : public BooleanExpression {
 public:
-  explicit LessThan(const NumericExpression &left,
-                    const NumericExpression &right);
+  explicit LessThan(const NumericExpression *left,
+                    const NumericExpression *right);
 
   bool value() const final;
 
