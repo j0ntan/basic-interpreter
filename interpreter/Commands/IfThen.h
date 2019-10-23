@@ -2,12 +2,13 @@
 #define IFTHEN_H
 
 #include "Command.h"
+#include <memory>
 
 class BooleanExpression;
 
 class IfThen : public Command {
 public:
-  IfThen(unsigned int line_number, const BooleanExpression &comparison,
+  IfThen(unsigned int line_number, const BooleanExpression *comparison,
          unsigned int jline);
 
   std::string format() const final;
@@ -15,7 +16,7 @@ public:
   ~IfThen() final = default;
 
 private:
-  const BooleanExpression &comparison;
+  const std::unique_ptr<const BooleanExpression> comparison;
   unsigned int jline;
 };
 
