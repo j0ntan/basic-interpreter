@@ -5,18 +5,19 @@
 #include <gtest/gtest.h>
 
 TEST(Equals, canCreateEqualsOfConstantsAndVariables) {
-  const Constant num1, num2;
-  const Variable num3, num4;
-  Equals equals1(num1, num2), equals2(num3, num4), equals3(num1, num4),
-      equals4(num3, num2);
+  Equals equals1(new Constant, new Constant),
+      equals2(new Variable, new Variable), equals3(new Constant, new Variable),
+      equals4(new Variable, new Constant);
 }
 
 TEST(Equals, evaluateSimpleAndNestedExpressions) {
-  const Constant x(123), y(-456);
-  const Addition addition(x, x);
-  const Addition nested(addition, x);
-  const Equals equals1(x, y), equals2(addition, x), equals3(nested, x),
-      equals4(x, x);
+  const int x = 123, y = -456;
+  const Addition *addition = new Addition(new Constant(x), new Constant(x));
+  const Addition *nested = new Addition(
+      new Addition(new Constant(x), new Constant(x)), new Constant(x));
+  const Equals equals1(new Constant(x), new Constant(y)),
+      equals2(addition, new Constant(x)), equals3(nested, new Constant(x)),
+      equals4(new Constant(x), new Constant(x));
   ASSERT_FALSE(equals1.value());
   ASSERT_FALSE(equals2.value());
   ASSERT_FALSE(equals3.value());
@@ -24,10 +25,12 @@ TEST(Equals, evaluateSimpleAndNestedExpressions) {
 }
 
 TEST(Equals, formatExpressions) {
-  const Constant x(123), y(-456);
-  const Addition pos_and_neg(x, y);
-  const Addition nested(y, pos_and_neg);
-  const Equals equals1(x, x), equals2(pos_and_neg, x), equals3(nested, x);
+  const int x = 123, y = -456;
+  const Addition *pos_and_neg = new Addition(new Constant(x), new Constant(y));
+  const Addition *nested = new Addition(
+      new Constant(y), new Addition(new Constant(x), new Constant(y)));
+  const Equals equals1(new Constant(x), new Constant(x)),
+      equals2(pos_and_neg, new Constant(x)), equals3(nested, new Constant(x));
   ASSERT_EQ(equals1.format(), "123 = 123");
   ASSERT_EQ(equals2.format(), "(123 + -456) = 123");
   ASSERT_EQ(equals3.format(), "(-456 + (123 + -456)) = 123");
