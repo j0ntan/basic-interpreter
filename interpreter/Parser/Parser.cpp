@@ -2,6 +2,7 @@
 #include "Addition.h"
 #include "Constant.h"
 #include "ParserHelper.h"
+#include "Subtraction.h"
 #include "Variable.h"
 #include <cctype>
 
@@ -157,10 +158,16 @@ NumericExpression *numericExpressionGenerator(const std::string &expression) {
   else if (isBinaryExpression(expression)) {
     const auto operands =
         get_operands(expression.substr(1, expression.length() - 2));
-    const auto operator_position = expression.find(
-        '+', expression.find(operands.first) + operands.first.length());
-    return new Addition(numericExpressionGenerator(operands.first),
-                        numericExpressionGenerator(operands.second));
+    const auto operator_position = expression.find_first_of(
+        "+-", expression.find(operands.first) + operands.first.length());
+    switch (expression[operator_position]) {
+    case '+':
+      return new Addition(numericExpressionGenerator(operands.first),
+                          numericExpressionGenerator(operands.second));
+    case '-':
+      return new Subtraction(numericExpressionGenerator(operands.first),
+                             numericExpressionGenerator(operands.second));
+    }
   }
 
   return nullptr;

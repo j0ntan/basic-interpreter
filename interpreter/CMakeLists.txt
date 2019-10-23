@@ -27,4 +27,5 @@ target_link_libraries(Parser PRIVATE
         Constant
         Variable
         Addition
+        Subtraction
         )

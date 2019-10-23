@@ -255,3 +255,10 @@ TEST(NumericExpressionGenerator, generateAdditionExpression) {
   ASSERT_EQ(expression->value(), 3);
   ASSERT_EQ(expression->format(), "(1 + 2)");
 }
+
+TEST(NumericExpressionGenerator, generateSubtractionExpression) {
+  std::unique_ptr<NumericExpression> expression(
+      numericExpressionGenerator("(1-2)"));
+  ASSERT_EQ(expression->value(), -1);
+  ASSERT_EQ(expression->format(), "(1 - 2)");
+}
