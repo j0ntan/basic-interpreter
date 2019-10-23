@@ -5,8 +5,8 @@
 
 class Addition final : public BinaryExpression {
 public:
-  explicit Addition(const NumericExpression &left,
-                    const NumericExpression &right);
+  explicit Addition(const NumericExpression *left,
+                    const NumericExpression *right);
 
   int value() const final;
 
