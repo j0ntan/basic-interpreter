@@ -5,8 +5,8 @@
 
 class Division final : public BinaryExpression {
 public:
-  explicit Division(const NumericExpression &left,
-                    const NumericExpression &right);
+  explicit Division(const NumericExpression *left,
+                    const NumericExpression *right);
 
   int value() const final;
 

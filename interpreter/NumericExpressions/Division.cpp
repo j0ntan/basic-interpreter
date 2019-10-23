@@ -1,7 +1,7 @@
 #include "Division.h"
 
-Division::Division(const NumericExpression &left,
-                   const NumericExpression &right)
+Division::Division(const NumericExpression *left,
+                   const NumericExpression *right)
     : BinaryExpression(left, right, '/') {}
 
-int Division::value() const { return left.value() / right.value(); }
+int Division::value() const { return left->value() / right->value(); }
