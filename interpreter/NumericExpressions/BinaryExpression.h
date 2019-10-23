@@ -2,23 +2,24 @@
 #define BINARYEXPRESSION_HPP
 
 #include "NumericExpression.h"
+#include <memory>
 
 class BinaryExpression : public NumericExpression {
 public:
-  BinaryExpression(const NumericExpression &left,
-                   const NumericExpression &right, const char operation_type)
+  BinaryExpression(const NumericExpression *left,
+                   const NumericExpression *right, const char operation_type)
       : left{left}, right{right}, operation{operation_type} {}
 
   int value() const override = 0;
   std::string format() const final {
-    return '(' + left.format() + ' ' + operation + ' ' + right.format() + ')';
+    return '(' + left->format() + ' ' + operation + ' ' + right->format() + ')';
   }
 
   ~BinaryExpression() override = default;
 
 protected:
-  const NumericExpression &left;
-  const NumericExpression &right;
+  const std::unique_ptr<const NumericExpression> left;
+  const std::unique_ptr<const NumericExpression> right;
   const char operation;
 };
 
