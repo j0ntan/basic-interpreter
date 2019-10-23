@@ -5,8 +5,8 @@
 
 class Multiplication final : public BinaryExpression {
 public:
-  explicit Multiplication(const NumericExpression &left,
-                          const NumericExpression &right);
+  explicit Multiplication(const NumericExpression *left,
+                          const NumericExpression *right);
 
   int value() const final;
 

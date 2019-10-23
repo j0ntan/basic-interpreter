@@ -4,36 +4,40 @@
 #include <gtest/gtest.h>
 
 TEST(Multiplication, canCreateMultiplicationOfConstantsAndVariables) {
-  const Constant num1, num2;
-  const Variable num3, num4;
-  const Multiplication multiplication1(num1, num2), multiplication2(num3, num4),
-      multiplication3(num1, num4), multiplication4(num3, num2);
+  const Multiplication multiplication1(new Constant, new Constant),
+      multiplication2(new Variable, new Variable),
+      multiplication3(new Constant, new Variable),
+      multiplication4(new Variable, new Constant);
 }
 
 TEST(Multiplication, canCreateNestedMultiplication) {
-  const Constant num1, num2, num3;
-  const Multiplication multiplication1(num1, num2);
-  const Multiplication multiplication2(multiplication1, num3);
+  const Multiplication *multiplication1 =
+      new Multiplication(new Constant, new Constant);
+  const Multiplication multiplication2(multiplication1, new Constant);
 }
 
 TEST(Multiplication, multiplyIntegerValuesAndNested) {
-  const Constant x(5), y(2), z(-3);
-  const Multiplication positives(x, y), positive_and_negative(x, z),
-      negatives(z, z);
-  const Multiplication nested(positives, y);
-  ASSERT_EQ(positives.value(), 10);
+  const int x = 5, y = 2, z = -3;
+  const Multiplication *positives =
+                           new Multiplication(new Constant(x), new Constant(y)),
+                       positive_and_negative(new Constant(x), new Constant(z)),
+                       negatives(new Constant(z), new Constant(z));
+  const Multiplication nested(positives, new Constant(y));
+  ASSERT_EQ(positives->value(), 10);
   ASSERT_EQ(negatives.value(), 9);
   ASSERT_EQ(positive_and_negative.value(), -15);
   ASSERT_EQ(nested.value(), 20);
 }
 
 TEST(Multiplication, formatValuesAndNested) {
-  const Constant x(123), y(-456);
-  const Multiplication pos_and_pos(x, x), pos_and_neg(x, y), neg_and_pos(y, x),
-      neg_and_neg(y, y);
-  const Multiplication nested(y, pos_and_neg);
+  const int x = 123, y = -456;
+  const Multiplication pos_and_pos(new Constant(x), new Constant(x)),
+      *pos_and_neg = new Multiplication(new Constant(x), new Constant(y)),
+      neg_and_pos(new Constant(y), new Constant(x)),
+      neg_and_neg(new Constant(y), new Constant(y));
+  const Multiplication nested(new Constant(y), pos_and_neg);
   ASSERT_EQ(pos_and_pos.format(), "(123 * 123)");
-  ASSERT_EQ(pos_and_neg.format(), "(123 * -456)");
+  ASSERT_EQ(pos_and_neg->format(), "(123 * -456)");
   ASSERT_EQ(neg_and_pos.format(), "(-456 * 123)");
   ASSERT_EQ(neg_and_neg.format(), "(-456 * -456)");
   ASSERT_EQ(nested.format(), "(-456 * (123 * -456))");
