@@ -1,4 +1,5 @@
 #include "Parser.h"
+#include "Addition.h"
 #include "Constant.h"
 #include "ParserHelper.h"
 #include "Variable.h"
@@ -153,6 +154,14 @@ NumericExpression *numericExpressionGenerator(const std::string &expression) {
     return new Constant(std::stoi(expression));
   else if (isVariable(expression))
     return new Variable(expression);
+  else if (isBinaryExpression(expression)) {
+    const auto operands =
+        get_operands(expression.substr(1, expression.length() - 2));
+    const auto operator_position = expression.find(
+        '+', expression.find(operands.first) + operands.first.length());
+    return new Addition(numericExpressionGenerator(operands.first),
+                        numericExpressionGenerator(operands.second));
+  }
 
   return nullptr;
 }

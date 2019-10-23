@@ -248,3 +248,10 @@ TEST(NumericExpressionGenerator, generateVariableExpression) {
   ASSERT_EQ(expression->value(), 0);
   ASSERT_EQ(expression->format(), "X");
 }
+
+TEST(NumericExpressionGenerator, generateAdditionExpression) {
+  std::unique_ptr<NumericExpression> expression(
+      numericExpressionGenerator("(1+2)"));
+  ASSERT_EQ(expression->value(), 3);
+  ASSERT_EQ(expression->format(), "(1 + 2)");
+}

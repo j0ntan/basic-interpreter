@@ -26,4 +26,5 @@ add_library(Parser STATIC Parser/Parser.cpp)
 target_link_libraries(Parser PRIVATE
         Constant
         Variable
+        Addition
         )
