@@ -304,3 +304,8 @@ TEST(CommandGenerator, generateSimplePrintCommand) {
   ASSERT_NE(command.get(), nullptr);
   ASSERT_EQ(command->format(), "1 PRINT 1");
 }
+
+TEST(CommandGenerator, missingLineNumberIsNotCommand) {
+  std::unique_ptr<Command> command(commandGenerator(" PRINT 1"));
+  ASSERT_EQ(command.get(), nullptr);
+}

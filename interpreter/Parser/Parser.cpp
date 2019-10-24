@@ -184,6 +184,9 @@ NumericExpression *numericExpressionGenerator(std::string expression) {
 }
 
 Command *commandGenerator(const std::string &command) {
+  if (!has_line_number(command))
+    return nullptr;
+
   if (is_print_cmd(command))
     return new Print(1, new Constant(1));
 
