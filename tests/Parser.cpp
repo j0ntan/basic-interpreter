@@ -293,3 +293,7 @@ TEST(NumericExpressionGenerator, ignoreWhitespace) {
 }
 
 TEST(CommandGenerator, callCommandGenerator) { commandGenerator("1 PRINT 1"); }
+
+TEST(CommandGenerator, returnNullptrOnInvalidCommand) {
+  Command *command = commandGenerator("INVALID");
+}

@@ -19,6 +19,6 @@ bool is_end_cmd(const std::string &cmd);
 
 NumericExpression *numericExpressionGenerator(std::string expression);
 
-void commandGenerator(const std::string &command);
+Command *commandGenerator(const std::string &command);
 
 #endif
