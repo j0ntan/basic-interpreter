@@ -181,3 +181,5 @@ NumericExpression *numericExpressionGenerator(std::string expression) {
 
   return nullptr;
 }
+
+void commandGenerator(const std::string &command) {}

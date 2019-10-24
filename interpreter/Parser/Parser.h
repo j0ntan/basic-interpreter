@@ -4,6 +4,7 @@
 #include <string>
 
 class NumericExpression;
+class Command;
 
 std::string findNextExpression(const std::string &cmd);
 bool has_line_number(const std::string &cmd);
@@ -17,5 +18,7 @@ bool is_return_cmd(const std::string &cmd);
 bool is_end_cmd(const std::string &cmd);
 
 NumericExpression *numericExpressionGenerator(std::string expression);
+
+void commandGenerator(const std::string &command);
 
 #endif

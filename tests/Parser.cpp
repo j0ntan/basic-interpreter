@@ -291,3 +291,5 @@ TEST(NumericExpressionGenerator, ignoreWhitespace) {
   ASSERT_EQ(additionExpression->value(), 3);
   ASSERT_EQ(additionExpression->format(), "(1 + 2)");
 }
+
+TEST(CommandGenerator, callCommandGenerator) { commandGenerator("1 PRINT 1"); }
