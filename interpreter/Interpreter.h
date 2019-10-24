@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
 
 class Interpreter {
 public:
@@ -14,7 +15,7 @@ public:
 private:
   void parse(std::istream &in);
 
-  std::string command;
+  std::vector<std::string> commands;
 };
 
 #endif

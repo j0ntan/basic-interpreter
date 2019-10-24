@@ -10,8 +10,11 @@ void Interpreter::parse(std::istream &in) {
     std::stringstream stream(line);
     stream >> line_number;
 
-    command = line;
+    commands.push_back(line);
   }
 }
 
-void Interpreter::write(std::ostream &out) { out << command << '\n'; }
+void Interpreter::write(std::ostream &out) {
+  for (const auto &command : commands)
+    out << command << '\n';
+}
