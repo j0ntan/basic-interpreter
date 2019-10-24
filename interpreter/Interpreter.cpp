@@ -15,4 +15,4 @@ void Interpreter::parse(std::istream &in) {
   }
 }
 
-void Interpreter::write(std::ostream &out) {}
+void Interpreter::write(std::ostream &out) { out << "1 PRINT 1\n"; }
