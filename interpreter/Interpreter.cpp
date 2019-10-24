@@ -1,6 +1,5 @@
 #include "Interpreter.h"
 #include <sstream>
-#include <string>
 
 Interpreter::Interpreter(std::istream &in) { this->parse(in); }
 
@@ -11,8 +10,8 @@ void Interpreter::parse(std::istream &in) {
     std::stringstream stream(line);
     stream >> line_number;
 
-    // Your code here
+    command = line;
   }
 }
 
-void Interpreter::write(std::ostream &out) { out << "1 PRINT 1\n"; }
+void Interpreter::write(std::ostream &out) { out << command << '\n'; }

@@ -2,6 +2,7 @@
 #define INTERPRETER_HPP
 
 #include <iostream>
+#include <string>
 
 class Interpreter {
 public:
@@ -12,6 +13,8 @@ public:
 
 private:
   void parse(std::istream &in);
+
+  std::string command;
 };
 
 #endif

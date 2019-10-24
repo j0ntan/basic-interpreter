@@ -19,3 +19,8 @@ protected:
 TEST_F(InterpreterTest, writeSimplePrintCommand) {
   interpret_command("1 PRINT 1\n", "1 PRINT 1\n");
 }
+
+TEST_F(InterpreterTest, writeComplexPrintCommand) {
+  interpret_command("1 PRINT ((A + B) + (1 + 2))\n",
+                    "1 PRINT ((A + B) + (1 + 2))\n");
+}
