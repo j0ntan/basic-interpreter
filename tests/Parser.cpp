@@ -235,6 +235,7 @@ TEST(NumericExpressionGenerator, callNumericExpressionGenerator) {
 
 TEST(NumericExpressionGenerator, returnsPointerToNumericExpression) {
   NumericExpression *expression = numericExpressionGenerator("0");
+  expression++; // prevent "unused-variable" warning
 }
 
 TEST(NumericExpressionGenerator, generateConstantExpression) {
@@ -298,6 +299,7 @@ TEST(CommandGenerator, callCommandGenerator) { commandGenerator("1 PRINT 1"); }
 
 TEST(CommandGenerator, returnNullptrOnInvalidCommand) {
   Command *command = commandGenerator("INVALID");
+  command++; // prevent "unused-variable" warning
 }
 
 TEST(CommandGenerator, generateSimplePrintCommand) {
@@ -377,6 +379,7 @@ TEST(BooleanGenerator, callBooleanGenerator) { booleanGenerator("0 < 1"); }
 
 TEST(BooleanGenerator, returnPointerToBooleanExpression) {
   BooleanExpression *expression = booleanGenerator("0 < 1");
+  expression++; // prevent "unused-variable" warning
 }
 
 TEST(BooleanGenerator, generateSimpleLessThan) {
