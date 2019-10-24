@@ -4,6 +4,7 @@
 #include "Division.h"
 #include "Multiplication.h"
 #include "ParserHelper.h"
+#include "Print.h"
 #include "Subtraction.h"
 #include "Variable.h"
 #include <cctype>
@@ -182,4 +183,9 @@ NumericExpression *numericExpressionGenerator(std::string expression) {
   return nullptr;
 }
 
-Command *commandGenerator(const std::string &command) { return nullptr; }
+Command *commandGenerator(const std::string &command) {
+  if (is_print_cmd(command))
+    return new Print(1, new Constant(1));
+
+  return nullptr;
+}

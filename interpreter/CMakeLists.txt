@@ -1,4 +1,4 @@
-include_directories(NumericExpressions BooleanExpressions)
+include_directories(NumericExpressions BooleanExpressions Commands)
 
 add_library(Constant STATIC NumericExpressions/Constant.cpp)
 add_library(Variable STATIC NumericExpressions/Variable.cpp)
@@ -30,4 +30,5 @@ target_link_libraries(Parser PRIVATE
         Subtraction
         Multiplication
         Division
+        Print
         )

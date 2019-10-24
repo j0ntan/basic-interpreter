@@ -1,4 +1,5 @@
 #include "Parser.h"
+#include "Command.h"
 #include "NumericExpression.h"
 #include <gtest/gtest.h>
 #include <memory>
@@ -296,4 +297,10 @@ TEST(CommandGenerator, callCommandGenerator) { commandGenerator("1 PRINT 1"); }
 
 TEST(CommandGenerator, returnNullptrOnInvalidCommand) {
   Command *command = commandGenerator("INVALID");
+}
+
+TEST(CommandGenerator, generateSimplePrintCommand) {
+  std::unique_ptr<Command> command(commandGenerator("1 PRINT 1"));
+  ASSERT_NE(command.get(), nullptr);
+  ASSERT_EQ(command->format(), "1 PRINT 1");
 }
