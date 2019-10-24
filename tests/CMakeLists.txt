@@ -128,10 +128,15 @@ target_link_libraries(test_Parser PRIVATE
         gtest_main
         )
 
+add_executable(test_Interpreter Interpreter.cpp)
+target_include_directories(test_Interpreter PRIVATE ${INTERPRETER_INCLUDE})
+target_link_libraries(test_Interpreter PRIVATE Interpreter gtest_main)
+
 file(GLOB TESTS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} *.cpp)
 add_executable(test_ALL ${TESTS})
 target_include_directories(test_ALL PRIVATE ${INTERPRETER_INCLUDE})
 target_link_libraries(test_ALL PRIVATE
+        Interpreter
         Parser
         ParserHelper
         Print

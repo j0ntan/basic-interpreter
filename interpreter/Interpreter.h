@@ -6,7 +6,7 @@
 class Interpreter {
 public:
   Interpreter(std::istream &in);
-  ~Interpreter();
+  ~Interpreter() = default;
 
   void write(std::ostream &out);
 

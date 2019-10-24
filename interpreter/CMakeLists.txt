@@ -41,3 +41,5 @@ target_link_libraries(Parser PRIVATE
         Return
         End
         )
+
+add_library(Interpreter STATIC Interpreter.cpp)
