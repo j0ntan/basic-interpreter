@@ -1,6 +1,7 @@
 #include "Parser.h"
 #include "Addition.h"
 #include "Constant.h"
+#include "Division.h"
 #include "Multiplication.h"
 #include "ParserHelper.h"
 #include "Subtraction.h"
@@ -160,7 +161,7 @@ NumericExpression *numericExpressionGenerator(const std::string &expression) {
     const auto operands =
         get_operands(expression.substr(1, expression.length() - 2));
     const auto operator_position = expression.find_first_of(
-        "+-*", expression.find(operands.first) + operands.first.length());
+        "+-*/", expression.find(operands.first) + operands.first.length());
     switch (expression[operator_position]) {
     case '+':
       return new Addition(numericExpressionGenerator(operands.first),
@@ -171,6 +172,9 @@ NumericExpression *numericExpressionGenerator(const std::string &expression) {
     case '*':
       return new Multiplication(numericExpressionGenerator(operands.first),
                                 numericExpressionGenerator(operands.second));
+    case '/':
+      return new Division(numericExpressionGenerator(operands.first),
+                          numericExpressionGenerator(operands.second));
     }
   }
 

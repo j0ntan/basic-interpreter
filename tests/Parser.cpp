@@ -269,3 +269,10 @@ TEST(NumericExpressionGenerator, generateMultiplicationExpression) {
   ASSERT_EQ(expression->value(), 6);
   ASSERT_EQ(expression->format(), "(2 * 3)");
 }
+
+TEST(NumericExpressionGenerator, generateDivisionExpression) {
+  std::unique_ptr<NumericExpression> expression(
+      numericExpressionGenerator("(75/3)"));
+  ASSERT_EQ(expression->value(), 25);
+  ASSERT_EQ(expression->format(), "(75 / 3)");
+}
