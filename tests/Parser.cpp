@@ -262,3 +262,10 @@ TEST(NumericExpressionGenerator, generateSubtractionExpression) {
   ASSERT_EQ(expression->value(), -1);
   ASSERT_EQ(expression->format(), "(1 - 2)");
 }
+
+TEST(NumericExpressionGenerator, generateMultiplicationExpression) {
+  std::unique_ptr<NumericExpression> expression(
+      numericExpressionGenerator("(2*3)"));
+  ASSERT_EQ(expression->value(), 6);
+  ASSERT_EQ(expression->format(), "(2 * 3)");
+}

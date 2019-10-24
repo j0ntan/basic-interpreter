@@ -28,4 +28,5 @@ target_link_libraries(Parser PRIVATE
         Variable
         Addition
         Subtraction
+        Multiplication
         )
