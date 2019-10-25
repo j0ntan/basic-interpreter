@@ -183,15 +183,19 @@ NumericExpression *numericExpressionGenerator(std::string expression) {
   return nullptr;
 }
 
+static unsigned int get_line_number(const std::string &command) {
+  const auto line_number_begins = command.find_first_not_of(" \t");
+  const auto line_number_ends =
+      command.find_first_of(" \t", line_number_begins);
+  return std::stoi(command.substr(line_number_begins,
+                                  line_number_ends - line_number_begins + 1));
+}
+
 Command *commandGenerator(const std::string &command) {
   if (!has_line_number(command))
     return nullptr;
   else {
-    const auto line_number_begins = command.find_first_not_of(" \t");
-    const auto line_number_ends =
-        command.find_first_of(" \t", line_number_begins);
-    const auto line_number = std::stoi(command.substr(
-        line_number_begins, line_number_ends - line_number_begins + 1));
+    const auto line_number = get_line_number(command);
     if (is_print_cmd(command))
       return new Print(line_number, new Constant(1));
   }
