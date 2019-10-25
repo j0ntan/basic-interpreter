@@ -276,3 +276,18 @@ TEST(NumericExpressionGenerator, generateDivisionExpression) {
   ASSERT_EQ(expression->value(), 25);
   ASSERT_EQ(expression->format(), "(75 / 3)");
 }
+
+TEST(NumericExpressionGenerator, ignoreWhitespace) {
+  std::unique_ptr<NumericExpression> constantExpression(
+      numericExpressionGenerator(" 123   "));
+  ASSERT_EQ(constantExpression->value(), 123);
+  ASSERT_EQ(constantExpression->format(), "123");
+  std::unique_ptr<NumericExpression> variableExpression(
+      numericExpressionGenerator("   VARIABLE"));
+  ASSERT_EQ(variableExpression->value(), 0);
+  ASSERT_EQ(variableExpression->format(), "VARIABLE");
+  std::unique_ptr<NumericExpression> additionExpression(
+      numericExpressionGenerator("  (   1  +2     ) "));
+  ASSERT_EQ(additionExpression->value(), 3);
+  ASSERT_EQ(additionExpression->format(), "(1 + 2)");
+}

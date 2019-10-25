@@ -152,7 +152,8 @@ bool is_end_cmd(const std::string &cmd) {
   return has_terminating_keyword(cmd, "END");
 }
 
-NumericExpression *numericExpressionGenerator(const std::string &expression) {
+NumericExpression *numericExpressionGenerator(std::string expression) {
+  expression = remove_surrounding_whitespace(expression);
   if (isInteger(expression))
     return new Constant(std::stoi(expression));
   else if (isVariable(expression))
