@@ -318,3 +318,8 @@ TEST(CommandGenerator, getLineNumbersForSimplePrintCommands) {
   ASSERT_EQ(command2->line(), 2);
   ASSERT_EQ(command3->line(), 3);
 }
+
+TEST(CommandGenerator, getCorrectPrintFormatWithBinaryExpression) {
+  std::unique_ptr<Command> command(commandGenerator("1 PRINT (1+1)"));
+  ASSERT_EQ(command->format(), "1 PRINT (1 + 1)");
+}

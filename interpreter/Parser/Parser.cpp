@@ -197,7 +197,8 @@ Command *commandGenerator(const std::string &command) {
   else {
     const auto line_number = get_line_number(command);
     if (is_print_cmd(command))
-      return new Print(line_number, new Constant(1));
+      return new Print(line_number, numericExpressionGenerator(command.substr(
+                                        command.find("PRINT") + 5)));
   }
 
   return nullptr;
