@@ -186,9 +186,15 @@ NumericExpression *numericExpressionGenerator(std::string expression) {
 Command *commandGenerator(const std::string &command) {
   if (!has_line_number(command))
     return nullptr;
-
-  if (is_print_cmd(command))
-    return new Print(1, new Constant(1));
+  else {
+    const auto line_number_begins = command.find_first_not_of(" \t");
+    const auto line_number_ends =
+        command.find_first_of(" \t", line_number_begins);
+    const auto line_number = std::stoi(command.substr(
+        line_number_begins, line_number_ends - line_number_begins + 1));
+    if (is_print_cmd(command))
+      return new Print(line_number, new Constant(1));
+  }
 
   return nullptr;
 }

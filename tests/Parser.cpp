@@ -309,3 +309,12 @@ TEST(CommandGenerator, missingLineNumberIsNotCommand) {
   std::unique_ptr<Command> command(commandGenerator(" PRINT 1"));
   ASSERT_EQ(command.get(), nullptr);
 }
+
+TEST(CommandGenerator, getLineNumbersForSimplePrintCommands) {
+  std::unique_ptr<Command> command1(commandGenerator("1 PRINT 1"));
+  std::unique_ptr<Command> command2(commandGenerator("2 PRINT 1"));
+  std::unique_ptr<Command> command3(commandGenerator("3 PRINT 1"));
+  ASSERT_EQ(command1->line(), 1);
+  ASSERT_EQ(command2->line(), 2);
+  ASSERT_EQ(command3->line(), 3);
+}
