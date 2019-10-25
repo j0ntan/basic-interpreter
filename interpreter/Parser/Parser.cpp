@@ -191,14 +191,24 @@ static unsigned int get_line_number(const std::string &command) {
                                   line_number_ends - line_number_begins + 1));
 }
 
+static NumericExpression *
+get_proceeding_expression(const std::string &command,
+                          const std::string &keyword) {
+  const auto keyword_position = command.find(keyword);
+  const auto expression_str =
+      findNextExpression(command.substr(keyword_position + keyword.length()));
+  return numericExpressionGenerator(expression_str);
+}
+
 Command *commandGenerator(const std::string &command) {
   if (!has_line_number(command))
     return nullptr;
   else {
     const auto line_number = get_line_number(command);
-    if (is_print_cmd(command))
-      return new Print(line_number, numericExpressionGenerator(command.substr(
-                                        command.find("PRINT") + 5)));
+    if (is_print_cmd(command)) {
+      const auto expression = get_proceeding_expression(command, "PRINT");
+      return new Print(line_number, expression);
+    }
   }
 
   return nullptr;
