@@ -216,7 +216,9 @@ Command *commandGenerator(const std::string &command) {
       const auto expression = get_proceeding_expression(command, name);
       return new AssignVariable(line_number, new Variable(name), expression);
     } else if (is_assign_array_cmd(command)) {
-      return new AssignArray(line_number, new Variable("X"), new Constant(0),
+      const auto name_begins = command.find("LET") + 3;
+      const auto name = findNextExpression(command.substr(name_begins));
+      return new AssignArray(line_number, new Variable(name), new Constant(0),
                              new Constant(1));
     }
   }

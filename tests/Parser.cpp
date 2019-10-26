@@ -345,3 +345,8 @@ TEST(CommandGenerator, generateSimpleAssignArrayCommand) {
   ASSERT_NE(command.get(), nullptr);
   ASSERT_EQ(command->format(), "1 LET X[0] 1");
 }
+
+TEST(CommandGenerator, matchAssignedArrayName) {
+  std::unique_ptr<Command> command(commandGenerator("1 LET ARRAY[0] 1"));
+  ASSERT_EQ(command->format(), "1 LET ARRAY[0] 1");
+}
