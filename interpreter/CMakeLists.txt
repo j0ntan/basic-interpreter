@@ -32,4 +32,5 @@ target_link_libraries(Parser PRIVATE
         Division
         Print
         AssignVariable
+        AssignArray
         )

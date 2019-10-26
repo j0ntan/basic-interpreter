@@ -339,3 +339,9 @@ TEST(CommandGenerator, matchAssignedVariableExpression) {
   std::unique_ptr<Command> command(commandGenerator("1 LET X (1+2)"));
   ASSERT_EQ(command->format(), "1 LET X (1 + 2)");
 }
+
+TEST(CommandGenerator, generateSimpleAssignArrayCommand) {
+  std::unique_ptr<Command> command(commandGenerator("1 LET X[0] 1"));
+  ASSERT_NE(command.get(), nullptr);
+  ASSERT_EQ(command->format(), "1 LET X[0] 1");
+}
