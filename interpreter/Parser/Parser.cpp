@@ -212,8 +212,8 @@ Command *commandGenerator(const std::string &command) {
     } else if (is_assign_variable_cmd(command)) {
       const auto name_begins = command.find("LET") + 3;
       const auto name = findNextExpression(command.substr(name_begins));
-      return new AssignVariable(line_number, new Variable(name),
-                                new Constant(1));
+      const auto expression = get_proceeding_expression(command, name);
+      return new AssignVariable(line_number, new Variable(name), expression);
     }
   }
 

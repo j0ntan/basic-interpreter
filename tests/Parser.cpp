@@ -334,3 +334,8 @@ TEST(CommandGenerator, matchAssignedVariableName) {
   std::unique_ptr<Command> command(commandGenerator("4 LET NAME 1"));
   ASSERT_EQ(command->format(), "4 LET NAME 1");
 }
+
+TEST(CommandGenerator, matchAssignedVariableExpression) {
+  std::unique_ptr<Command> command(commandGenerator("1 LET X (1+2)"));
+  ASSERT_EQ(command->format(), "1 LET X (1 + 2)");
+}
