@@ -218,7 +218,11 @@ Command *commandGenerator(const std::string &command) {
     } else if (is_assign_array_cmd(command)) {
       const auto name_begins = command.find("LET") + 3;
       const auto name = findNextExpression(command.substr(name_begins));
-      return new AssignArray(line_number, new Variable(name), new Constant(0),
+      const auto index_begins =
+          command.find('[', name_begins + name.length()) + 1;
+      const auto index =
+          get_proceeding_expression(command.substr(index_begins), "[");
+      return new AssignArray(line_number, new Variable(name), index,
                              new Constant(1));
     }
   }
