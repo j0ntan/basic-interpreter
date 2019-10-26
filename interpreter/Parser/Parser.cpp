@@ -193,6 +193,12 @@ static unsigned int get_line_number(const std::string &command) {
                                   line_number_ends - line_number_begins + 1));
 }
 
+static Variable *get_variable_expression(const std::string &command) {
+  const auto name_begins = command.find("LET") + 4;
+  const auto name_str = findNextExpression(command.substr(name_begins));
+  return new Variable(name_str);
+}
+
 static NumericExpression *
 get_proceeding_expression(const std::string &command,
                           const std::string &keyword) {
@@ -211,19 +217,15 @@ Command *commandGenerator(const std::string &command) {
       const auto expression = get_proceeding_expression(command, "PRINT");
       return new Print(line_number, expression);
     } else if (is_assign_variable_cmd(command)) {
-      const auto name_begins = command.find("LET") + 3;
-      const auto name = findNextExpression(command.substr(name_begins));
-      const auto expression = get_proceeding_expression(command, name);
-      return new AssignVariable(line_number, new Variable(name), expression);
+      const auto name = get_variable_expression(command);
+      const auto expression = get_proceeding_expression(command, name->name());
+      return new AssignVariable(line_number, name, expression);
     } else if (is_assign_array_cmd(command)) {
-      const auto name_begins = command.find("LET") + 3;
-      const auto name = findNextExpression(command.substr(name_begins));
-      const auto index_begins =
-          command.find('[', name_begins + name.length()) + 1;
+      const auto name = get_variable_expression(command);
+      const auto index_begins = command.find('[') + 1;
       const auto index =
           get_proceeding_expression(command.substr(index_begins), "[");
-      return new AssignArray(line_number, new Variable(name), index,
-                             new Constant(1));
+      return new AssignArray(line_number, name, index, new Constant(1));
     }
   }
 
