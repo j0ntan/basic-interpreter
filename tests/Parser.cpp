@@ -323,3 +323,9 @@ TEST(CommandGenerator, getCorrectPrintFormatWithBinaryExpression) {
   std::unique_ptr<Command> command(commandGenerator("1 PRINT (1+1)"));
   ASSERT_EQ(command->format(), "1 PRINT (1 + 1)");
 }
+
+TEST(CommandGenerator, generateSimpleAssignVariableCommand) {
+  std::unique_ptr<Command> command(commandGenerator("1 LET VAR 1"));
+  ASSERT_NE(command.get(), nullptr);
+  ASSERT_EQ(command->format(), "1 LET VAR 1");
+}

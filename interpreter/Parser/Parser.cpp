@@ -1,5 +1,6 @@
 #include "Parser.h"
 #include "Addition.h"
+#include "AssignVariable.h"
 #include "Constant.h"
 #include "Division.h"
 #include "Multiplication.h"
@@ -208,6 +209,9 @@ Command *commandGenerator(const std::string &command) {
     if (is_print_cmd(command)) {
       const auto expression = get_proceeding_expression(command, "PRINT");
       return new Print(line_number, expression);
+    } else if (is_assign_variable_cmd(command)) {
+      return new AssignVariable(line_number, new Variable("VAR"),
+                                new Constant(1));
     }
   }
 

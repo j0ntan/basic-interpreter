@@ -31,4 +31,5 @@ target_link_libraries(Parser PRIVATE
         Multiplication
         Division
         Print
+        AssignVariable
         )
