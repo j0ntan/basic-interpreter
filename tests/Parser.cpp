@@ -329,3 +329,8 @@ TEST(CommandGenerator, generateSimpleAssignVariableCommand) {
   ASSERT_NE(command.get(), nullptr);
   ASSERT_EQ(command->format(), "1 LET VAR 1");
 }
+
+TEST(CommandGenerator, matchAssignedVariableName) {
+  std::unique_ptr<Command> command(commandGenerator("4 LET NAME 1"));
+  ASSERT_EQ(command->format(), "4 LET NAME 1");
+}

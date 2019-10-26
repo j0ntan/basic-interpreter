@@ -210,7 +210,9 @@ Command *commandGenerator(const std::string &command) {
       const auto expression = get_proceeding_expression(command, "PRINT");
       return new Print(line_number, expression);
     } else if (is_assign_variable_cmd(command)) {
-      return new AssignVariable(line_number, new Variable("VAR"),
+      const auto name_begins = command.find("LET") + 3;
+      const auto name = findNextExpression(command.substr(name_begins));
+      return new AssignVariable(line_number, new Variable(name),
                                 new Constant(1));
     }
   }
