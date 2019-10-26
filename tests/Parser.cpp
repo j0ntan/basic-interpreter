@@ -355,3 +355,8 @@ TEST(CommandGenerator, matchAssignedArrayIndex) {
   std::unique_ptr<Command> command(commandGenerator("1 LET ARRAY[123] 1"));
   ASSERT_EQ(command->format(), "1 LET ARRAY[123] 1");
 }
+
+TEST(CommandGenerator, matchAssignedArrayValue) {
+  std::unique_ptr<Command> command(commandGenerator("1 LET ARRAY[0] 123"));
+  ASSERT_EQ(command->format(), "1 LET ARRAY[0] 123");
+}

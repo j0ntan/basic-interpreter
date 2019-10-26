@@ -212,6 +212,13 @@ NumericExpression *get_array_index(const std::string &command) {
   return get_proceeding_expression(command, "[");
 }
 
+NumericExpression *get_array_assigned_value(const std::string &command) {
+  const auto left_bracket_position = command.find('[');
+  const auto right_bracket_position =
+      find_matching_bracket(left_bracket_position, command);
+  return numericExpressionGenerator(command.substr(right_bracket_position + 1));
+}
+
 Command *commandGenerator(const std::string &command) {
   if (!has_line_number(command))
     return nullptr;
@@ -227,7 +234,8 @@ Command *commandGenerator(const std::string &command) {
     } else if (is_assign_array_cmd(command)) {
       const auto name = get_variable_expression(command);
       const auto index = get_array_index(command);
-      return new AssignArray(line_number, name, index, new Constant(1));
+      const auto value = get_array_assigned_value(command);
+      return new AssignArray(line_number, name, index, value);
     }
   }
 
