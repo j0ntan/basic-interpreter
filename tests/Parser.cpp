@@ -1,4 +1,5 @@
 #include "Parser.h"
+#include "BooleanExpression.h"
 #include "Command.h"
 #include "NumericExpression.h"
 #include <gtest/gtest.h>
@@ -376,4 +377,10 @@ TEST(BooleanGenerator, callBooleanGenerator) { booleanGenerator("0 < 1"); }
 
 TEST(BooleanGenerator, returnPointerToBooleanExpression) {
   BooleanExpression *expression = booleanGenerator("0 < 1");
+}
+
+TEST(BooleanGenerator, generateSimpleLessThan) {
+  std::unique_ptr<BooleanExpression> expression(booleanGenerator("0 < 1"));
+  ASSERT_NE(expression.get(), nullptr);
+  ASSERT_EQ(expression->format(), "0 < 1");
 }

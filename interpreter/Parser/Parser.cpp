@@ -5,6 +5,7 @@
 #include "Constant.h"
 #include "Division.h"
 #include "Goto.h"
+#include "LessThan.h"
 #include "Multiplication.h"
 #include "ParserHelper.h"
 #include "Print.h"
@@ -247,5 +248,6 @@ Command *commandGenerator(const std::string &command) {
 }
 
 BooleanExpression *booleanGenerator(const std::string &command) {
+  return new LessThan(new Constant(0), new Constant(1));
   return nullptr;
 }
