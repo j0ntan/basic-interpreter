@@ -245,3 +245,5 @@ Command *commandGenerator(const std::string &command) {
 
   return nullptr;
 }
+
+void booleanGenerator(const std::string &command) {}

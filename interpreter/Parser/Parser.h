@@ -21,4 +21,6 @@ NumericExpression *numericExpressionGenerator(std::string expression);
 
 Command *commandGenerator(const std::string &command);
 
+void booleanGenerator(const std::string &command);
+
 #endif

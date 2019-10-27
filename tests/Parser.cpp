@@ -371,3 +371,5 @@ TEST(CommandGenerator, matchGotoJline) {
   std::unique_ptr<Command> command(commandGenerator("1 GOTO 123"));
   ASSERT_EQ(command->format(), "1 GOTO 123");
 }
+
+TEST(BooleanGenerator, callBooleanGenerator) { booleanGenerator("0 < 1"); }
