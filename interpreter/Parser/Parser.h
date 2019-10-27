@@ -5,6 +5,7 @@
 
 class NumericExpression;
 class Command;
+class BooleanExpression;
 
 std::string findNextExpression(const std::string &cmd);
 bool has_line_number(const std::string &cmd);
@@ -21,6 +22,6 @@ NumericExpression *numericExpressionGenerator(std::string expression);
 
 Command *commandGenerator(const std::string &command);
 
-void booleanGenerator(const std::string &command);
+BooleanExpression *booleanGenerator(const std::string &command);
 
 #endif

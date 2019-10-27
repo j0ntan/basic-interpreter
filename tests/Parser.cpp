@@ -373,3 +373,7 @@ TEST(CommandGenerator, matchGotoJline) {
 }
 
 TEST(BooleanGenerator, callBooleanGenerator) { booleanGenerator("0 < 1"); }
+
+TEST(BooleanGenerator, returnPointerToBooleanExpression) {
+  BooleanExpression *expression = booleanGenerator("0 < 1");
+}
