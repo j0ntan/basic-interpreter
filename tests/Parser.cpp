@@ -366,3 +366,8 @@ TEST(CommandGenerator, generateSimpleGotoCommand) {
   ASSERT_NE(command.get(), nullptr);
   ASSERT_EQ(command->format(), "1 GOTO 1");
 }
+
+TEST(CommandGenerator, matchGotoJline) {
+  std::unique_ptr<Command> command(commandGenerator("1 GOTO 123"));
+  ASSERT_EQ(command->format(), "1 GOTO 123");
+}
