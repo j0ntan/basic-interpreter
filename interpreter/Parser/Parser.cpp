@@ -248,6 +248,9 @@ Command *commandGenerator(const std::string &command) {
 }
 
 BooleanExpression *booleanGenerator(const std::string &command) {
-  return new LessThan(new Constant(0), new Constant(1));
+  const auto operator_position = command.find('<');
+  const auto left_expression =
+      numericExpressionGenerator(command.substr(0, operator_position - 1));
+  return new LessThan(left_expression, new Constant(1));
   return nullptr;
 }

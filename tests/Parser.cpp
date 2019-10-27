@@ -384,3 +384,8 @@ TEST(BooleanGenerator, generateSimpleLessThan) {
   ASSERT_NE(expression.get(), nullptr);
   ASSERT_EQ(expression->format(), "0 < 1");
 }
+
+TEST(BooleanGenerator, matchLeftExpressionForLessThan) {
+  std::unique_ptr<BooleanExpression> expression(booleanGenerator("123 < 1"));
+  ASSERT_EQ(expression->format(), "123 < 1");
+}
