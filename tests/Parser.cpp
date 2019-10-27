@@ -360,3 +360,9 @@ TEST(CommandGenerator, matchAssignedArrayValue) {
   std::unique_ptr<Command> command(commandGenerator("1 LET ARRAY[0] 123"));
   ASSERT_EQ(command->format(), "1 LET ARRAY[0] 123");
 }
+
+TEST(CommandGenerator, generateSimpleGotoCommand) {
+  std::unique_ptr<Command> command(commandGenerator("1 GOTO 1"));
+  ASSERT_NE(command.get(), nullptr);
+  ASSERT_EQ(command->format(), "1 GOTO 1");
+}

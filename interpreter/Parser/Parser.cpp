@@ -4,6 +4,7 @@
 #include "AssignVariable.h"
 #include "Constant.h"
 #include "Division.h"
+#include "Goto.h"
 #include "Multiplication.h"
 #include "ParserHelper.h"
 #include "Print.h"
@@ -236,6 +237,8 @@ Command *commandGenerator(const std::string &command) {
       const auto index = get_array_index(command);
       const auto value = get_array_assigned_value(command);
       return new AssignArray(line_number, name, index, value);
+    } else if (is_goto_cmd(command)) {
+      return new Goto(line_number, 1);
     }
   }
 
