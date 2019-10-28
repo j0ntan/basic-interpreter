@@ -253,7 +253,8 @@ Command *commandGenerator(const std::string &command) {
       return new Goto(line_number, jline);
     } else if (is_if_then_cmd(command)) {
       const auto boolean_expression = get_boolean_expression(command);
-      return new IfThen(line_number, boolean_expression, 2);
+      const auto jline = std::stoi(command.substr(command.find("THEN") + 4));
+      return new IfThen(line_number, boolean_expression, jline);
     }
   }
 
