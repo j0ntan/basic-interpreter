@@ -6,6 +6,7 @@
 #include "Division.h"
 #include "Equals.h"
 #include "Goto.h"
+#include "IfThen.h"
 #include "LessThan.h"
 #include "Multiplication.h"
 #include "ParserHelper.h"
@@ -242,6 +243,8 @@ Command *commandGenerator(const std::string &command) {
     } else if (is_goto_cmd(command)) {
       const auto jline = std::stoi(command.substr(command.find("GOTO") + 4));
       return new Goto(line_number, jline);
+    } else if (is_if_then_cmd(command)) {
+      return new IfThen(line_number, booleanGenerator("0 < 1"), 2);
     }
   }
 

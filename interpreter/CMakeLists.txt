@@ -36,4 +36,5 @@ target_link_libraries(Parser PRIVATE
         Goto
         LessThan
         Equals
+        IfThen
         )

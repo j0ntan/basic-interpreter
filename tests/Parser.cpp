@@ -404,3 +404,9 @@ TEST(BooleanGenerator, generateLessThanFromGreaterThanComparison) {
   std::unique_ptr<BooleanExpression> expression(booleanGenerator("1 > 0"));
   ASSERT_EQ(expression->format(), "0 < 1");
 }
+
+TEST(CommandGenerator, generateSimpleIfThenCommand) {
+  std::unique_ptr<Command> command(commandGenerator("1 IF 0 < 1 THEN 2"));
+  ASSERT_NE(command.get(), nullptr);
+  ASSERT_EQ(command->format(), "1 IF [0 < 1] THEN <2>");
+}
