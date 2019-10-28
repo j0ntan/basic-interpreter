@@ -257,7 +257,8 @@ Command *commandGenerator(const std::string &command) {
       const auto jline = std::stoi(command.substr(command.find("THEN") + 4));
       return new IfThen(line_number, boolean_expression, jline);
     } else if (is_gosub_cmd(command)) {
-      return new GoSub(line_number, 2);
+      const auto jline = std::stoi(command.substr(command.find("GOSUB") + 5));
+      return new GoSub(line_number, jline);
     }
   }
 

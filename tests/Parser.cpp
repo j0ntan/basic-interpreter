@@ -426,3 +426,8 @@ TEST(CommandGenerator, generateSimpleGoSub) {
   ASSERT_NE(command.get(), nullptr);
   ASSERT_EQ(command->format(), "1 GOSUB <2>");
 }
+
+TEST(CommandGenerator, matchGoSubJline) {
+  std::unique_ptr<Command> command(commandGenerator("1 GOSUB 123"));
+  ASSERT_EQ(command->format(), "1 GOSUB <123>");
+}
