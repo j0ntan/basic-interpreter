@@ -251,6 +251,8 @@ BooleanExpression *booleanGenerator(const std::string &command) {
   const auto operator_position = command.find('<');
   const auto left_expression =
       numericExpressionGenerator(command.substr(0, operator_position - 1));
-  return new LessThan(left_expression, new Constant(1));
+  const auto right_expression =
+      numericExpressionGenerator(command.substr(operator_position + 1));
+  return new LessThan(left_expression, right_expression);
   return nullptr;
 }
