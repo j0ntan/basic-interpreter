@@ -1,4 +1,4 @@
-include_directories(NumericExpressions BooleanExpressions Commands)
+include_directories(NumericExpressions BooleanExpressions Commands Parser)
 
 add_library(Constant STATIC NumericExpressions/Constant.cpp)
 add_library(Variable STATIC NumericExpressions/Variable.cpp)
@@ -43,3 +43,4 @@ target_link_libraries(Parser PRIVATE
         )
 
 add_library(Interpreter STATIC Interpreter.cpp)
+target_link_libraries(Interpreter PRIVATE Parser ParserHelper)

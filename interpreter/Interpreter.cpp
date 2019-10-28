@@ -1,4 +1,5 @@
 #include "Interpreter.h"
+#include "Parser.h"
 #include <sstream>
 
 Interpreter::Interpreter(std::istream &in) { this->parse(in); }
@@ -10,7 +11,8 @@ void Interpreter::parse(std::istream &in) {
     std::stringstream stream(line);
     stream >> line_number;
 
-    commands.push_back(line);
+    if (is_print_cmd(line))
+      commands.push_back(line);
   }
 }
 

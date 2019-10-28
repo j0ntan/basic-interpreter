@@ -28,3 +28,7 @@ TEST_F(InterpreterTest, writeComplexPrintCommand) {
 TEST_F(InterpreterTest, writeTwoSimplePrintCommands) {
   interpret_command("1 PRINT 1\n2 PRINT 2\n", "1 PRINT 1\n2 PRINT 2\n");
 }
+
+TEST_F(InterpreterTest, ignoreWritingNonCommandString) {
+  interpret_command("1 PRINT 1\n2 PINT 2\n", "1 PRINT 1\n");
+}
