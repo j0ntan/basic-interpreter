@@ -12,11 +12,11 @@ void Interpreter::parse(std::istream &in) {
     stream >> line_number;
 
     if (is_print_cmd(line))
-      commands.push_back(line);
+      commands.emplace_back(commandGenerator(line));
   }
 }
 
 void Interpreter::write(std::ostream &out) {
   for (const auto &command : commands)
-    out << command << '\n';
+    out << command->format() << '\n';
 }

@@ -1,8 +1,9 @@
 #ifndef INTERPRETER_HPP
 #define INTERPRETER_HPP
 
+#include "Command.h"
 #include <iostream>
-#include <string>
+#include <memory>
 #include <vector>
 
 class Interpreter {
@@ -15,7 +16,7 @@ public:
 private:
   void parse(std::istream &in);
 
-  std::vector<std::string> commands;
+  std::vector<std::unique_ptr<Command>> commands;
 };
 
 #endif
