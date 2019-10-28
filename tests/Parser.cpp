@@ -420,3 +420,9 @@ TEST(CommandGenerator, matchIfThenJline) {
   std::unique_ptr<Command> command(commandGenerator("1 IF 0 < 1 THEN 123"));
   ASSERT_EQ(command->format(), "1 IF [0 < 1] THEN <123>");
 }
+
+TEST(CommandGenerator, generateSimpleGoSub) {
+  std::unique_ptr<Command> command(commandGenerator("1 GOSUB 2"));
+  ASSERT_NE(command.get(), nullptr);
+  ASSERT_EQ(command->format(), "1 GOSUB <2>");
+}

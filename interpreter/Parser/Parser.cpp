@@ -5,6 +5,7 @@
 #include "Constant.h"
 #include "Division.h"
 #include "Equals.h"
+#include "GoSub.h"
 #include "Goto.h"
 #include "IfThen.h"
 #include "LessThan.h"
@@ -255,6 +256,8 @@ Command *commandGenerator(const std::string &command) {
       const auto boolean_expression = get_boolean_expression(command);
       const auto jline = std::stoi(command.substr(command.find("THEN") + 4));
       return new IfThen(line_number, boolean_expression, jline);
+    } else if (is_gosub_cmd(command)) {
+      return new GoSub(line_number, 2);
     }
   }
 
