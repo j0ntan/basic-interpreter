@@ -212,11 +212,11 @@ get_proceeding_expression(const std::string &command,
   return numericExpressionGenerator(expression_str);
 }
 
-NumericExpression *get_array_index(const std::string &command) {
+static NumericExpression *get_array_index(const std::string &command) {
   return get_proceeding_expression(command, "[");
 }
 
-NumericExpression *get_array_assigned_value(const std::string &command) {
+static NumericExpression *get_array_assigned_value(const std::string &command) {
   const auto left_bracket_position = command.find('[');
   const auto right_bracket_position =
       find_matching_bracket(left_bracket_position, command);
