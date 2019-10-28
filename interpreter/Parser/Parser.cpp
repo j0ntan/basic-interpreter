@@ -4,6 +4,7 @@
 #include "AssignVariable.h"
 #include "Constant.h"
 #include "Division.h"
+#include "End.h"
 #include "Equals.h"
 #include "GoSub.h"
 #include "Goto.h"
@@ -262,6 +263,8 @@ Command *commandGenerator(const std::string &command) {
       return new GoSub(line_number, jline);
     } else if (is_return_cmd(command))
       return new Return(line_number);
+    else if (is_end_cmd(command))
+      return new End(line_number);
   }
 
   return nullptr;

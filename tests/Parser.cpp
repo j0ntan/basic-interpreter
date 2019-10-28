@@ -437,3 +437,9 @@ TEST(CommandGenerator, generateSimpleReturn) {
   ASSERT_NE(command.get(), nullptr);
   ASSERT_EQ(command->format(), "1 RETURN");
 }
+
+TEST(CommandGenerator, generateSimpleEnd) {
+  std::unique_ptr<Command> command(commandGenerator("1 END"));
+  ASSERT_NE(command.get(), nullptr);
+  ASSERT_EQ(command->format(), "1 END");
+}
