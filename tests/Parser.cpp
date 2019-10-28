@@ -410,3 +410,8 @@ TEST(CommandGenerator, generateSimpleIfThenCommand) {
   ASSERT_NE(command.get(), nullptr);
   ASSERT_EQ(command->format(), "1 IF [0 < 1] THEN <2>");
 }
+
+TEST(CommandGenerator, matchIfThenBooleanExpression) {
+  std::unique_ptr<Command> command(commandGenerator("1 IF 123 < 456 THEN 2"));
+  ASSERT_EQ(command->format(), "1 IF [123 < 456] THEN <2>");
+}

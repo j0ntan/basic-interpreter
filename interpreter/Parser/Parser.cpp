@@ -223,6 +223,14 @@ static NumericExpression *get_array_assigned_value(const std::string &command) {
   return numericExpressionGenerator(command.substr(right_bracket_position + 1));
 }
 
+BooleanExpression *get_boolean_expression(const std::string &command) {
+  const auto boolean_begins = command.find("IF") + 2;
+  const auto boolean_length = command.find("THEN") - boolean_begins;
+  const auto boolean_str = remove_surrounding_whitespace(
+      command.substr(boolean_begins, boolean_length));
+  return booleanGenerator(boolean_str);
+}
+
 Command *commandGenerator(const std::string &command) {
   if (!has_line_number(command))
     return nullptr;
@@ -244,7 +252,8 @@ Command *commandGenerator(const std::string &command) {
       const auto jline = std::stoi(command.substr(command.find("GOTO") + 4));
       return new Goto(line_number, jline);
     } else if (is_if_then_cmd(command)) {
-      return new IfThen(line_number, booleanGenerator("0 < 1"), 2);
+      const auto boolean_expression = get_boolean_expression(command);
+      return new IfThen(line_number, boolean_expression, 2);
     }
   }
 
