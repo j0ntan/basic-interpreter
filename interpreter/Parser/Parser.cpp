@@ -249,13 +249,15 @@ Command *commandGenerator(const std::string &command) {
 }
 
 BooleanExpression *booleanGenerator(const std::string &command) {
-  const auto operator_position = command.find_first_of("<=");
+  const auto operator_position = command.find_first_of("<=>");
   const auto left_expression =
       numericExpressionGenerator(command.substr(0, operator_position - 1));
   const auto right_expression =
       numericExpressionGenerator(command.substr(operator_position + 1));
   if (command[operator_position] == '<')
     return new LessThan(left_expression, right_expression);
+  else if (command[operator_position] == '>')
+    return new LessThan(right_expression, left_expression);
   else
     return new Equals(left_expression, right_expression);
 }

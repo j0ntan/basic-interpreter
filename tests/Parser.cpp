@@ -399,3 +399,8 @@ TEST(BooleanGenerator, generateSimpleEquals) {
   std::unique_ptr<BooleanExpression> expression(booleanGenerator("1 = 1"));
   ASSERT_EQ(expression->format(), "1 = 1");
 }
+
+TEST(BooleanGenerator, generateLessThanFromGreaterThanComparison) {
+  std::unique_ptr<BooleanExpression> expression(booleanGenerator("1 > 0"));
+  ASSERT_EQ(expression->format(), "0 < 1");
+}
