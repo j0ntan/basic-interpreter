@@ -12,6 +12,7 @@
 #include "Multiplication.h"
 #include "ParserHelper.h"
 #include "Print.h"
+#include "Return.h"
 #include "Subtraction.h"
 #include "Variable.h"
 #include <cctype>
@@ -259,7 +260,8 @@ Command *commandGenerator(const std::string &command) {
     } else if (is_gosub_cmd(command)) {
       const auto jline = std::stoi(command.substr(command.find("GOSUB") + 5));
       return new GoSub(line_number, jline);
-    }
+    } else if (is_return_cmd(command))
+      return new Return(line_number);
   }
 
   return nullptr;

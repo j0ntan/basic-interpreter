@@ -38,4 +38,5 @@ target_link_libraries(Parser PRIVATE
         Equals
         IfThen
         GoSub
+        Return
         )

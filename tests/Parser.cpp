@@ -431,3 +431,9 @@ TEST(CommandGenerator, matchGoSubJline) {
   std::unique_ptr<Command> command(commandGenerator("1 GOSUB 123"));
   ASSERT_EQ(command->format(), "1 GOSUB <123>");
 }
+
+TEST(CommandGenerator, generateSimpleReturn) {
+  std::unique_ptr<Command> command(commandGenerator("1 RETURN"));
+  ASSERT_NE(command.get(), nullptr);
+  ASSERT_EQ(command->format(), "1 RETURN");
+}
