@@ -394,3 +394,8 @@ TEST(BooleanGenerator, matchRightExpressionForLessThan) {
   std::unique_ptr<BooleanExpression> expression(booleanGenerator("1 < 123"));
   ASSERT_EQ(expression->format(), "1 < 123");
 }
+
+TEST(BooleanGenerator, generateSimpleEquals) {
+  std::unique_ptr<BooleanExpression> expression(booleanGenerator("1 = 1"));
+  ASSERT_EQ(expression->format(), "1 = 1");
+}

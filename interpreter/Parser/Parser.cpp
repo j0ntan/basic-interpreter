@@ -4,6 +4,7 @@
 #include "AssignVariable.h"
 #include "Constant.h"
 #include "Division.h"
+#include "Equals.h"
 #include "Goto.h"
 #include "LessThan.h"
 #include "Multiplication.h"
@@ -248,11 +249,13 @@ Command *commandGenerator(const std::string &command) {
 }
 
 BooleanExpression *booleanGenerator(const std::string &command) {
-  const auto operator_position = command.find('<');
+  const auto operator_position = command.find_first_of("<=");
   const auto left_expression =
       numericExpressionGenerator(command.substr(0, operator_position - 1));
   const auto right_expression =
       numericExpressionGenerator(command.substr(operator_position + 1));
-  return new LessThan(left_expression, right_expression);
-  return nullptr;
+  if (command[operator_position] == '<')
+    return new LessThan(left_expression, right_expression);
+  else
+    return new Equals(left_expression, right_expression);
 }

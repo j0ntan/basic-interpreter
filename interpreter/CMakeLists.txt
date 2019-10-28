@@ -35,4 +35,5 @@ target_link_libraries(Parser PRIVATE
         AssignArray
         Goto
         LessThan
+        Equals
         )
