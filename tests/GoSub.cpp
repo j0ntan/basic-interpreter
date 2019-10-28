@@ -15,5 +15,5 @@ TEST(GoSub, matchGivenLineNumber) {
 TEST(GoSub, format) {
   const unsigned int line_number = 123, jline = 456;
   const GoSub gosub(line_number, jline);
-  ASSERT_EQ(gosub.format(), "123 GOSUB 456");
+  ASSERT_EQ(gosub.format(), "123 GOSUB <456>");
 }

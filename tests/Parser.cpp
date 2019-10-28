@@ -365,12 +365,12 @@ TEST(CommandGenerator, matchAssignedArrayValue) {
 TEST(CommandGenerator, generateSimpleGotoCommand) {
   std::unique_ptr<Command> command(commandGenerator("1 GOTO 1"));
   ASSERT_NE(command.get(), nullptr);
-  ASSERT_EQ(command->format(), "1 GOTO 1");
+  ASSERT_EQ(command->format(), "1 GOTO <1>");
 }
 
 TEST(CommandGenerator, matchGotoJline) {
   std::unique_ptr<Command> command(commandGenerator("1 GOTO 123"));
-  ASSERT_EQ(command->format(), "1 GOTO 123");
+  ASSERT_EQ(command->format(), "1 GOTO <123>");
 }
 
 TEST(BooleanGenerator, callBooleanGenerator) { booleanGenerator("0 < 1"); }

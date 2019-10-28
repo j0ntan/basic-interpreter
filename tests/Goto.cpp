@@ -15,5 +15,5 @@ TEST(Goto, matchGivenLineNumber) {
 TEST(Goto, format) {
   const unsigned int line_number = 15, jline = 23;
   const Goto goTo(line_number, jline);
-  ASSERT_EQ(goTo.format(), "15 GOTO 23");
+  ASSERT_EQ(goTo.format(), "15 GOTO <23>");
 }

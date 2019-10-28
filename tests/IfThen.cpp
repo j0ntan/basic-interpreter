@@ -23,5 +23,5 @@ TEST(IfThen, format) {
   const Constant *num1 = new Constant(5), *num2 = new Constant(8);
   const LessThan *comparison = new LessThan(num1, num2);
   const IfThen ifthen(line_number, comparison, jline);
-  ASSERT_EQ(ifthen.format(), "5 IF [5 < 8] THEN 26");
+  ASSERT_EQ(ifthen.format(), "5 IF [5 < 8] THEN <26>");
 }

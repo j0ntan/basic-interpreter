@@ -6,6 +6,6 @@ IfThen::IfThen(unsigned int line_number, const BooleanExpression *comparison,
     : Command{line_number}, comparison{comparison}, jline{jline} {}
 
 std::string IfThen::format() const {
-  return std::to_string(line_num) + " IF [" + comparison->format() + "] THEN " +
-         std::to_string(jline);
+  return std::to_string(line_num) + " IF [" + comparison->format() +
+         "] THEN <" + std::to_string(jline) + '>';
 }
