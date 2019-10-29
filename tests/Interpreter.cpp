@@ -40,3 +40,7 @@ TEST_F(InterpreterTest, writeCorrectlyFormattedPrintCommand) {
 TEST_F(InterpreterTest, writeAssignVariableCommand) {
   interpret_command("1 LET X 123\n", "1 LET X 123\n");
 }
+
+TEST_F(InterpreterTest, writeAssignArrayCommand) {
+  interpret_command("1 LET X[123] 123\n", "1 LET X[123] 123\n");
+}
