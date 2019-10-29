@@ -52,3 +52,7 @@ TEST_F(InterpreterTest, writeGotoCommand) {
 TEST_F(InterpreterTest, writeIfThenCommand) {
   interpret_command("1 IF 1 > 2 THEN 3\n", "1 IF [2 < 1] THEN <3>\n");
 }
+
+TEST_F(InterpreterTest, writeGoSubCommand) {
+  interpret_command("1 GOSUB\t2\n", "1 GOSUB <2>\n");
+}
