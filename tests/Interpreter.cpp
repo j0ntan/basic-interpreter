@@ -56,3 +56,7 @@ TEST_F(InterpreterTest, writeIfThenCommand) {
 TEST_F(InterpreterTest, writeGoSubCommand) {
   interpret_command("1 GOSUB\t2\n", "1 GOSUB <2>\n");
 }
+
+TEST_F(InterpreterTest, writeReturnCommand) {
+  interpret_command("1 RETURN\n", "1 RETURN\n");
+}
