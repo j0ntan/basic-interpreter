@@ -34,3 +34,6 @@ file(COPY "examples" DESTINATION ${CMAKE_BINARY_DIR})
 add_subdirectory(interpreter)
 
 add_subdirectory(tests)
+
+add_executable(parse-and-write parse-and-write.cpp)
+target_link_libraries(parse-and-write PRIVATE Interpreter)
