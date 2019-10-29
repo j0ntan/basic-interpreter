@@ -13,7 +13,7 @@ void Interpreter::parse(std::istream &in) {
 
     const bool is_command = is_print_cmd(line) ||
                             is_assign_variable_cmd(line) ||
-                            is_assign_array_cmd(line);
+                            is_assign_array_cmd(line) || is_goto_cmd(line);
     if (is_command)
       commands.emplace_back(commandGenerator(line));
   }

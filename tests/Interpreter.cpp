@@ -44,3 +44,7 @@ TEST_F(InterpreterTest, writeAssignVariableCommand) {
 TEST_F(InterpreterTest, writeAssignArrayCommand) {
   interpret_command("1 LET X[123] 123\n", "1 LET X[123] 123\n");
 }
+
+TEST_F(InterpreterTest, writeGotoCommand) {
+  interpret_command("1 GOTO  123\n", "1 GOTO <123>\n");
+}
