@@ -60,3 +60,7 @@ TEST_F(InterpreterTest, writeGoSubCommand) {
 TEST_F(InterpreterTest, writeReturnCommand) {
   interpret_command("1 RETURN\n", "1 RETURN\n");
 }
+
+TEST_F(InterpreterTest, writeEndCommand) {
+  interpret_command("1 END\n", "1 END\n");
+}
