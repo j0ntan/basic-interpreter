@@ -36,3 +36,7 @@ TEST_F(InterpreterTest, ignoreWritingNonCommandString) {
 TEST_F(InterpreterTest, writeCorrectlyFormattedPrintCommand) {
   interpret_command("1 PRINT (1+2)\n", "1 PRINT (1 + 2)\n");
 }
+
+TEST_F(InterpreterTest, writeAssignVariableCommand) {
+  interpret_command("1 LET X 123\n", "1 LET X 123\n");
+}

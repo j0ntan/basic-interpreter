@@ -11,7 +11,7 @@ void Interpreter::parse(std::istream &in) {
     std::stringstream stream(line);
     stream >> line_number;
 
-    if (is_print_cmd(line))
+    if (is_print_cmd(line) || is_assign_variable_cmd(line))
       commands.emplace_back(commandGenerator(line));
   }
 }
