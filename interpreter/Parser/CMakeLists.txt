@@ -1,8 +1,7 @@
-add_library(ParserHelper STATIC ParserHelper.cpp)
+add_library(ParserHelper ParserHelper.cpp)
+target_include_directories(ParserHelper PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
-add_library(Parser STATIC Parser.cpp)
-target_link_libraries(Parser PRIVATE
-        NumericExpressions
-        BooleanExpressions
-        Commands
-        )
+add_library(Parser Parser.cpp)
+target_include_directories(Parser PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_link_libraries(Parser PRIVATE ParserHelper NumericExpressions
+        BooleanExpressions Commands)

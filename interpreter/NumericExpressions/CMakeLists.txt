@@ -1,10 +1,28 @@
-add_library(Constant STATIC Constant.cpp)
-add_library(Variable STATIC Variable.cpp)
-add_library(Addition STATIC Addition.cpp)
-add_library(Subtraction STATIC Subtraction.cpp)
-add_library(Multiplication STATIC Multiplication.cpp)
-add_library(Division STATIC Division.cpp)
-add_library(NumericExpressions $<TARGET_OBJECTS:Constant>
-        $<TARGET_OBJECTS:Variable> $<TARGET_OBJECTS:Addition>
-        $<TARGET_OBJECTS:Subtraction> $<TARGET_OBJECTS:Multiplication>
-        $<TARGET_OBJECTS:Division>)
+add_library(NumericExpression INTERFACE)
+target_include_directories(NumericExpression INTERFACE
+        ${CMAKE_CURRENT_SOURCE_DIR})
+
+add_library(Constant Constant.cpp)
+target_link_libraries(Constant PUBLIC NumericExpression)
+
+add_library(Variable Variable.cpp)
+target_link_libraries(Variable PUBLIC NumericExpression)
+
+add_library(BinaryExpression INTERFACE)
+target_link_libraries(BinaryExpression INTERFACE NumericExpression)
+
+add_library(Addition Addition.cpp)
+target_link_libraries(Addition PUBLIC BinaryExpression)
+
+add_library(Subtraction Subtraction.cpp)
+target_link_libraries(Subtraction PUBLIC BinaryExpression)
+
+add_library(Multiplication Multiplication.cpp)
+target_link_libraries(Multiplication PUBLIC BinaryExpression)
+
+add_library(Division Division.cpp)
+target_link_libraries(Division PUBLIC BinaryExpression)
+
+add_library(NumericExpressions INTERFACE)
+target_link_libraries(NumericExpressions INTERFACE Constant Variable Addition
+        Subtraction Multiplication Division)
