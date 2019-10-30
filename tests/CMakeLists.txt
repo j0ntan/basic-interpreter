@@ -77,6 +77,7 @@ target_include_directories(test_AssignVariable PRIVATE ${INTERPRETER_INCLUDE})
 target_link_libraries(test_AssignVariable PRIVATE
         AssignVariable
         Variable
+        Constant
         gtest_main
         )
 

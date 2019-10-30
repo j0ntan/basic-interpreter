@@ -2,7 +2,6 @@ include_directories(NumericExpressions BooleanExpressions Commands Parser)
 
 add_library(Constant STATIC NumericExpressions/Constant.cpp)
 add_library(Variable STATIC NumericExpressions/Variable.cpp)
-target_link_libraries(Variable PRIVATE Constant)
 add_library(Addition STATIC NumericExpressions/Addition.cpp)
 add_library(Subtraction STATIC NumericExpressions/Subtraction.cpp)
 add_library(Multiplication STATIC NumericExpressions/Multiplication.cpp)
