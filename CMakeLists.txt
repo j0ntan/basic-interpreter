@@ -30,14 +30,6 @@ add_subdirectory(${CMAKE_CURRENT_BINARY_DIR}/googletest-src
 
 file(COPY "examples" DESTINATION ${CMAKE_BINARY_DIR})
 
-set(INTERPRETER_INCLUDE
-        ${CMAKE_CURRENT_SOURCE_DIR}/interpreter
-        ${CMAKE_CURRENT_SOURCE_DIR}/interpreter/NumericExpressions
-        ${CMAKE_CURRENT_SOURCE_DIR}/interpreter/BooleanExpressions
-        ${CMAKE_CURRENT_SOURCE_DIR}/interpreter/Commands
-        ${CMAKE_CURRENT_SOURCE_DIR}/interpreter/Parser
-        )
-
 add_subdirectory(interpreter)
 
 add_subdirectory(tests)
