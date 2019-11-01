@@ -1,16 +1,12 @@
 #include "Interpreter.h"
 #include "Parser.h"
-#include <sstream>
+#include <string>
 
 Interpreter::Interpreter(std::istream &in) { this->parse(in); }
 
 void Interpreter::parse(std::istream &in) {
   std::string line;
   while (getline(in, line)) {
-    size_t line_number;
-    std::stringstream stream(line);
-    stream >> line_number;
-
     const bool is_command = is_print_cmd(line) ||
                             is_assign_variable_cmd(line) ||
                             is_assign_array_cmd(line) || is_goto_cmd(line) ||
