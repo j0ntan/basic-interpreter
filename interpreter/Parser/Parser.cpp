@@ -273,7 +273,7 @@ Command *commandGenerator(const std::string &command) {
 BooleanExpression *booleanGenerator(const std::string &command) {
   const auto operator_position = command.find_first_of("<=>");
   const auto left_expression =
-      numericExpressionGenerator(command.substr(0, operator_position - 1));
+      numericExpressionGenerator(command.substr(0, operator_position));
   const auto right_expression =
       numericExpressionGenerator(command.substr(operator_position + 1));
   if (command[operator_position] == '<')
