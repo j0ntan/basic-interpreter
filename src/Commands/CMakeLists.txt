@@ -1,0 +1,53 @@
+add_library(Print Print.cpp)
+add_library(PrintTests Print.test.cpp)
+target_link_libraries(PrintTests PRIVATE Print Addition Variable Constant gtest)
+add_executable(test_Print $<TARGET_OBJECTS:gtest_main> $<TARGET_OBJECTS:PrintTests>)
+target_link_libraries(test_Print PRIVATE PrintTests)
+
+add_library(AssignVariable AssignVariable.cpp)
+target_link_libraries(AssignVariable PRIVATE Variable)
+add_library(AssignVariableTests AssignVariable.test.cpp)
+target_link_libraries(AssignVariableTests PRIVATE AssignVariable Variable Constant gtest)
+add_executable(test_AssignVariable $<TARGET_OBJECTS:gtest_main> $<TARGET_OBJECTS:AssignVariableTests>)
+target_link_libraries(test_AssignVariable PRIVATE AssignVariableTests)
+
+add_library(AssignArray AssignArray.cpp)
+target_link_libraries(AssignArray PRIVATE Variable)
+add_library(AssignArrayTests AssignArray.test.cpp)
+target_link_libraries(AssignArrayTests PRIVATE AssignArray Variable Constant gtest)
+add_executable(test_AssignArray $<TARGET_OBJECTS:gtest_main> $<TARGET_OBJECTS:AssignArrayTests>)
+target_link_libraries(test_AssignArray PRIVATE AssignArrayTests)
+
+add_library(Goto Goto.cpp)
+add_library(GotoTests Goto.test.cpp)
+target_link_libraries(GotoTests PRIVATE Goto gtest)
+add_executable(test_Goto $<TARGET_OBJECTS:gtest_main> $<TARGET_OBJECTS:GotoTests>)
+target_link_libraries(test_Goto PRIVATE GotoTests)
+
+add_library(IfThen IfThen.cpp)
+add_library(IfThenTests IfThen.test.cpp)
+target_link_libraries(IfThenTests PRIVATE IfThen LessThan Constant gtest)
+add_executable(test_IfThen $<TARGET_OBJECTS:gtest_main> $<TARGET_OBJECTS:IfThenTests>)
+target_link_libraries(test_IfThen PRIVATE IfThenTests)
+
+add_library(GoSub GoSub.cpp)
+add_library(GoSubTests GoSub.test.cpp)
+target_link_libraries(GoSubTests PRIVATE GoSub gtest)
+add_executable(test_GoSub $<TARGET_OBJECTS:gtest_main> $<TARGET_OBJECTS:GoSubTests>)
+target_link_libraries(test_GoSub PRIVATE GoSubTests)
+
+add_library(Return Return.cpp)
+add_library(ReturnTests Return.test.cpp)
+target_link_libraries(ReturnTests PRIVATE Return gtest)
+add_executable(test_Return $<TARGET_OBJECTS:gtest_main> $<TARGET_OBJECTS:ReturnTests>)
+target_link_libraries(test_Return PRIVATE ReturnTests)
+
+add_library(End End.cpp)
+add_library(EndTests End.test.cpp)
+target_link_libraries(EndTests PRIVATE End gtest)
+add_executable(test_End $<TARGET_OBJECTS:gtest_main> $<TARGET_OBJECTS:EndTests>)
+target_link_libraries(test_End PRIVATE EndTests)
+
+add_library(Commands INTERFACE)
+target_link_libraries(Commands INTERFACE Print AssignVariable AssignArray Goto
+        IfThen GoSub Return End)

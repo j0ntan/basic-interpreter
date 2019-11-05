@@ -1,0 +1,6 @@
+add_library(Interpreter Interpreter.cpp)
+target_link_libraries(Interpreter PRIVATE Parser)
+add_library(InterpreterTests Interpreter.test.cpp)
+target_link_libraries(InterpreterTests PRIVATE Interpreter gtest)
+add_executable(test_Interpreter $<TARGET_OBJECTS:gtest_main> $<TARGET_OBJECTS:InterpreterTests>)
+target_link_libraries(test_Interpreter PRIVATE InterpreterTests)
