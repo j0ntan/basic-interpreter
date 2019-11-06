@@ -10,3 +10,8 @@ TEST(FormatStringSpacing, getStringFromFormatFunction) {
 TEST(FormatStringSpacing, preFormattedStringHasNoChange) {
   ASSERT_EQ("test", fix_spacing("test"));
 }
+
+TEST(FormatStringSpacing, removeBeginningWhitespace) {
+  ASSERT_EQ("test", fix_spacing(" test"));
+  ASSERT_EQ("test", fix_spacing("\ttest"));
+}
