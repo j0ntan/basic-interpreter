@@ -1,3 +1,10 @@
+add_library(FormatStringSpacing FormatStringSpacing.cpp)
+add_library(FormatStringSpacingTests FormatStringSpacing.test.cpp)
+target_link_libraries(FormatStringSpacingTests PRIVATE FormatStringSpacing gtest)
+add_executable(test_FormatStringSpacing
+        $<TARGET_OBJECTS:gtest_main> $<TARGET_OBJECTS:FormatStringSpacingTests>)
+target_link_libraries(test_FormatStringSpacing PRIVATE FormatStringSpacingTests)
+
 add_library(ParserHelper ParserHelper.cpp)
 add_library(ParserHelperTests ParserHelper.test.cpp)
 target_link_libraries(ParserHelperTests PRIVATE ParserHelper gtest)
