@@ -3,6 +3,6 @@
 
 #include <string>
 
-void fix_spacing(const std::string &str);
+std::string fix_spacing(const std::string &str);
 
 #endif
