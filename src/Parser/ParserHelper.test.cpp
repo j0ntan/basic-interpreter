@@ -122,7 +122,7 @@ TEST(IsArray, whitespaceAfterNameAllowed) {
   ASSERT_TRUE(isArray("VAR\t[0]"));
 }
 
-TEST(IsArray, indexCannotBeNegative) { ASSERT_FALSE(isArray("VAR[-1]")); }
+TEST(IsArray, indexCanBeNegative) { ASSERT_TRUE(isArray("VAR[-1]")); }
 
 TEST(IsArray, indexCanBeVariable) { ASSERT_TRUE(isArray("VAR[OTHER]")); }
 
@@ -155,7 +155,7 @@ TEST(IsNumericExpression, whitespaceAroundArrayIndexAllowed) {
   ASSERT_TRUE(isNumericExpression("VAR[ OTHER[3] ]"));
   ASSERT_TRUE(isNumericExpression("VAR[ OTHER[  3] ]"));
   ASSERT_TRUE(isNumericExpression("VAR[ OTHER[3  ] ]"));
-  ASSERT_FALSE(isNumericExpression("VAR[ -1 ]"));
+  ASSERT_TRUE(isNumericExpression("VAR[ -1 ]"));
   ASSERT_FALSE(isNumericExpression("VAR[ wrong ]"));
   ASSERT_FALSE(isNumericExpression("VAR[ wrong[0] ]"));
 }

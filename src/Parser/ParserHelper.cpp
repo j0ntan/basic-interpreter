@@ -74,10 +74,6 @@ static std::string array_name(const std::string &str, size_t left_bracket_pos) {
   return remove_surrounding_whitespace(name_with_whitespace);
 }
 
-static bool index_is_positive(const std::string &index) {
-  return index[0] != '-';
-}
-
 bool isArray(const std::string &str) {
   const size_t left_bracket_pos = str.find_first_of('[');
   const size_t right_bracket_pos = str.find_last_of(']');
@@ -89,11 +85,9 @@ bool isArray(const std::string &str) {
   const std::string name = array_name(str, left_bracket_pos);
   const std::string index =
       array_index(str, left_bracket_pos, right_bracket_pos);
-  const bool index_is_int = isInteger(index);
 
   return !name.empty() && !index.empty() && isVariable(name) &&
-         ((index_is_int && index_is_positive(index)) ||
-          (!index_is_int && isNumericExpression(index)));
+         isNumericExpression(index);
 }
 
 static bool has_enclosing_parenthesis(const std::string &str) {
