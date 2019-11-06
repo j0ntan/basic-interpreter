@@ -15,3 +15,8 @@ TEST(FormatStringSpacing, removeBeginningWhitespace) {
   ASSERT_EQ("test", fix_spacing(" test"));
   ASSERT_EQ("test", fix_spacing("\ttest"));
 }
+
+TEST(FormatStringSpacing, removeEndingWhitespace) {
+  ASSERT_EQ("test", fix_spacing("test "));
+  ASSERT_EQ("test", fix_spacing("test\t"));
+}
