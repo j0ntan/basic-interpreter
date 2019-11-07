@@ -16,6 +16,8 @@ std::string fix_spacing(const std::string &str) {
       word_begins_position = str.find_first_not_of(" \t", ++word_ends_position);
     }
     result.append(word);
+    if (word_begins_position != std::string::npos)
+      result.push_back(' ');
   }
   return result;
 }

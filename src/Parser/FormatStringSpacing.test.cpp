@@ -20,3 +20,7 @@ TEST(FormatStringSpacing, removeEndingWhitespace) {
   ASSERT_EQ("test", fix_spacing("test "));
   ASSERT_EQ("test", fix_spacing("test\t"));
 }
+
+TEST(FormatStringSpacing, removeExtraWhitespaceInBetweenWords) {
+  ASSERT_EQ("two words", fix_spacing("two   words"));
+}
