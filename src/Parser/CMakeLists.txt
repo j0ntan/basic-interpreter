@@ -5,6 +5,13 @@ add_executable(test_FormatStringSpacing
         $<TARGET_OBJECTS:gtest_main> $<TARGET_OBJECTS:FormatStringSpacingTests>)
 target_link_libraries(test_FormatStringSpacing PRIVATE FormatStringSpacingTests)
 
+add_library(QueryStringProperties QueryStringProperties.cpp)
+add_library(QueryStringPropertiesTests QueryStringProperties.test.cpp)
+target_link_libraries(QueryStringPropertiesTests PRIVATE QueryStringProperties gtest)
+add_executable(test_QueryStringProperties
+        $<TARGET_OBJECTS:gtest_main> $<TARGET_OBJECTS:QueryStringPropertiesTests>)
+target_link_libraries(test_QueryStringProperties PRIVATE QueryStringPropertiesTests)
+
 add_library(ParserHelper ParserHelper.cpp)
 add_library(ParserHelperTests ParserHelper.test.cpp)
 target_link_libraries(ParserHelperTests PRIVATE ParserHelper gtest)
