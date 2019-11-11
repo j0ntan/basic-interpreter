@@ -1,3 +1,3 @@
 #include "QueryStringProperties.hpp"
 
-void has_only_digits(const std::string &str) {}
+bool has_only_digits(const std::string &str) { return true; }

@@ -3,6 +3,6 @@
 
 #include <string>
 
-void has_only_digits(const std::string &str);
+bool has_only_digits(const std::string &str);
 
 #endif
