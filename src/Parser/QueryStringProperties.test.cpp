@@ -14,3 +14,7 @@ TEST(HasOnlyUppercaseLetters, callFunction) {
 TEST(HasOnlyUppercaseLetters, getBoolResult) {
   ASSERT_TRUE(has_only_uppercase_letters("ABC"));
 }
+
+TEST(HasOnlyUppercaseLetters, detectNonUppercase) {
+  ASSERT_FALSE(has_only_uppercase_letters("AbC"));
+}
