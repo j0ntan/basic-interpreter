@@ -12,6 +12,12 @@ add_executable(test_QueryStringProperties
         $<TARGET_OBJECTS:gtest_main> $<TARGET_OBJECTS:QueryStringPropertiesTests>)
 target_link_libraries(test_QueryStringProperties PRIVATE QueryStringPropertiesTests)
 
+add_library(GetExpressionString GetExpressionString.cpp)
+add_library(GetExpressionStringTests GetExpressionString.test.cpp)
+target_link_libraries(GetExpressionStringTests PRIVATE GetExpressionString gtest)
+add_executable(test_GetExpressionString $<TARGET_OBJECTS:gtest_main> $<TARGET_OBJECTS:GetExpressionStringTests>)
+target_link_libraries(test_GetExpressionString PRIVATE GetExpressionStringTests)
+
 add_library(ParserHelper ParserHelper.cpp)
 add_library(ParserHelperTests ParserHelper.test.cpp)
 target_link_libraries(ParserHelperTests PRIVATE ParserHelper gtest)
