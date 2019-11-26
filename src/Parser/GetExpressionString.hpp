@@ -3,6 +3,6 @@
 
 #include <string>
 
-void get_first_expression_str(const std::string &str);
+std::string get_first_expression_str(const std::string &str);
 
 #endif
