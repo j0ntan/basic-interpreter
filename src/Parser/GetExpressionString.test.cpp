@@ -10,3 +10,7 @@ TEST(GetFirstExpressionStr, getStringFromFunction) {
 TEST(GetFirstExpressionStr, getInteger) {
   ASSERT_EQ("123", get_first_expression_str("123"));
 }
+
+TEST(GetFirstExpressionStr, excludeSecondInteger) {
+  ASSERT_EQ("123", get_first_expression_str("123 456"));
+}
