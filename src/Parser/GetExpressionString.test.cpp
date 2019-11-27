@@ -18,3 +18,7 @@ TEST(GetFirstExpressionStr, excludeSecondInteger) {
 TEST(GetFirstExpressionStr, getVariableName) {
   ASSERT_EQ("NAME", get_first_expression_str("NAME 123"));
 }
+
+TEST(GetFirstExpressionStr, getArrayElement) {
+  ASSERT_EQ("X[0]", get_first_expression_str("X[0] 123"));
+}
