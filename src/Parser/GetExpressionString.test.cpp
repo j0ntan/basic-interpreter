@@ -14,3 +14,7 @@ TEST(GetFirstExpressionStr, getInteger) {
 TEST(GetFirstExpressionStr, excludeSecondInteger) {
   ASSERT_EQ("123", get_first_expression_str("123 456"));
 }
+
+TEST(GetFirstExpressionStr, getVariableName) {
+  ASSERT_EQ("NAME", get_first_expression_str("NAME 123"));
+}
